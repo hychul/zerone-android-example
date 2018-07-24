@@ -58,7 +58,7 @@ public class ObjTest extends ZeroneActivity {
 	    }
 
 	    @Override
-	    public void render(float deltaTime) {
+	    public void render() {
 	        GL10 gl = glGraphics.getGL();
 
 	        GLES10.glClearColor(0.2f, 0.2f, 0.2f, 1.0f);

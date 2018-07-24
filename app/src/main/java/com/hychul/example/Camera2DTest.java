@@ -126,7 +126,7 @@ public class Camera2DTest extends ZeroneActivity {
 	        }
 	    }
 
-	    public void render(float deltaTime) {
+	    public void render() {
 	        GLES10.glClear(GL10.GL_COLOR_BUFFER_BIT);
 	        camera.setViewportAndMatrices();
 	        

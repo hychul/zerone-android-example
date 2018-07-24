@@ -33,7 +33,7 @@ public class Vertices3Test extends ZeroneActivity {
         }        
 
         @Override
-        public void render(float deltaTime) {
+        public void render() {
             GLES10.glClear(GL10.GL_COLOR_BUFFER_BIT);
             GLES10.glViewport(0, 0, glGraphics.getWidth(), glGraphics.getHeight());
             GLES10.glMatrixMode(GL10.GL_PROJECTION);

@@ -186,7 +186,7 @@ public class GameScene extends GLScene {
     }
 
     @Override
-    public void render(float deltaTime) {
+    public void render() {
         GLES10.glClear(GL10.GL_COLOR_BUFFER_BIT);
         GLES10.glEnable(GL10.GL_TEXTURE_2D);
         

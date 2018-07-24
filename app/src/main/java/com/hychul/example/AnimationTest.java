@@ -83,7 +83,7 @@ public class AnimationTest extends ZeroneActivity {
 	    }
 
 	    @Override
-	    public void render(float deltaTime) {
+	    public void render() {
 //	        GLES10.glClear(GL10.GL_COLOR_BUFFER_BIT);
 //	        camera.setViewportAndMatrices();
 //

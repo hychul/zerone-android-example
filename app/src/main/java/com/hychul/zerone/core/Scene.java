@@ -13,7 +13,7 @@ public abstract class Scene {
     public abstract void update(float deltaTime);
 
     // TODO: Toss this to RenderSystem
-    public abstract void render(float deltaTime);
+    public abstract void render();
 
     public abstract void onPause();
 

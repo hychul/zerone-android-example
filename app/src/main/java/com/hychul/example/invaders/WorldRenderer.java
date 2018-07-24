@@ -20,7 +20,6 @@ public class WorldRenderer {
     AmbientLight ambientLight;
     DirectionalLight directionalLight;
     SpriteBatcher batcher;
-    float invaderAngle = 0;
 
     public WorldRenderer(GLGraphics glGraphics) {
         this.glGraphics = glGraphics;
@@ -34,7 +33,7 @@ public class WorldRenderer {
         batcher = new SpriteBatcher(10);
     }
 
-    public void render(World world, float deltaTime) {
+    public void render(World world) {
         camera.getPosition().x = world.ship.position.x;
         camera.getLookAt().x = world.ship.position.x;
         camera.setMatrices();
@@ -47,7 +46,7 @@ public class WorldRenderer {
         directionalLight.enable(GL10.GL_LIGHT0);
 
         renderShip(world.ship);
-        renderInvaders(world.invaders, deltaTime);
+        renderInvaders(world.invaders);
 
         GLES10.glDisable(GL10.GL_TEXTURE_2D);
 
@@ -77,9 +76,7 @@ public class WorldRenderer {
         }
     }
 
-    private void renderInvaders(List<Invader> invaders, float deltaTime) {
-        invaderAngle += 45 * deltaTime;
-
+    private void renderInvaders(List<Invader> invaders) {
         Assets.invaderTexture.bind();
         Assets.invaderModel.bind();
         int len = invaders.size();
@@ -96,7 +93,7 @@ public class WorldRenderer {
                 GLES10.glPushMatrix();
                 GLES10.glTranslatef(invader.position.x, invader.position.y,
                         invader.position.z);
-                GLES10.glRotatef(invaderAngle, 0, 1, 0);
+                GLES10.glRotatef(invader.angle, 0, 1, 0);
                 Assets.invaderModel.draw(GL10.GL_TRIANGLES, 0,
                         Assets.invaderModel.getNumVertices());
                 GLES10.glPopMatrix();

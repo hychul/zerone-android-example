@@ -74,7 +74,7 @@ public class SettingsScene extends GLScene {
     }
 
     @Override
-    public void render(float deltaTime) {
+    public void render() {
         GLES10.glClear(GL10.GL_COLOR_BUFFER_BIT);
         guiCam.setViewportAndMatrices();
 

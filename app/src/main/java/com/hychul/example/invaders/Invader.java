@@ -17,12 +17,15 @@ public class Invader extends GameObject3D {
     int move = MOVE_LEFT;
     boolean wasLastStateLeft = true;
     float movedDistance = World.WORLD_MAX_X / 2;
+    float angle;
 
     public Invader(float x, float y, float z) {
         super(x, y, z, INVADER_RADIUS);
     }
 
     public void update(float deltaTime, float speedMultiplier) {
+        angle += 45 * deltaTime;
+
         if (state == INVADER_ALIVE) {
             movedDistance += deltaTime * INVADER_VELOCITY * speedMultiplier;
             if (move == MOVE_LEFT) {

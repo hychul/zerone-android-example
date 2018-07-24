@@ -177,7 +177,7 @@ public class GameScene extends GLScene {
     }
 
     @Override
-    public void render(float deltaTime) {
+    public void render() {
         GLES10.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
         guiCam.setViewportAndMatrices();
 
@@ -187,7 +187,7 @@ public class GameScene extends GLScene {
         batcher.endBatch();
         GLES10.glDisable(GL10.GL_TEXTURE_2D);
 
-        renderer.render(world, deltaTime);
+        renderer.render(world);
 
         switch (state) {
         case GAME_RUNNING:
