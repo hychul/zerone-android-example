@@ -128,7 +128,7 @@ public class Camera2DTest extends ZeroneActivity {
 
 	    public void render() {
 	        GLES10.glClear(GL10.GL_COLOR_BUFFER_BIT);
-	        camera.setViewportAndMatrices();
+	        camera.setViewport();
 	        
 	        GLES10.glColor4f(0, 1, 0, 1);
 	        targetVertices.bind();

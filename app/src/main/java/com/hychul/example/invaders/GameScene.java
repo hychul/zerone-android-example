@@ -179,7 +179,7 @@ public class GameScene extends GLScene {
     @Override
     public void render() {
         GLES10.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
-        guiCam.setViewportAndMatrices();
+        guiCam.setViewport();
 
         GLES10.glEnable(GL10.GL_TEXTURE_2D);
         batcher.beginBatch(Assets.background);
@@ -204,7 +204,7 @@ public class GameScene extends GLScene {
     }
 
     private void renderRunning() {
-        guiCam.setViewportAndMatrices();
+        guiCam.setViewport();
         GLES10.glEnable(GL10.GL_BLEND);
         GLES10.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
         GLES10.glEnable(GL10.GL_TEXTURE_2D);
@@ -224,7 +224,7 @@ public class GameScene extends GLScene {
     }
 
     private void renderPaused() {
-        guiCam.setViewportAndMatrices();
+        guiCam.setViewport();
         GLES10.glEnable(GL10.GL_BLEND);
         GLES10.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
         GLES10.glEnable(GL10.GL_TEXTURE_2D);
@@ -239,7 +239,7 @@ public class GameScene extends GLScene {
     }
 
     private void renderGameOver() {
-        guiCam.setViewportAndMatrices();
+        guiCam.setViewport();
         GLES10.glEnable(GL10.GL_BLEND);
         GLES10.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
         GLES10.glEnable(GL10.GL_TEXTURE_2D);

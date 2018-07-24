@@ -44,7 +44,7 @@ public class Camera3D {
         return lookAt;
     }
     
-    public void setMatrices() {
+    public void setViewport() {
         GL10 gl = glGraphics.getGL();
 
         GLES10.glMatrixMode(GL10.GL_PROJECTION);

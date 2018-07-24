@@ -76,7 +76,7 @@ public class SettingsScene extends GLScene {
     @Override
     public void render() {
         GLES10.glClear(GL10.GL_COLOR_BUFFER_BIT);
-        guiCam.setViewportAndMatrices();
+        guiCam.setViewport();
 
         GLES10.glEnable(GL10.GL_TEXTURE_2D);
 

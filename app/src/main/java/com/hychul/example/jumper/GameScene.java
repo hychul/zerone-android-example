@@ -192,7 +192,7 @@ public class GameScene extends GLScene {
         
         renderer.render();
         
-        guiCam.setViewportAndMatrices();
+        guiCam.setViewport();
         GLES10.glEnable(GL10.GL_BLEND);
         GLES10.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
         batcher.beginBatch(Assets.items);

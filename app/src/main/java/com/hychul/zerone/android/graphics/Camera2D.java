@@ -22,7 +22,7 @@ public class Camera2D {
         this.zoom = 1.0f;
     }
 
-    public void setViewportAndMatrices() {
+    public void setViewport() {
         GLES10.glViewport(0, 0, glGraphics.getWidth(), glGraphics.getHeight());
         GLES10.glMatrixMode(GL10.GL_PROJECTION);
         GLES10.glLoadIdentity();

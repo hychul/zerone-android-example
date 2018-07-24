@@ -36,7 +36,7 @@ public class WorldRenderer {
     public void render(World world) {
         camera.getPosition().x = world.ship.position.x;
         camera.getLookAt().x = world.ship.position.x;
-        camera.setMatrices();
+        camera.setViewport();
 
         GLES10.glEnable(GL10.GL_DEPTH_TEST);
         GLES10.glEnable(GL10.GL_TEXTURE_2D);
