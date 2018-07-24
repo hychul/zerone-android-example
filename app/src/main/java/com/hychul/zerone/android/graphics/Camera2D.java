@@ -8,11 +8,14 @@ import com.hychul.zerone.math.Vector2;
 import javax.microedition.khronos.opengles.GL10;
 
 public class Camera2D {
+
+    final GLGraphics glGraphics;
+
     public final Vector2 position;
-    public float zoom;
+
     public final float frustumWidth;
     public final float frustumHeight;
-    final GLGraphics glGraphics;
+    public float zoom;
 
     public Camera2D(GLGraphics glGraphics, float frustumWidth, float frustumHeight) {
         this.glGraphics = glGraphics;
