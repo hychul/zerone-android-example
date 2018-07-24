@@ -39,9 +39,9 @@ public class Camera2D {
         GLES10.glMatrixMode(GL10.GL_PROJECTION);
         GLES10.glLoadIdentity();
         GLES10.glOrthof(position.x - frustumWidth * zoom / 2,
-                        position.x + frustumWidth * zoom/ 2,
+                        position.x + frustumWidth * zoom / 2,
                         position.y - frustumHeight * zoom / 2,
-                        position.y + frustumHeight * zoom/ 2,
+                        position.y + frustumHeight * zoom / 2,
                         near, far);
         GLES10.glMatrixMode(GL10.GL_MODELVIEW);
         GLES10.glLoadIdentity();
