@@ -9,27 +9,31 @@ import com.hychul.zerone.math.Vector3;
 import javax.microedition.khronos.opengles.GL10;
 
 public class Camera3D {
+
     final GLGraphics glGraphics;
 
     final Vector3 position;
     final Vector3 up;
     final Vector3 lookAt;
+
     float fieldOfView;
     float aspectRatio;
+
     float near;
     float far;
 
-    public Camera3D(GLGraphics glGraphics, float fieldOfView, float aspectRatio, float near, float far) {
+    public Camera3D(GLGraphics glGraphics, float fieldOfView, float near, float far) {
         this.glGraphics = glGraphics;
 
+        this.position = new Vector3();
+        this.up = new Vector3(0, 1, 0);
+        this.lookAt = new Vector3(0,0,-1);
+
         this.fieldOfView = fieldOfView;
-        this.aspectRatio = aspectRatio;
+        this.aspectRatio = (float) glGraphics.getWidth() / glGraphics.getHeight();
+
         this.near = near;
         this.far = far;
-        
-        position = new Vector3();
-        up = new Vector3(0, 1, 0);
-        lookAt = new Vector3(0,0,-1);
     }
     
     public Vector3 getPosition() {

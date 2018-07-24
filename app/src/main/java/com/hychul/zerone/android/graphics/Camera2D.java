@@ -13,16 +13,25 @@ public class Camera2D {
 
     public final Vector2 position;
 
+    // TODO: Use screen resolution
     public final float frustumWidth;
     public final float frustumHeight;
+
     public float zoom;
+
+    float near;
+    float far;
 
     public Camera2D(GLGraphics glGraphics, float frustumWidth, float frustumHeight) {
         this.glGraphics = glGraphics;
+
         this.frustumWidth = frustumWidth;
         this.frustumHeight = frustumHeight;
         this.position = new Vector2(frustumWidth / 2, frustumHeight / 2);
         this.zoom = 1.0f;
+
+        this.near = -1;
+        this.near = 1;
     }
 
     public void setViewport() {
@@ -30,10 +39,10 @@ public class Camera2D {
         GLES10.glMatrixMode(GL10.GL_PROJECTION);
         GLES10.glLoadIdentity();
         GLES10.glOrthof(position.x - frustumWidth * zoom / 2,
-                    position.x + frustumWidth * zoom/ 2, 
-                    position.y - frustumHeight * zoom / 2, 
-                    position.y + frustumHeight * zoom/ 2, 
-                    1, -1);
+                        position.x + frustumWidth * zoom/ 2,
+                        position.y - frustumHeight * zoom / 2,
+                        position.y + frustumHeight * zoom/ 2,
+                        near, far);
         GLES10.glMatrixMode(GL10.GL_MODELVIEW);
         GLES10.glLoadIdentity();
     }

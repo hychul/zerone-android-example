@@ -23,7 +23,7 @@ public class WorldRenderer {
 
     public WorldRenderer(GLGraphics glGraphics) {
         this.glGraphics = glGraphics;
-        camera = new Camera3D(glGraphics, 67, glGraphics.getWidth() / (float) glGraphics.getHeight(), 0.1f, 100);
+        camera = new Camera3D(glGraphics, 67, 0.1f, 100);
         camera.getPosition().set(0, 6, 2);
         camera.getLookAt().set(0, 0, -4);
         ambientLight = new AmbientLight();
