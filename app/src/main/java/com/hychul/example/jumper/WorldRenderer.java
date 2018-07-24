@@ -3,9 +3,9 @@ package com.hychul.example.jumper;
 import android.opengl.GLES10;
 
 import com.hychul.zerone.android.GLGraphics;
-import com.hychul.zerone.graphics.Camera2D;
-import com.hychul.zerone.graphics.Sprite;
-import com.hychul.zerone.graphics.SpriteBatcher;
+import com.hychul.zerone.android.graphics.Camera2D;
+import com.hychul.zerone.android.graphics.Sprite;
+import com.hychul.zerone.android.graphics.SpriteBatcher;
 
 import javax.microedition.khronos.opengles.GL10;
 

@@ -2,7 +2,7 @@ package com.hychul.example;
 
 import android.opengl.GLES10;
 
-import com.hychul.zerone.graphics.Vertices3;
+import com.hychul.zerone.android.graphics.Vertices3;
 
 import java.util.ArrayList;
 import java.util.List;

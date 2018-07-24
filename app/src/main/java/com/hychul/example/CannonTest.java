@@ -7,7 +7,7 @@ import com.hychul.zerone.Zerone;
 import com.hychul.zerone.android.GLGraphics;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.core.Scene;
-import com.hychul.zerone.graphics.Vertices;
+import com.hychul.zerone.android.graphics.Vertices;
 import com.hychul.zerone.math.Vector2;
 
 import java.util.List;

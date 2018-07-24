@@ -1,4 +1,4 @@
-package com.hychul.zerone.graphics.light;
+package com.hychul.zerone.android.graphics.light;
 
 import android.opengl.GLES10;
 

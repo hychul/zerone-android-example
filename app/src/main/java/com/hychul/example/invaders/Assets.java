@@ -3,12 +3,12 @@ package com.hychul.example.invaders;
 import com.hychul.zerone.Music;
 import com.hychul.zerone.Sound;
 import com.hychul.zerone.android.ZeroneActivity;
-import com.hychul.zerone.graphics.Font;
-import com.hychul.zerone.graphics.ObjLoader;
-import com.hychul.zerone.graphics.Sprite;
-import com.hychul.zerone.graphics.SpriteAnimation;
-import com.hychul.zerone.graphics.Texture;
-import com.hychul.zerone.graphics.Vertices3;
+import com.hychul.zerone.android.graphics.Font;
+import com.hychul.zerone.android.graphics.ObjLoader;
+import com.hychul.zerone.android.graphics.Sprite;
+import com.hychul.zerone.android.graphics.SpriteAnimation;
+import com.hychul.zerone.android.graphics.Texture;
+import com.hychul.zerone.android.graphics.Vertices3;
 
 public class Assets {
     public static Texture background;

@@ -7,12 +7,12 @@ import com.hychul.zerone.Zerone;
 import com.hychul.zerone.android.GLScene;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.core.Scene;
-import com.hychul.zerone.graphics.Material;
-import com.hychul.zerone.graphics.Texture;
-import com.hychul.zerone.graphics.Vertices3;
-import com.hychul.zerone.graphics.light.AmbientLight;
-import com.hychul.zerone.graphics.light.DirectionalLight;
-import com.hychul.zerone.graphics.light.PointLight;
+import com.hychul.zerone.android.graphics.Material;
+import com.hychul.zerone.android.graphics.Texture;
+import com.hychul.zerone.android.graphics.Vertices3;
+import com.hychul.zerone.android.graphics.light.AmbientLight;
+import com.hychul.zerone.android.graphics.light.DirectionalLight;
+import com.hychul.zerone.android.graphics.light.PointLight;
 
 import javax.microedition.khronos.opengles.GL10;
 

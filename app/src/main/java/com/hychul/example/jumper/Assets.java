@@ -3,10 +3,10 @@ package com.hychul.example.jumper;
 import com.hychul.zerone.Music;
 import com.hychul.zerone.Sound;
 import com.hychul.zerone.android.ZeroneActivity;
-import com.hychul.zerone.graphics.Font;
-import com.hychul.zerone.graphics.Sprite;
-import com.hychul.zerone.graphics.SpriteAnimation;
-import com.hychul.zerone.graphics.Texture;
+import com.hychul.zerone.android.graphics.Font;
+import com.hychul.zerone.android.graphics.Sprite;
+import com.hychul.zerone.android.graphics.SpriteAnimation;
+import com.hychul.zerone.android.graphics.Texture;
 
 public class Assets {
     public static Texture background;

@@ -8,7 +8,7 @@ import com.hychul.zerone.android.GLGraphics;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.core.GameObject;
 import com.hychul.zerone.core.Scene;
-import com.hychul.zerone.graphics.Vertices;
+import com.hychul.zerone.android.graphics.Vertices;
 import com.hychul.zerone.math.OverlapTester;
 import com.hychul.zerone.math.Vector2;
 

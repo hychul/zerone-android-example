@@ -1,4 +1,4 @@
-package com.hychul.zerone.graphics;
+package com.hychul.zerone.android.graphics;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

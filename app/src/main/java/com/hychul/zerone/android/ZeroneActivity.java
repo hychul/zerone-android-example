@@ -19,6 +19,7 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 public abstract class ZeroneActivity extends Activity implements Zerone, Renderer {
+
     enum GLGameState {
         Initialized,
         Running,
@@ -27,17 +28,21 @@ public abstract class ZeroneActivity extends Activity implements Zerone, Rendere
         Idle
     }
     
-    GLSurfaceView glView;    
+    GLSurfaceView glView;
     GLGraphics glGraphics;
+
     Audio audio;
     Input input;
     FileIO fileIO;
+
     Scene scene;
+
     GLGameState state = GLGameState.Initialized;
-    Object stateChanged = new Object();
+
+    Object stateLock = new Object();
     long startTime = System.nanoTime();
 
-    @Override 
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -63,29 +68,30 @@ public abstract class ZeroneActivity extends Activity implements Zerone, Rendere
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {        
         glGraphics.setGL(gl);
         
-        synchronized(stateChanged) {
+        synchronized(stateLock) {
             if (state == GLGameState.Initialized)
                 scene = getStartScene();
             state = GLGameState.Running;
             scene.onResume();
             startTime = System.nanoTime();
-        }        
+        }
     }
 
     @Override
-    public void onSurfaceChanged(GL10 gl, int width, int height) {        
+    public void onSurfaceChanged(GL10 gl, int width, int height) {
+
     }
 
     @Override
-    public void onDrawFrame(GL10 gl) {                
+    public void onDrawFrame(GL10 gl) {
         GLGameState state = null;
         
-        synchronized(stateChanged) {
+        synchronized(stateLock) {
             state = this.state;
         }
         
         if (state == GLGameState.Running) {
-            float deltaTime = (System.nanoTime()-startTime) / 1000000000.0f;
+            float deltaTime = (System.nanoTime() - startTime) / 1000000000.0f;
             startTime = System.nanoTime();
             
             scene.update(deltaTime);
@@ -94,44 +100,46 @@ public abstract class ZeroneActivity extends Activity implements Zerone, Rendere
         
         if (state == GLGameState.Paused) {
             scene.onPause();
-            synchronized(stateChanged) {
+            synchronized(stateLock) {
                 this.state = GLGameState.Idle;
-                stateChanged.notifyAll();
+                stateLock.notifyAll();
             }
         }
         
         if (state == GLGameState.Finished) {
             scene.onPause();
             scene.onDestroy();
-            synchronized(stateChanged) {
+            synchronized(stateLock) {
                 this.state = GLGameState.Idle;
-                stateChanged.notifyAll();
-            }            
+                stateLock.notifyAll();
+            }
         }
     }
 
-    @Override 
-    public void onPause() {        
-        synchronized(stateChanged) {
+    @Override
+    public void onPause() {
+        synchronized(stateLock) {
             if (isFinishing())
                 state = GLGameState.Finished;
             else
                 state = GLGameState.Paused;
+
             while(true) {
                 try {
-                    stateChanged.wait();
+                    stateLock.wait();
                     break;
-                } catch(InterruptedException e) { 
+                } catch(InterruptedException e) {
+
                 }
             }
         }
         glView.onPause();
         super.onPause();
-    }  
+    }
 
     public GLGraphics getGLGraphics() {
         return glGraphics;
-    }  
+    }
 
     public Input getInput() {
         return input;

@@ -1,4 +1,4 @@
-package com.hychul.zerone.graphics;
+package com.hychul.zerone.android.graphics;
 
 import android.opengl.GLES10;
 import android.opengl.GLU;

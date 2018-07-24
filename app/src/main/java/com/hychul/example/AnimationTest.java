@@ -7,11 +7,11 @@ import com.hychul.zerone.android.GLGraphics;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.core.GameObject;
 import com.hychul.zerone.core.Scene;
-import com.hychul.zerone.graphics.Camera2D;
-import com.hychul.zerone.graphics.Sprite;
-import com.hychul.zerone.graphics.SpriteAnimation;
-import com.hychul.zerone.graphics.SpriteBatcher;
-import com.hychul.zerone.graphics.Texture;
+import com.hychul.zerone.android.graphics.Camera2D;
+import com.hychul.zerone.android.graphics.Sprite;
+import com.hychul.zerone.android.graphics.SpriteAnimation;
+import com.hychul.zerone.android.graphics.SpriteBatcher;
+import com.hychul.zerone.android.graphics.Texture;
 
 import javax.microedition.khronos.opengles.GL10;
 
