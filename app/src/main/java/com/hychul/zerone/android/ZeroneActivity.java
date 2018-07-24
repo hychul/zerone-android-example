@@ -65,9 +65,9 @@ public abstract class ZeroneActivity extends Activity implements Zerone, Rendere
     }
 
     @Override
-    public void onSurfaceCreated(GL10 gl, EGLConfig config) {        
+    public void onSurfaceCreated(GL10 gl, EGLConfig config) {
         graphics.setGL(gl);
-        
+
         synchronized(stateLock) {
             if (state == GLGameState.Initialized)
                 scene = getStartScene();
@@ -79,7 +79,8 @@ public abstract class ZeroneActivity extends Activity implements Zerone, Rendere
 
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
-
+        graphics.width = width;
+        graphics.height = height;
     }
 
     @Override
