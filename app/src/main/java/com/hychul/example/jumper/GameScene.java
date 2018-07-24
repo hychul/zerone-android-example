@@ -38,7 +38,7 @@ public class GameScene extends GLScene {
     public GameScene(Zerone zerone) {
         super(zerone);
         state = GAME_READY;
-        guiCam = new Camera2D(glGraphics, 320, 480);
+        guiCam = new Camera2D(graphics, 320, 480);
         touchPoint = new Vector2();
         batcher = new SpriteBatcher(1000);
         worldListener = new World.WorldListener() {
@@ -59,7 +59,7 @@ public class GameScene extends GLScene {
             }                      
         };
         world = new World(worldListener);
-        renderer = new WorldRenderer(glGraphics, batcher, world);
+        renderer = new WorldRenderer(graphics, batcher, world);
         pauseBounds = new Rectangle(320- 64, 480- 64, 64, 64);
         resumeBounds = new Rectangle(160 - 96, 240, 192, 36);
         quitBounds = new Rectangle(160 - 96, 240 - 36, 192, 36);
@@ -168,7 +168,7 @@ public class GameScene extends GLScene {
             if (event.type != Input.TouchEvent.TOUCH_UP)
                 continue;
             world = new World(worldListener);
-            renderer = new WorldRenderer(glGraphics, batcher, world);
+            renderer = new WorldRenderer(graphics, batcher, world);
             world.score = lastScore;
             state = GAME_READY;
         }

@@ -28,7 +28,7 @@ public class HelpScene3 extends GLScene {
     public HelpScene3(Zerone zerone) {
         super(zerone);
         
-        guiCam = new Camera2D(glGraphics, 320, 480);
+        guiCam = new Camera2D(graphics, 320, 480);
         nextBounds = new Rectangle(320 - 64, 0, 64, 64);
         touchPoint = new Vector2();
         batcher = new SpriteBatcher(1);

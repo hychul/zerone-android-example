@@ -25,7 +25,7 @@ public class MainMenuScene extends GLScene {
     public MainMenuScene(Zerone zerone) {
         super(zerone);
         
-        guiCam = new Camera2D(glGraphics, 480, 320);
+        guiCam = new Camera2D(graphics, 480, 320);
         batcher = new SpriteBatcher(10);
         touchPoint = new Vector2();
         playBounds = new Rectangle(240 - 112, 100, 224, 32);

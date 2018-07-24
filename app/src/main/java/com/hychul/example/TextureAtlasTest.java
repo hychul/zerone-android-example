@@ -4,7 +4,7 @@ import android.opengl.GLES10;
 
 import com.hychul.zerone.Input.TouchEvent;
 import com.hychul.zerone.Zerone;
-import com.hychul.zerone.android.GLGraphics;
+import com.hychul.zerone.android.Graphics;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.core.GameObject;
 import com.hychul.zerone.core.Scene;
@@ -29,7 +29,7 @@ public class TextureAtlasTest extends ZeroneActivity {
 	    final int NUM_TARGETS = 20;
 	    final float WORLD_WIDTH = 9.6f;
 	    final float WORLD_HEIGHT = 4.8f;
-	    GLGraphics glGraphics;        
+	    Graphics graphics;
 	    Cannon cannon;
 	    GameObject ball;
 	    List<GameObject> targets;
@@ -48,7 +48,7 @@ public class TextureAtlasTest extends ZeroneActivity {
 
 	    public TextureAtlasScene(Zerone zerone) {
 	        super(zerone);
-	        glGraphics = ((ZeroneActivity) zerone).getGLGraphics();
+	        graphics = ((ZeroneActivity) zerone).getGLGraphics();
 	        
 	        cannon = new Cannon(0, 0, 1, 0.5f);
 	        ball = new GameObject(0, 0, 0.2f, 0.2f);
@@ -86,7 +86,7 @@ public class TextureAtlasTest extends ZeroneActivity {
 	                                                 0, 20);
 	        targetVertices.setIndices(new short[] {0, 1, 2, 2, 3, 0}, 0, 6);
 	        
-	        camera = new Camera2D(glGraphics, WORLD_WIDTH, WORLD_HEIGHT);
+	        camera = new Camera2D(graphics, WORLD_WIDTH, WORLD_HEIGHT);
 	    }
 	    
 	    @Override

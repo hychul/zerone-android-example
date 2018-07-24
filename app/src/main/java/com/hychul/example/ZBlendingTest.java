@@ -34,13 +34,13 @@ public class ZBlendingTest extends ZeroneActivity {
 
         @Override
         public void render() {
-            GL10 gl = glGraphics.getGL();
+            GL10 gl = graphics.getGL();
             GLES10.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
-            GLES10.glViewport(0, 0, glGraphics.getWidth(), glGraphics.getHeight());
+            GLES10.glViewport(0, 0, graphics.getWidth(), graphics.getHeight());
             GLES10.glMatrixMode(GL10.GL_PROJECTION);
             GLES10.glLoadIdentity();
             GLU.gluPerspective(gl, 67, 
-                    glGraphics.getWidth() / (float)glGraphics.getHeight(), 
+                    graphics.getWidth() / (float) graphics.getHeight(),
                     0.1f, 10f);
             GLES10.glMatrixMode(GL10.GL_MODELVIEW);
             GLES10.glLoadIdentity();

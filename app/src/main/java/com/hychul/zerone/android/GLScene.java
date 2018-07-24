@@ -6,11 +6,11 @@ import com.hychul.zerone.core.Scene;
 public abstract class GLScene extends Scene {
 
     protected final ZeroneActivity zeroneActivity;
-    protected final GLGraphics glGraphics;
+    protected final Graphics graphics;
     
     public GLScene(Zerone zerone) {
         super(zerone);
         zeroneActivity = (ZeroneActivity) zerone;
-        glGraphics = ((ZeroneActivity) zerone).getGLGraphics();
+        graphics = ((ZeroneActivity) zerone).getGLGraphics();
     }
 }

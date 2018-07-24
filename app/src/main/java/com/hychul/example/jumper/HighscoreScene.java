@@ -26,7 +26,7 @@ public class HighscoreScene extends GLScene {
     public HighscoreScene(Zerone zerone) {
         super(zerone);
         
-        guiCam = new Camera2D(glGraphics, 320, 480);
+        guiCam = new Camera2D(graphics, 320, 480);
         backBounds = new Rectangle(0, 0, 64, 64);
         touchPoint = new Vector2();
         batcher = new SpriteBatcher(100);

@@ -26,7 +26,7 @@ public class SettingsScene extends GLScene {
 
     public SettingsScene(Zerone zerone) {
         super(zerone);
-        guiCam = new Camera2D(glGraphics, 480, 320);
+        guiCam = new Camera2D(graphics, 480, 320);
         batcher = new SpriteBatcher(10);
         touchPoint = new Vector2();
 

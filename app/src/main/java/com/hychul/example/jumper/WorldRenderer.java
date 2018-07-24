@@ -2,7 +2,7 @@ package com.hychul.example.jumper;
 
 import android.opengl.GLES10;
 
-import com.hychul.zerone.android.GLGraphics;
+import com.hychul.zerone.android.Graphics;
 import com.hychul.zerone.android.graphics.Camera2D;
 import com.hychul.zerone.android.graphics.Sprite;
 import com.hychul.zerone.android.graphics.SpriteBatcher;
@@ -12,15 +12,15 @@ import javax.microedition.khronos.opengles.GL10;
 public class WorldRenderer {
     static final float FRUSTUM_WIDTH = 10;
     static final float FRUSTUM_HEIGHT = 15;    
-    GLGraphics glGraphics;
+    Graphics graphics;
     World world;
     Camera2D cam;
     SpriteBatcher batcher;
     
-    public WorldRenderer(GLGraphics glGraphics, SpriteBatcher batcher, World world) {
-        this.glGraphics = glGraphics;
+    public WorldRenderer(Graphics graphics, SpriteBatcher batcher, World world) {
+        this.graphics = graphics;
         this.world = world;
-        this.cam = new Camera2D(glGraphics, FRUSTUM_WIDTH, FRUSTUM_HEIGHT);
+        this.cam = new Camera2D(graphics, FRUSTUM_WIDTH, FRUSTUM_HEIGHT);
         this.batcher = batcher;        
     }
     

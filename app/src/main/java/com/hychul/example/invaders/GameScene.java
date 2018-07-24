@@ -45,7 +45,7 @@ public class GameScene extends GLScene {
         super(zerone);
 
         state = GAME_RUNNING;
-        guiCam = new Camera2D(glGraphics, 480, 320);
+        guiCam = new Camera2D(graphics, 480, 320);
         touchPoint = new Vector2();
         batcher = new SpriteBatcher(100);
         world = new World();
@@ -59,7 +59,7 @@ public class GameScene extends GLScene {
             }
         };
         world.setWorldListener(worldListener);
-        renderer = new WorldRenderer(glGraphics);
+        renderer = new WorldRenderer(graphics);
         pauseBounds = new Rectangle(480 - 64, 320 - 64, 64, 64);
         resumeBounds = new Rectangle(240 - 80, 160, 160, 32);
         quitBounds = new Rectangle(240 - 80, 160 - 32, 160, 32);

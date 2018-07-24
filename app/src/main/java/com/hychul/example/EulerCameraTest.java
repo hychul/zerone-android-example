@@ -44,12 +44,12 @@ public class EulerCameraTest extends ZeroneActivity {
 	        cube = createCube();
 	        light = new PointLight();
 	        light.setPosition(3, 3, -3);            
-	        camera = new EulerCamera(glGraphics, 67, glGraphics.getWidth() / (float)glGraphics.getHeight(), 1, 100);
+	        camera = new EulerCamera(graphics, 67, graphics.getWidth() / (float) graphics.getHeight(), 1, 100);
 	        camera.getPosition().set(0, 1, 3);
 	        
 	        buttonTexture = new Texture(zeroneActivity.getFileIO(), "button.png");
 	        batcher = new SpriteBatcher(1);
-	        guiCamera = new Camera2D(glGraphics, 480, 320);
+	        guiCamera = new Camera2D(graphics, 480, 320);
 	        buttonRegion = new Sprite(buttonTexture, 0, 0, 64, 64);
 	        touchPos = new Vector2();
 	    }
@@ -133,7 +133,7 @@ public class EulerCameraTest extends ZeroneActivity {
 	     @Override
 	     public void render() {
 	         GLES10.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
-	         GLES10.glViewport(0, 0, glGraphics.getWidth(), glGraphics.getHeight());
+	         GLES10.glViewport(0, 0, graphics.getWidth(), graphics.getHeight());
 	         
 	         camera.setMatrices();
 	         

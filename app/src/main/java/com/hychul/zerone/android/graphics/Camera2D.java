@@ -2,14 +2,14 @@ package com.hychul.zerone.android.graphics;
 
 import android.opengl.GLES10;
 
-import com.hychul.zerone.android.GLGraphics;
+import com.hychul.zerone.android.Graphics;
 import com.hychul.zerone.math.Vector2;
 
 import javax.microedition.khronos.opengles.GL10;
 
 public class Camera2D {
 
-    final GLGraphics glGraphics;
+    final Graphics graphics;
 
     public final Vector2 position;
 
@@ -22,8 +22,8 @@ public class Camera2D {
     float near;
     float far;
 
-    public Camera2D(GLGraphics glGraphics, float frustumWidth, float frustumHeight) {
-        this.glGraphics = glGraphics;
+    public Camera2D(Graphics graphics, float frustumWidth, float frustumHeight) {
+        this.graphics = graphics;
 
         this.frustumWidth = frustumWidth;
         this.frustumHeight = frustumHeight;
@@ -35,7 +35,7 @@ public class Camera2D {
     }
 
     public void setViewport() {
-        GLES10.glViewport(0, 0, glGraphics.getWidth(), glGraphics.getHeight());
+        GLES10.glViewport(0, 0, graphics.getWidth(), graphics.getHeight());
         GLES10.glMatrixMode(GL10.GL_PROJECTION);
         GLES10.glLoadIdentity();
         GLES10.glOrthof(position.x - frustumWidth * zoom / 2,
@@ -48,8 +48,8 @@ public class Camera2D {
     }
 
     public void touchToWorld(Vector2 touch) {
-        touch.x = (touch.x / (float) glGraphics.getWidth()) * frustumWidth * zoom;
-        touch.y = (1 - touch.y / (float) glGraphics.getHeight()) * frustumHeight * zoom;
+        touch.x = (touch.x / (float) graphics.getWidth()) * frustumWidth * zoom;
+        touch.y = (1 - touch.y / (float) graphics.getHeight()) * frustumHeight * zoom;
         touch.add(position).sub(frustumWidth * zoom / 2, frustumHeight * zoom / 2);
     }
 }

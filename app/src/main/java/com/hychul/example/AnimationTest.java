@@ -3,7 +3,7 @@ package com.hychul.example;
 import android.opengl.GLES10;
 
 import com.hychul.zerone.Zerone;
-import com.hychul.zerone.android.GLGraphics;
+import com.hychul.zerone.android.Graphics;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.core.GameObject;
 import com.hychul.zerone.core.Scene;
@@ -44,7 +44,7 @@ public class AnimationTest extends ZeroneActivity {
 	
 	class AnimationScene extends Scene {
 	    static final int NUM_CAVEMEN = 10;
-	    GLGraphics glGraphics;
+	    Graphics graphics;
 	    Caveman[] cavemen;
 	    SpriteBatcher batcher;
 	    Camera2D camera;
@@ -54,13 +54,13 @@ public class AnimationTest extends ZeroneActivity {
 
 	    public AnimationScene(Zerone zerone) {
 	        super(zerone);
-	        glGraphics = ((ZeroneActivity) zerone).getGLGraphics();
+	        graphics = ((ZeroneActivity) zerone).getGLGraphics();
 	        cavemen = new Caveman[NUM_CAVEMEN];
 	        for (int i = 0; i < NUM_CAVEMEN; i++) {
 	            cavemen[i] = new Caveman((float)Math.random(), (float)Math.random(), 1, 1);
 	        }
 	        batcher = new SpriteBatcher(NUM_CAVEMEN);
-	        camera = new Camera2D(glGraphics, WORLD_WIDTH, WORLD_HEIGHT);
+	        camera = new Camera2D(graphics, WORLD_WIDTH, WORLD_HEIGHT);
 	    }
 
 	    @Override

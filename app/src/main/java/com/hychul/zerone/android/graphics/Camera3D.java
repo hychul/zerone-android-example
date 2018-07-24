@@ -3,14 +3,14 @@ package com.hychul.zerone.android.graphics;
 import android.opengl.GLES10;
 import android.opengl.GLU;
 
-import com.hychul.zerone.android.GLGraphics;
+import com.hychul.zerone.android.Graphics;
 import com.hychul.zerone.math.Vector3;
 
 import javax.microedition.khronos.opengles.GL10;
 
 public class Camera3D {
 
-    final GLGraphics glGraphics;
+    final Graphics graphics;
 
     final Vector3 position;
     final Vector3 up;
@@ -22,15 +22,15 @@ public class Camera3D {
     float near;
     float far;
 
-    public Camera3D(GLGraphics glGraphics, float fieldOfView, float near, float far) {
-        this.glGraphics = glGraphics;
+    public Camera3D(Graphics graphics, float fieldOfView, float near, float far) {
+        this.graphics = graphics;
 
         this.position = new Vector3();
         this.up = new Vector3(0, 1, 0);
         this.lookAt = new Vector3(0,0,-1);
 
         this.fieldOfView = fieldOfView;
-        this.aspectRatio = (float) glGraphics.getWidth() / glGraphics.getHeight();
+        this.aspectRatio = (float) graphics.getWidth() / graphics.getHeight();
 
         this.near = near;
         this.far = far;
@@ -49,7 +49,7 @@ public class Camera3D {
     }
     
     public void setViewport() {
-        GL10 gl = glGraphics.getGL();
+        GL10 gl = graphics.getGL();
 
         GLES10.glMatrixMode(GL10.GL_PROJECTION);
         GLES10.glLoadIdentity();

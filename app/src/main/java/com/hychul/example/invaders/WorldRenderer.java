@@ -2,7 +2,7 @@ package com.hychul.example.invaders;
 
 import android.opengl.GLES10;
 
-import com.hychul.zerone.android.GLGraphics;
+import com.hychul.zerone.android.Graphics;
 import com.hychul.zerone.android.graphics.Camera3D;
 import com.hychul.zerone.android.graphics.Sprite;
 import com.hychul.zerone.android.graphics.SpriteBatcher;
@@ -15,15 +15,15 @@ import java.util.List;
 import javax.microedition.khronos.opengles.GL10;
 
 public class WorldRenderer {
-    GLGraphics glGraphics;
+    Graphics graphics;
     Camera3D camera;
     AmbientLight ambientLight;
     DirectionalLight directionalLight;
     SpriteBatcher batcher;
 
-    public WorldRenderer(GLGraphics glGraphics) {
-        this.glGraphics = glGraphics;
-        camera = new Camera3D(glGraphics, 67, 0.1f, 100);
+    public WorldRenderer(Graphics graphics) {
+        this.graphics = graphics;
+        camera = new Camera3D(graphics, 67, 0.1f, 100);
         camera.getPosition().set(0, 6, 2);
         camera.getLookAt().set(0, 0, -4);
         ambientLight = new AmbientLight();

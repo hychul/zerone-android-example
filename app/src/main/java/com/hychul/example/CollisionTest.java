@@ -4,7 +4,7 @@ import android.opengl.GLES10;
 
 import com.hychul.zerone.Input.TouchEvent;
 import com.hychul.zerone.Zerone;
-import com.hychul.zerone.android.GLGraphics;
+import com.hychul.zerone.android.Graphics;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.core.GameObject;
 import com.hychul.zerone.core.Scene;
@@ -28,7 +28,7 @@ public class CollisionTest extends ZeroneActivity {
 	    final int NUM_TARGETS = 20;
 	    final float WORLD_WIDTH = 9.6f;
 	    final float WORLD_HEIGHT = 4.8f;
-	    GLGraphics glGraphics;        
+	    Graphics graphics;
 	    Cannon cannon;
 	    GameObject ball;
 	    List<GameObject> targets;
@@ -43,7 +43,7 @@ public class CollisionTest extends ZeroneActivity {
 
 	    public CollisionScene(Zerone zerone) {
 	        super(zerone);
-	        glGraphics = ((ZeroneActivity) zerone).getGLGraphics();
+	        graphics = ((ZeroneActivity) zerone).getGLGraphics();
 	        
 	        cannon = new Cannon(0, 0, 1, 1);
 	        ball = new GameObject(0, 0, 0.2f, 0.2f);
@@ -85,8 +85,8 @@ public class CollisionTest extends ZeroneActivity {
 	        for (int i = 0; i < len; i++) {
 	            TouchEvent event = touchEvents.get(i);
 	            
-	            touchPos.x = (event.x / (float) glGraphics.getWidth())* WORLD_WIDTH;
-	            touchPos.y = (1 - event.y / (float) glGraphics.getHeight()) * WORLD_HEIGHT;
+	            touchPos.x = (event.x / (float) graphics.getWidth())* WORLD_WIDTH;
+	            touchPos.y = (1 - event.y / (float) graphics.getHeight()) * WORLD_HEIGHT;
 
 	            cannon.angle = touchPos.sub(cannon.position).angle();                       
 	            
@@ -116,7 +116,7 @@ public class CollisionTest extends ZeroneActivity {
 	    }
 
 	    public void render() {
-	        GLES10.glViewport(0, 0, glGraphics.getWidth(), glGraphics.getHeight());
+	        GLES10.glViewport(0, 0, graphics.getWidth(), graphics.getHeight());
 	        GLES10.glClear(GL10.GL_COLOR_BUFFER_BIT);
 	        GLES10.glMatrixMode(GL10.GL_PROJECTION);
 	        GLES10.glLoadIdentity();

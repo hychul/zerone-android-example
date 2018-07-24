@@ -4,13 +4,13 @@ import android.opengl.GLES10;
 import android.opengl.GLU;
 import android.opengl.Matrix;
 
-import com.hychul.zerone.android.GLGraphics;
+import com.hychul.zerone.android.Graphics;
 import com.hychul.zerone.math.Vector3;
 
 import javax.microedition.khronos.opengles.GL10;
 
 public class EulerCamera {
-    final GLGraphics glGraphics;
+    final Graphics graphics;
     final Vector3 position = new Vector3();
     float yaw;
     float pitch;
@@ -24,8 +24,8 @@ public class EulerCamera {
     final float[] outVec = new float[4];
     final Vector3 direction = new Vector3();
 
-    public EulerCamera(GLGraphics glGraphics, float fieldOfView, float aspectRatio, float near, float far){
-        this.glGraphics = glGraphics;
+    public EulerCamera(Graphics graphics, float fieldOfView, float aspectRatio, float near, float far){
+        this.graphics = graphics;
         this.fieldOfView = fieldOfView;
         this.aspectRatio = aspectRatio;
         this.near = near;
@@ -62,7 +62,7 @@ public class EulerCamera {
     }
 
     public void setMatrices() {
-        GL10 gl = glGraphics.getGL();
+        GL10 gl = graphics.getGL();
         GLES10.glMatrixMode(GL10.GL_PROJECTION);
         GLES10.glLoadIdentity();
         GLU.gluPerspective(gl, fieldOfView, aspectRatio, near, far);

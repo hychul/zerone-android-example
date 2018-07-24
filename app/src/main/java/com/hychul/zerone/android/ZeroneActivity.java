@@ -29,7 +29,7 @@ public abstract class ZeroneActivity extends Activity implements Zerone, Rendere
     }
     
     GLSurfaceView glView;
-    GLGraphics glGraphics;
+    Graphics graphics;
 
     Audio audio;
     Input input;
@@ -52,7 +52,7 @@ public abstract class ZeroneActivity extends Activity implements Zerone, Rendere
         glView.setRenderer(this);
         setContentView(glView);
         
-        glGraphics = new GLGraphics(glView);
+        graphics = new Graphics(glView);
         fileIO = new AndroidFileIO(this);
         audio = new AndroidAudio(this);
         input = new AndroidInput(this, glView, 1, 1);
@@ -66,7 +66,7 @@ public abstract class ZeroneActivity extends Activity implements Zerone, Rendere
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {        
-        glGraphics.setGL(gl);
+        graphics.setGL(gl);
         
         synchronized(stateLock) {
             if (state == GLGameState.Initialized)
@@ -137,8 +137,8 @@ public abstract class ZeroneActivity extends Activity implements Zerone, Rendere
         super.onPause();
     }
 
-    public GLGraphics getGLGraphics() {
-        return glGraphics;
+    public Graphics getGLGraphics() {
+        return graphics;
     }
 
     public Input getInput() {
