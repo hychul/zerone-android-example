@@ -1,6 +1,6 @@
 package com.hychul.zerone.android.graphics;
 
-public final class Color {
+public class Color {
 
     public float r;
     public float g;
