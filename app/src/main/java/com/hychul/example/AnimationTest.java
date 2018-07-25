@@ -31,7 +31,7 @@ public class AnimationTest extends ZeroneActivity {
             super(x, y, width, height);
             this.position.set(Mathf.random() * WORLD_WIDTH,
                               Mathf.random() * WORLD_HEIGHT);
-            this.velocity.set(Math.random() > 0.5f ? -0.5f : 0.5f, 0);
+            this.velocity.set(Math.random() > 0.5f ? -5f : 5f, 0);
             this.walkingTime = Mathf.random() * 10;
         }
 
@@ -50,7 +50,6 @@ public class AnimationTest extends ZeroneActivity {
         Camera2D camera;
         Texture texture;
         SpriteAnimation walkAnim;
-        Sprite sprite;
 
         public AnimationScene(Zerone zerone) {
             super(zerone);
@@ -70,7 +69,6 @@ public class AnimationTest extends ZeroneActivity {
                                            new Sprite(texture, 64, 0, 64, 64),
                                            new Sprite(texture, 128, 0, 64, 64),
                                            new Sprite(texture, 192, 0, 64, 64));
-            sprite = new Sprite(texture, 0, 0, 64, 64);
         }
 
         @Override
@@ -83,36 +81,21 @@ public class AnimationTest extends ZeroneActivity {
 
         @Override
         public void render() {
-//	        GLES10.glClear(GL10.GL_COLOR_BUFFER_BIT);
-//	        camera.setViewport();
-//
-//	        GLES10.glEnable(GL10.GL_BLEND);
-//	        GLES10.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
-//	        GLES10.glEnable(GL10.GL_TEXTURE_2D);
-//
-//			batcher.beginBatch(texture);
-//			batcher.drawSprite(0, 0.1f, 1, 1, sprite);
-//			batcher.endBatch();
-//	        batcher.beginBatch(texture);
-//	        int len = cavemen.length;
-//	        for (int i = 0; i < len; i++) {
-//	            Caveman caveman = cavemen[i];
-//	            Sprite keyFrame = walkAnim.getKeyFrame(caveman.walkingTime, SpriteAnimation.ANIMATION_LOOPING);
-//	            batcher.drawSprite(caveman.position.x, caveman.position.y, caveman.velocity.x < 0?1:-1, 1, keyFrame);
-//	        }
-//	        batcher.endBatch();
+	        GLES10.glClear(GL10.GL_COLOR_BUFFER_BIT);
+	        camera.setViewport();
 
-            GLES10.glClear(GL10.GL_COLOR_BUFFER_BIT);
+	        GLES10.glEnable(GL10.GL_BLEND);
+	        GLES10.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
+	        GLES10.glEnable(GL10.GL_TEXTURE_2D);
 
-            camera.setViewport();
-
-            GLES10.glEnable(GL10.GL_BLEND);
-            GLES10.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
-            GLES10.glEnable(GL10.GL_TEXTURE_2D);
-
-            batcher.beginBatch(texture);
-            batcher.drawSprite(sprite, 1000, 1000, 0, 0, 0, 0);
-            batcher.endBatch();
+	        batcher.beginBatch(texture);
+	        int len = cavemen.length;
+	        for (int i = 0; i < len; i++) {
+	            Caveman caveman = cavemen[i];
+	            Sprite keyFrame = walkAnim.getKeyFrame(caveman.walkingTime, true);
+	            batcher.drawSprite(keyFrame, caveman.velocity.x < 0 ? 64 : -64, 64, caveman.position.x, caveman.position.y, 0, 0);
+	        }
+	        batcher.endBatch();
         }
 
         @Override
