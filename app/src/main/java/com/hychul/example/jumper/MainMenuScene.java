@@ -82,7 +82,7 @@ public class MainMenuScene extends GLScene {
         GLES10.glEnable(GL10.GL_TEXTURE_2D);
 
         batcher.beginBatch(Assets.background);
-        batcher.drawSprite(160, 240, 320, 480, Assets.backgroundRegion);
+        batcher.drawSprite(160, 240, 0, 320, 480, Assets.backgroundRegion);
         batcher.endBatch();
 
         GLES10.glEnable(GL10.GL_BLEND);
@@ -90,9 +90,9 @@ public class MainMenuScene extends GLScene {
 
         batcher.beginBatch(Assets.items);
 
-        batcher.drawSprite(160, 480 - 10 - 71, 274, 142, Assets.logo);
-        batcher.drawSprite(160, 200, 300, 110, Assets.mainMenu);
-        batcher.drawSprite(32, 32, 64, 64, Settings.soundEnabled ? Assets.soundOn : Assets.soundOff);
+        batcher.drawSprite(160, 480 - 10 - 71, 0, 274, 142, Assets.logo);
+        batcher.drawSprite(160, 200, 0, 300, 110, Assets.mainMenu);
+        batcher.drawSprite(32, 32, 0, 64, 64, Settings.soundEnabled ? Assets.soundOn : Assets.soundOff);
 
         batcher.endBatch();
 

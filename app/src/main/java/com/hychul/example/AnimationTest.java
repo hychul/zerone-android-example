@@ -4,7 +4,6 @@ import android.opengl.GLES10;
 
 import com.hychul.zerone.Zerone;
 import com.hychul.zerone.android.GLScene;
-import com.hychul.zerone.android.Graphics;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Camera2D;
 import com.hychul.zerone.android.graphics.Sprite;
@@ -111,7 +110,7 @@ public class AnimationTest extends ZeroneActivity {
             GLES10.glEnable(GL10.GL_TEXTURE_2D);
 
             batcher.beginBatch(texture);
-            batcher.drawSprite(0, 0, 1000, 1000, sprite);
+            batcher.drawSprite(0, 0, 0, 1000, 1000, sprite);
             batcher.endBatch();
         }
 

@@ -218,16 +218,16 @@ public class GameScene extends GLScene {
     }
 
     private void presentReady() {
-        batcher.drawSprite(160, 240, 192, 32, Assets.ready);
+        batcher.drawSprite(160, 240, 0, 192, 32, Assets.ready);
     }
 
     private void presentRunning() {
-        batcher.drawSprite(320 - 32, 480 - 32, 64, 64, Assets.pause);
+        batcher.drawSprite(320 - 32, 480 - 32, 0, 64, 64, Assets.pause);
         Assets.font.drawText(batcher, scoreString, 16, 480 - 20);
     }
 
     private void presentPaused() {
-        batcher.drawSprite(160, 240, 192, 96, Assets.pauseMenu);
+        batcher.drawSprite(160, 240, 0, 192, 96, Assets.pauseMenu);
         Assets.font.drawText(batcher, scoreString, 16, 480 - 20);
     }
 
@@ -241,7 +241,7 @@ public class GameScene extends GLScene {
     }
 
     private void presentGameOver() {
-        batcher.drawSprite(160, 240, 160, 96, Assets.gameOver);
+        batcher.drawSprite(160, 240, 0, 160, 96, Assets.gameOver);
         float scoreWidth = Assets.font.glyphWidth * scoreString.length();
         Assets.font.drawText(batcher, scoreString, 160 - scoreWidth / 2, 480 - 20);
     }

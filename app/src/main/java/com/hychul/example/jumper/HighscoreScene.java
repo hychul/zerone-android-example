@@ -65,14 +65,14 @@ public class HighscoreScene extends GLScene {
         GLES10.glEnable(GL10.GL_TEXTURE_2D);
 
         batcher.beginBatch(Assets.background);
-        batcher.drawSprite(160, 240, 320, 480, Assets.backgroundRegion);
+        batcher.drawSprite(160, 240, 0, 320, 480, Assets.backgroundRegion);
         batcher.endBatch();
 
         GLES10.glEnable(GL10.GL_BLEND);
         GLES10.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
 
         batcher.beginBatch(Assets.items);
-        batcher.drawSprite(160, 360, 300, 33, Assets.highScoresRegion);
+        batcher.drawSprite(160, 360, 0, 300, 33, Assets.highScoresRegion);
 
         float y = 240;
         for (int i = 4; i >= 0; i--) {
@@ -80,7 +80,7 @@ public class HighscoreScene extends GLScene {
             y += Assets.font.glyphHeight;
         }
 
-        batcher.drawSprite(32, 32, 64, 64, Assets.arrow);
+        batcher.drawSprite(32, 32, 0, 64, 64, Assets.arrow);
         batcher.endBatch();
 
         GLES10.glDisable(GL10.GL_BLEND);
