@@ -13,15 +13,21 @@ public class Vertices {
 
     final boolean hasColor;
     final boolean hasTexCoords;
+    final boolean hasNormals;
     final int vertexSize;
     final IntBuffer vertices;
     final int[] tmpBuffer;
     final ShortBuffer indices;
 
     public Vertices(int maxVertices, int maxIndices, boolean hasColor, boolean hasTexCoords) {
+        this(maxVertices, maxIndices, hasColor, hasTexCoords, false);
+    }
+
+    public Vertices(int maxVertices, int maxIndices, boolean hasColor, boolean hasTexCoords, boolean hasNormals) {
         this.hasColor = hasColor;
         this.hasTexCoords = hasTexCoords;
-        this.vertexSize = (3 + (hasColor ? 4 : 0) + (hasTexCoords ? 2 : 0)) * 4;
+        this.hasNormals = hasNormals;
+        this.vertexSize = (3 + (hasColor ? 4 : 0) + (hasTexCoords ? 2 : 0) + (hasNormals ? 3 : 0)) * 4;
         this.tmpBuffer = new int[maxVertices * vertexSize / 4];
 
         ByteBuffer buffer = ByteBuffer.allocateDirect(maxVertices * vertexSize);
@@ -40,9 +46,8 @@ public class Vertices {
     public void setVertices(float[] vertices, int offset, int length) {
         this.vertices.clear();
         int len = offset + length;
-        for (int i = offset, j = 0; i < len; i++, j++) {
+        for (int i = offset, j = 0; i < len; i++, j++)
             tmpBuffer[j] = Float.floatToRawIntBits(vertices[i]);
-        }
         this.vertices.put(tmpBuffer, 0, length);
         this.vertices.flip();
     }
@@ -69,6 +74,17 @@ public class Vertices {
             vertices.position(hasColor ? 7 : 3);
             GLES10.glTexCoordPointer(2, GL10.GL_FLOAT, vertexSize, vertices);
         }
+
+        if (hasNormals) {
+            GLES10.glEnableClientState(GL10.GL_NORMAL_ARRAY);
+            int offset = 3;
+            if (hasColor)
+                offset += 4;
+            if (hasTexCoords)
+                offset += 2;
+            vertices.position(offset);
+            GLES10.glNormalPointer(GL10.GL_FLOAT, vertexSize, vertices);
+        }
     }
 
     public void draw(int primitiveType, int offset, int numVertices) {
@@ -86,5 +102,16 @@ public class Vertices {
 
         if (hasColor)
             GLES10.glDisableClientState(GL10.GL_COLOR_ARRAY);
+
+        if (hasNormals)
+            GLES10.glDisableClientState(GL10.GL_NORMAL_ARRAY);
+    }
+
+    public int getNumIndices() {
+        return indices.limit();
+    }
+
+    public int getNumVertices() {
+        return vertices.limit() / (vertexSize / 4);
     }
 }

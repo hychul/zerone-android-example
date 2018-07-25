@@ -7,7 +7,7 @@ import com.hychul.zerone.Zerone;
 import com.hychul.zerone.android.GLScene;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Texture;
-import com.hychul.zerone.android.graphics.Vertices3;
+import com.hychul.zerone.android.graphics.Vertices;
 import com.hychul.zerone.core.Scene;
 
 import javax.microedition.khronos.opengles.GL10;
@@ -19,7 +19,7 @@ public class CubeTest extends ZeroneActivity {
     }
 
     class CubeScene extends GLScene {
-        Vertices3 cube;
+        Vertices cube;
         Texture texture;
         float angle = 0;
 
@@ -29,7 +29,7 @@ public class CubeTest extends ZeroneActivity {
             texture = new Texture(zeroneActivity.getFileIO(), "crate.png");
         }
 
-        private Vertices3 createCube() {
+        private Vertices createCube() {
             float[] vertices = {-0.5f, -0.5f, 0.5f, 0, 1,
                                 0.5f, -0.5f, 0.5f, 1, 1,
                                 0.5f, 0.5f, 0.5f, 1, 0,
@@ -69,7 +69,7 @@ public class CubeTest extends ZeroneActivity {
                                20, 21, 23, 21, 22, 23,
                                };
 
-            Vertices3 cube = new Vertices3(24, 36, false, true, false);
+            Vertices cube = new Vertices(24, 36, false, true, false);
             cube.setVertices(vertices, 0, vertices.length);
             cube.setIndices(indices, 0, indices.length);
             return cube;

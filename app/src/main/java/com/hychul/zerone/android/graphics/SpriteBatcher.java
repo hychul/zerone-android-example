@@ -8,12 +8,12 @@ public class SpriteBatcher {
 
     final float[] verticesBuffer;
     int bufferIndex;
-    final Vertices3 vertices;
+    final Vertices vertices;
     int numSprites;
 
     public SpriteBatcher(int maxSprites) {
         this.verticesBuffer = new float[maxSprites * (3 + 2) * 4];
-        this.vertices = new Vertices3(maxSprites * 4, maxSprites * 6, false, true);
+        this.vertices = new Vertices(maxSprites * 4, maxSprites * 6, false, true);
         this.bufferIndex = 0;
         this.numSprites = 0;
 

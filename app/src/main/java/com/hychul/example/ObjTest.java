@@ -9,7 +9,7 @@ import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Material;
 import com.hychul.zerone.android.graphics.ObjLoader;
 import com.hychul.zerone.android.graphics.Texture;
-import com.hychul.zerone.android.graphics.Vertices3;
+import com.hychul.zerone.android.graphics.Vertices;
 import com.hychul.zerone.android.graphics.light.AmbientLight;
 import com.hychul.zerone.android.graphics.light.DirectionalLight;
 import com.hychul.zerone.android.graphics.light.PointLight;
@@ -24,7 +24,7 @@ public class ObjTest extends ZeroneActivity {
 
     class ObjScene extends GLScene {
         float angle;
-        Vertices3 cube;
+        Vertices cube;
         Texture texture;
         AmbientLight ambientLight;
         PointLight pointLight;

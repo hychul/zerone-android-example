@@ -2,7 +2,7 @@ package com.hychul.example;
 
 import android.opengl.GLES10;
 
-import com.hychul.zerone.android.graphics.Vertices3;
+import com.hychul.zerone.android.graphics.Vertices;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +15,9 @@ public class HierarchicalObject {
     public float rotationY, rotationParent;
     public boolean hasParent;
     public final List<HierarchicalObject> children = new ArrayList<HierarchicalObject>();
-    public final Vertices3 mesh;
+    public final Vertices mesh;
 
-    public HierarchicalObject(Vertices3 mesh, boolean hasParent) {
+    public HierarchicalObject(Vertices mesh, boolean hasParent) {
         this.mesh = mesh;
         this.hasParent = hasParent;
     }

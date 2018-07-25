@@ -10,7 +10,7 @@ import com.hychul.zerone.android.graphics.Camera2D;
 import com.hychul.zerone.android.graphics.Sprite;
 import com.hychul.zerone.android.graphics.SpriteBatcher;
 import com.hychul.zerone.android.graphics.Texture;
-import com.hychul.zerone.android.graphics.Vertices3;
+import com.hychul.zerone.android.graphics.Vertices;
 import com.hychul.zerone.android.graphics.light.PointLight;
 import com.hychul.zerone.core.Scene;
 import com.hychul.zerone.math.Vector2;
@@ -26,7 +26,7 @@ public class EulerCameraTest extends ZeroneActivity {
 
     class EulerCameraScene extends GLScene {
         Texture crateTexture;
-        Vertices3 cube;
+        Vertices cube;
         PointLight light;
         EulerCamera camera;
         Texture buttonTexture;
@@ -54,7 +54,7 @@ public class EulerCameraTest extends ZeroneActivity {
             touchPos = new Vector2();
         }
 
-        private Vertices3 createCube() {
+        private Vertices createCube() {
             float[] vertices = {-0.5f, -0.5f, 0.5f, 0, 1, 0, 0, 1,
                                 0.5f, -0.5f, 0.5f, 1, 1, 0, 0, 1,
                                 0.5f, 0.5f, 0.5f, 1, 0, 0, 0, 1,
@@ -91,7 +91,7 @@ public class EulerCameraTest extends ZeroneActivity {
                                16, 17, 18, 18, 19, 16,
                                20, 21, 22, 22, 23, 20,
                                24, 25, 26, 26, 27, 24};
-            Vertices3 cube = new Vertices3(vertices.length / 8, indices.length, false, true, true);
+            Vertices cube = new Vertices(vertices.length / 8, indices.length, false, true, true);
             cube.setVertices(vertices, 0, vertices.length);
             cube.setIndices(indices, 0, indices.length);
             return cube;

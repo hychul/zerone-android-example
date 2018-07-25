@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ObjLoader {
 
-    public static Vertices3 load(FileIO fileIO, String file) {
+    public static Vertices load(FileIO fileIO, String file) {
         InputStream in = null;
         try {
             in = fileIO.readAsset(file);
@@ -123,7 +123,7 @@ public class ObjLoader {
                 }
             }
 
-            Vertices3 model = new Vertices3(numFaces * 3, 0, false, numUV > 0, numNormals > 0);
+            Vertices model = new Vertices(numFaces * 3, 0, false, numUV > 0, numNormals > 0);
             model.setVertices(verts, 0, verts.length);
             return model;
         } catch (Exception ex) {

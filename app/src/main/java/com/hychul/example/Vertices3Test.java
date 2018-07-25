@@ -5,7 +5,7 @@ import android.opengl.GLES10;
 import com.hychul.zerone.Zerone;
 import com.hychul.zerone.android.GLScene;
 import com.hychul.zerone.android.ZeroneActivity;
-import com.hychul.zerone.android.graphics.Vertices3;
+import com.hychul.zerone.android.graphics.Vertices;
 import com.hychul.zerone.core.Scene;
 
 import javax.microedition.khronos.opengles.GL10;
@@ -17,12 +17,12 @@ public class Vertices3Test extends ZeroneActivity {
     }
 
     class Vertices3Scene extends GLScene {
-        Vertices3 vertices;
+        Vertices vertices;
 
         public Vertices3Scene(Zerone zerone) {
             super(zerone);
 
-            vertices = new Vertices3(6, 0, true, false, false);
+            vertices = new Vertices(6, 0, true, false, false);
             vertices.setVertices(new float[]{-0.5f, -0.5f, -3, 1, 0, 0, 1,
                                              0.5f, -0.5f, -3, 1, 0, 0, 1,
                                              0.0f, 0.5f, -3, 1, 0, 0, 1,

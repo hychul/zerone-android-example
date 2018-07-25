@@ -8,7 +8,7 @@ import com.hychul.zerone.android.GLScene;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Material;
 import com.hychul.zerone.android.graphics.Texture;
-import com.hychul.zerone.android.graphics.Vertices3;
+import com.hychul.zerone.android.graphics.Vertices;
 import com.hychul.zerone.android.graphics.light.AmbientLight;
 import com.hychul.zerone.android.graphics.light.DirectionalLight;
 import com.hychul.zerone.android.graphics.light.PointLight;
@@ -23,7 +23,7 @@ public class LightTest extends ZeroneActivity {
 
     class LightScene extends GLScene {
         float angle;
-        Vertices3 cube;
+        Vertices cube;
         Texture texture;
         AmbientLight ambientLight;
         PointLight pointLight;
@@ -51,7 +51,7 @@ public class LightTest extends ZeroneActivity {
             texture.reload();
         }
 
-        private Vertices3 createCube() {
+        private Vertices createCube() {
             float[] vertices = {-0.5f, -0.5f, 0.5f, 0, 1, 0, 0, 1,
                                 0.5f, -0.5f, 0.5f, 1, 1, 0, 0, 1,
                                 0.5f, 0.5f, 0.5f, 1, 0, 0, 0, 1,
@@ -88,7 +88,7 @@ public class LightTest extends ZeroneActivity {
                                16, 17, 18, 18, 19, 16,
                                20, 21, 22, 22, 23, 20,
                                24, 25, 26, 26, 27, 24};
-            Vertices3 cube = new Vertices3(vertices.length / 8, indices.length, false, true, true);
+            Vertices cube = new Vertices(vertices.length / 8, indices.length, false, true, true);
             cube.setVertices(vertices, 0, vertices.length);
             cube.setIndices(indices, 0, indices.length);
             return cube;

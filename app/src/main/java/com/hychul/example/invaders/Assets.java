@@ -8,7 +8,7 @@ import com.hychul.zerone.android.graphics.ObjLoader;
 import com.hychul.zerone.android.graphics.Sprite;
 import com.hychul.zerone.android.graphics.SpriteAnimation;
 import com.hychul.zerone.android.graphics.Texture;
-import com.hychul.zerone.android.graphics.Vertices3;
+import com.hychul.zerone.android.graphics.Vertices;
 
 public class Assets {
     public static Texture background;
@@ -33,12 +33,12 @@ public class Assets {
 
     public static Texture explosionTexture;
     public static SpriteAnimation explosionAnim;
-    public static Vertices3 shipModel;
+    public static Vertices shipModel;
     public static Texture shipTexture;
-    public static Vertices3 invaderModel;
+    public static Vertices invaderModel;
     public static Texture invaderTexture;
-    public static Vertices3 shotModel;
-    public static Vertices3 shieldModel;
+    public static Vertices shotModel;
+    public static Vertices shieldModel;
 
     public static Music music;
     public static Sound clickSound;
