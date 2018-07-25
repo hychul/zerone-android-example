@@ -35,9 +35,7 @@ public class WorldRenderer {
 
     public void renderBackground() {
         batcher.beginBatch(Assets.background);
-        batcher.drawSprite(cam.position.x, cam.position.y,
-                           FRUSTUM_WIDTH, FRUSTUM_HEIGHT,
-                           Assets.backgroundRegion);
+        batcher.drawSprite(cam.position.x, cam.position.y, FRUSTUM_WIDTH, FRUSTUM_HEIGHT, Assets.backgroundRegion);
         batcher.endBatch();
     }
 
@@ -82,8 +80,7 @@ public class WorldRenderer {
                 keyFrame = Assets.brakingPlatform.getKeyFrame(platform.stateTime, false);
             }
 
-            batcher.drawSprite(platform.position.x, platform.position.y,
-                               2, 0.5f, keyFrame);
+            batcher.drawSprite(platform.position.x, platform.position.y, 2, 0.5f, keyFrame);
         }
     }
 
