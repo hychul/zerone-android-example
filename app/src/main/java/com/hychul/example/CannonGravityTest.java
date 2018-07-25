@@ -4,6 +4,7 @@ import android.opengl.GLES10;
 
 import com.hychul.zerone.Input.TouchEvent;
 import com.hychul.zerone.Zerone;
+import com.hychul.zerone.android.GLScene;
 import com.hychul.zerone.android.Graphics;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Vertices;
@@ -19,10 +20,9 @@ public class CannonGravityTest extends ZeroneActivity {
         return new CannonGravityScene(this);
     }
 
-    class CannonGravityScene extends Scene {
+    class CannonGravityScene extends GLScene {
         float FRUSTUM_WIDTH = 9.6f;
         float FRUSTUM_HEIGHT = 6.4f;
-        Graphics graphics;
         Vertices cannonVertices;
         Vertices ballVertices;
         Vector2 cannonPos = new Vector2();
@@ -34,7 +34,6 @@ public class CannonGravityTest extends ZeroneActivity {
 
         public CannonGravityScene(Zerone zerone) {
             super(zerone);
-            graphics = ((ZeroneActivity) zerone).getGLGraphics();
             cannonVertices = new Vertices(3, 0, false, false);
             cannonVertices.setVertices(new float[]{-0.5f, -0.5f, 0.0f,
                                                    0.5f, 0.0f, 0.0f,

@@ -4,6 +4,7 @@ import android.opengl.GLES10;
 
 import com.hychul.zerone.Input.TouchEvent;
 import com.hychul.zerone.Zerone;
+import com.hychul.zerone.android.GLScene;
 import com.hychul.zerone.android.Graphics;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Camera2D;
@@ -26,11 +27,10 @@ public class SpriteBatcherTest extends ZeroneActivity {
         return new SpriteBatcherScene(this);
     }
 
-    class SpriteBatcherScene extends Scene {
+    class SpriteBatcherScene extends GLScene {
         final int NUM_TARGETS = 20;
         final float WORLD_WIDTH = 9.6f;
         final float WORLD_HEIGHT = 4.8f;
-        Graphics graphics;
         Cannon cannon;
         GameObject ball;
         List<GameObject> targets;
@@ -50,7 +50,6 @@ public class SpriteBatcherTest extends ZeroneActivity {
 
         public SpriteBatcherScene(Zerone zerone) {
             super(zerone);
-            graphics = ((ZeroneActivity) zerone).getGLGraphics();
 
             cannon = new Cannon(0, 0, 1, 0.5f);
             ball = new GameObject(0, 0, 0.2f, 0.2f);
