@@ -2,7 +2,7 @@ package com.hychul.zerone.math;
 
 public final class Quaternion {
 
-    public static float TO_RADIANS = (1 / 180.0f) * (float) Math.PI;
+    public static float TO_RADIANS = (1 / 180.0f) * Mathf.PI;
     public static float TO_DEGREE = 1 / TO_RADIANS;
 
     public float w;
@@ -37,12 +37,12 @@ public final class Quaternion {
     }
 
     public void set(Vector3 euler) {
-        float c1 = (float) Math.cos(euler.y * TO_RADIANS / 2);
-        float s1 = (float) Math.sin(euler.y * TO_RADIANS / 2);
-        float c2 = (float) Math.cos(euler.z * TO_RADIANS / 2);
-        float s2 = (float) Math.sin(euler.z * TO_RADIANS / 2);
-        float c3 = (float) Math.cos(euler.x * TO_RADIANS / 2);
-        float s3 = (float) Math.sin(euler.x * TO_RADIANS / 2);
+        float c1 = Mathf.cos(euler.y * TO_RADIANS / 2);
+        float s1 = Mathf.sin(euler.y * TO_RADIANS / 2);
+        float c2 = Mathf.cos(euler.z * TO_RADIANS / 2);
+        float s2 = Mathf.sin(euler.z * TO_RADIANS / 2);
+        float c3 = Mathf.cos(euler.x * TO_RADIANS / 2);
+        float s3 = Mathf.sin(euler.x * TO_RADIANS / 2);
 
         float c1c2 = c1 * c2;
         float s1s2 = s1 * s2;
@@ -55,9 +55,9 @@ public final class Quaternion {
 
     public void set(float angle, Vector3 axis) {
         float angleRad = angle * TO_RADIANS;
-        float s = (float) Math.sin(angleRad / 2);
+        float s = Mathf.sin(angleRad / 2);
 
-        this.w = (float) Math.cos(angleRad / 2);
+        this.w = Mathf.cos(angleRad / 2);
         this.x = axis.x * s;
         this.y = axis.y * s;
         this.z = axis.z * s;
@@ -127,7 +127,7 @@ public final class Quaternion {
     }
 
     public float norm() {
-        return (float) Math.sqrt(dot(this));
+        return Mathf.sqrt(dot(this));
     }
 
     public float dot(Quaternion q) {
@@ -160,12 +160,12 @@ public final class Quaternion {
         float f0, f1;
 
         if (0.1f < (1 - dot)) {
-            float angle = (float) Math.acos(dot);
-            float s = (float) Math.sin(angle);
+            float angle = Mathf.acos(dot);
+            float s = Mathf.sin(angle);
             float tAngle = t * angle;
 
-            f0 = (float) Math.sin(angle - tAngle) / s;
-            f1 = (float) Math.sin(tAngle) / s;
+            f0 = Mathf.sin(angle - tAngle) / s;
+            f1 = Mathf.sin(tAngle) / s;
         } else {
             f0 = 1 - t;
             f1 = t;
@@ -229,9 +229,9 @@ public final class Quaternion {
         if (1 < q.w)
             q.normalize(); // if 1 < 1, acos and sqrt will produce errors, this cant happen if quaternion is normalised
 
-        axisAngleOut.angle = 2.0f * (float) Math.acos(q.w) * TO_DEGREE;
+        axisAngleOut.angle = 2.0f * Mathf.acos(q.w) * TO_DEGREE;
 
-        float s = (float) Math.sqrt(1 - q.w * q.w); // assuming quaternion normalised then w is less than 1, so term always positive.
+        float s = Mathf.sqrt(1 - q.w * q.w); // assuming quaternion normalised then w is less than 1, so term always positive.
         if (s < 0.001) { // test to avoid divide by zero, s is always positive due to sqrt
             // if s close to zero then direction of axis not important
             axisAngleOut.x = q.x; // if it is important that axis is normalised then replace with x=1; y=z=0;
@@ -250,9 +250,9 @@ public final class Quaternion {
         if (1 < q.w)
             q.normalize(); // if 1 < 1, acos and sqrt will produce errors, this cant happen if quaternion is normalised
 
-        float angle = 2.0f * (float) Math.acos(q.w) * TO_DEGREE;
+        float angle = 2.0f * Mathf.acos(q.w) * TO_DEGREE;
 
-        float s = (float) Math.sqrt(1 - q.w * q.w); // assuming quaternion normalised then w is less than 1, so term always positive.
+        float s = Mathf.sqrt(1 - q.w * q.w); // assuming quaternion normalised then w is less than 1, so term always positive.
         if (s < 0.001) { // test to avoid divide by zero, s is always positive due to sqrt
             // if s close to zero then direction of axis not important
             axis.x = q.x; // if it is important that axis is normalised then replace with x=1; y=z=0;

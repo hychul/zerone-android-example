@@ -12,6 +12,7 @@ import com.hychul.zerone.android.graphics.SpriteBatcher;
 import com.hychul.zerone.android.graphics.Texture;
 import com.hychul.zerone.core.GameObject;
 import com.hychul.zerone.core.Scene;
+import com.hychul.zerone.math.Mathf;
 
 import javax.microedition.khronos.opengles.GL10;
 
@@ -28,10 +29,10 @@ public class AnimationTest extends ZeroneActivity {
 
         public Caveman(float x, float y, float width, float height) {
             super(x, y, width, height);
-            this.position.set((float) Math.random() * WORLD_WIDTH,
-                              (float) Math.random() * WORLD_HEIGHT);
+            this.position.set(Mathf.random() * WORLD_WIDTH,
+                              Mathf.random() * WORLD_HEIGHT);
             this.velocity.set(Math.random() > 0.5f ? -0.5f : 0.5f, 0);
-            this.walkingTime = (float) Math.random() * 10;
+            this.walkingTime = Mathf.random() * 10;
         }
 
         public void update(float deltaTime) {
@@ -55,7 +56,7 @@ public class AnimationTest extends ZeroneActivity {
             super(zerone);
             cavemen = new Caveman[NUM_CAVEMEN];
             for (int i = 0; i < NUM_CAVEMEN; i++) {
-                cavemen[i] = new Caveman((float) Math.random(), (float) Math.random(), 1, 1);
+                cavemen[i] = new Caveman(Mathf.random(), Mathf.random(), 1, 1);
             }
             batcher = new SpriteBatcher(NUM_CAVEMEN);
             camera = new Camera2D(graphics, WORLD_WIDTH, WORLD_HEIGHT);

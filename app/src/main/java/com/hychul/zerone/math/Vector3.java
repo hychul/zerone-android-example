@@ -82,7 +82,7 @@ public class Vector3 {
     }
 
     public float len() {
-        return (float) Math.sqrt(x * x + y * y + z * z);
+        return Mathf.sqrt(x * x + y * y + z * z);
     }
 
     public Vector3 nor() {
@@ -113,14 +113,14 @@ public class Vector3 {
         float distX = this.x - other.x;
         float distY = this.y - other.y;
         float distZ = this.z - other.z;
-        return (float) Math.sqrt(distX * distX + distY * distY + distZ * distZ);
+        return Mathf.sqrt(distX * distX + distY * distY + distZ * distZ);
     }
 
     public float dist(float x, float y, float z) {
         float distX = this.x - x;
         float distY = this.y - y;
         float distZ = this.z - z;
-        return (float) Math.sqrt(distX * distX + distY * distY + distZ * distZ);
+        return Mathf.sqrt(distX * distX + distY * distY + distZ * distZ);
     }
 
     public float distSquared(Vector3 other) {

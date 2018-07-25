@@ -5,7 +5,6 @@ import android.opengl.GLES10;
 import com.hychul.zerone.Input.TouchEvent;
 import com.hychul.zerone.Zerone;
 import com.hychul.zerone.android.GLScene;
-import com.hychul.zerone.android.Graphics;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Vertices;
 import com.hychul.zerone.core.GameObject;
@@ -50,8 +49,8 @@ public class CollisionTest extends ZeroneActivity {
             targets = new ArrayList<GameObject>(NUM_TARGETS);
             grid = new SpatialHashGrid(WORLD_WIDTH, WORLD_HEIGHT, 2.5f);
             for (int i = 0; i < NUM_TARGETS; i++) {
-                GameObject target = new GameObject((float) Math.random() * WORLD_WIDTH,
-                                                   (float) Math.random() * WORLD_HEIGHT,
+                GameObject target = new GameObject(Mathf.random() * WORLD_WIDTH,
+                                                   Mathf.random() * WORLD_HEIGHT,
                                                    0.5f, 0.5f);
                 grid.insertStaticObject(target);
                 targets.add(target);
@@ -91,11 +90,11 @@ public class CollisionTest extends ZeroneActivity {
                 cannon.angle = touchPos.sub(cannon.position).angle();
 
                 if (event.type == TouchEvent.TOUCH_UP) {
-                    float radians = cannon.angle * Mathf.DEG_TO_RADIANS;
+                    float radians = Mathf.toRadians(cannon.angle);
                     float ballSpeed = touchPos.len() * 2;
                     ball.position.set(cannon.position);
-                    ball.velocity.x = (float) Math.cos(radians) * ballSpeed;
-                    ball.velocity.y = (float) Math.sin(radians) * ballSpeed;
+                    ball.velocity.x = Mathf.cos(radians) * ballSpeed;
+                    ball.velocity.y = Mathf.sin(radians) * ballSpeed;
                     ball.bounds.lowerLeft.set(ball.position.x - 0.1f, ball.position.y - 0.1f);
                 }
             }

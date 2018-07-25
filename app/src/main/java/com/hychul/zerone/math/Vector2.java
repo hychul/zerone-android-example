@@ -66,7 +66,7 @@ public class Vector2 {
     }
 
     public float len() {
-        return (float) Math.sqrt(x * x + y * y);
+        return Mathf.sqrt(x * x + y * y);
     }
 
     public Vector2 nor() {
@@ -79,16 +79,16 @@ public class Vector2 {
     }
 
     public float angle() {
-        float angle = (float) Math.atan2(y, x) * Mathf.RAD_TO_DEGREES;
+        float angle = Mathf.toDegrees(Mathf.atan2(y, x));
         if (angle < 0)
             angle += 360;
         return angle;
     }
 
     public Vector2 rotate(float angle) {
-        float rad = angle * Mathf.DEG_TO_RADIANS;
-        float cos = (float) Math.cos(rad);
-        float sin = (float) Math.sin(rad);
+        float rad = Mathf.toRadians(angle);
+        float cos = Mathf.cos(rad);
+        float sin = Mathf.sin(rad);
 
         float newX = this.x * cos - this.y * sin;
         float newY = this.x * sin + this.y * cos;
@@ -102,13 +102,13 @@ public class Vector2 {
     public float dist(Vector2 other) {
         float distX = this.x - other.x;
         float distY = this.y - other.y;
-        return (float) Math.sqrt(distX * distX + distY * distY);
+        return Mathf.sqrt(distX * distX + distY * distY);
     }
 
     public float dist(float x, float y) {
         float distX = this.x - x;
         float distY = this.y - y;
-        return (float) Math.sqrt(distX * distX + distY * distY);
+        return Mathf.sqrt(distX * distX + distY * distY);
     }
 
     public float distSquared(Vector2 other) {
