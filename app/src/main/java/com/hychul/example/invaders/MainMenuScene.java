@@ -24,7 +24,7 @@ public class MainMenuScene extends GLScene {
 
     public MainMenuScene(Zerone zerone) {
         super(zerone);
-        
+
         guiCam = new Camera2D(graphics, 480, 320);
         batcher = new SpriteBatcher(10);
         touchPoint = new Vector2();
@@ -40,7 +40,7 @@ public class MainMenuScene extends GLScene {
             TouchEvent event = events.get(i);
             if (event.type != TouchEvent.TOUCH_UP)
                 continue;
-            
+
             guiCam.touchToWorld(touchPoint.set(event.x, event.y));
             if (OverlapTester.pointInRectangle(playBounds, touchPoint)) {
                 Assets.playSound(Assets.clickSound);

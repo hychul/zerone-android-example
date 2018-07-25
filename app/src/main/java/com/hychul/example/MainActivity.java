@@ -26,8 +26,7 @@ public class MainActivity extends ListActivity {
             "LightTest",
             "EulerCameraTest",
             "ObjTest",
-            "Invaders",
-    };
+            "Invaders"};
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -70,7 +70,7 @@ public class WorldRenderer {
             GLES10.glTranslatef(ship.position.x, ship.position.y, ship.position.z);
             GLES10.glRotatef(ship.velocity.x / Ship.SHIP_VELOCITY * 90, 0, 0, -1);
             Assets.shipModel.draw(GL10.GL_TRIANGLES, 0,
-                    Assets.shipModel.getNumVertices());
+                                  Assets.shipModel.getNumVertices());
             GLES10.glPopMatrix();
             Assets.shipModel.unbind();
         }
@@ -92,10 +92,10 @@ public class WorldRenderer {
             } else {
                 GLES10.glPushMatrix();
                 GLES10.glTranslatef(invader.position.x, invader.position.y,
-                        invader.position.z);
+                                    invader.position.z);
                 GLES10.glRotatef(invader.angle, 0, 1, 0);
                 Assets.invaderModel.draw(GL10.GL_TRIANGLES, 0,
-                        Assets.invaderModel.getNumVertices());
+                                         Assets.invaderModel.getNumVertices());
                 GLES10.glPopMatrix();
             }
         }
@@ -112,9 +112,9 @@ public class WorldRenderer {
             Shield shield = shields.get(i);
             GLES10.glPushMatrix();
             GLES10.glTranslatef(shield.position.x, shield.position.y,
-                    shield.position.z);
+                                shield.position.z);
             Assets.shieldModel.draw(GL10.GL_TRIANGLES, 0,
-                    Assets.shieldModel.getNumVertices());
+                                    Assets.shieldModel.getNumVertices());
             GLES10.glPopMatrix();
         }
         Assets.shieldModel.unbind();
@@ -131,7 +131,7 @@ public class WorldRenderer {
             GLES10.glPushMatrix();
             GLES10.glTranslatef(shot.position.x, shot.position.y, shot.position.z);
             Assets.shotModel.draw(GL10.GL_TRIANGLES, 0,
-                    Assets.shotModel.getNumVertices());
+                                  Assets.shotModel.getNumVertices());
             GLES10.glPopMatrix();
         }
         Assets.shotModel.unbind();
@@ -140,7 +140,7 @@ public class WorldRenderer {
 
     private void renderExplosion(Vector3 position, float stateTime) {
         Sprite frame = Assets.explosionAnim.getKeyFrame(stateTime, false);
-        
+
         GLES10.glEnable(GL10.GL_BLEND);
         GLES10.glPushMatrix();
         GLES10.glTranslatef(position.x, position.y, position.z);

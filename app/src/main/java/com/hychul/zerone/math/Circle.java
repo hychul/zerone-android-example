@@ -6,7 +6,7 @@ public class Circle {
     public float radius;
 
     public Circle(float x, float y, float radius) {
-        this.center.set(x,y);
+        this.center.set(x, y);
         this.radius = radius;
     }
 }

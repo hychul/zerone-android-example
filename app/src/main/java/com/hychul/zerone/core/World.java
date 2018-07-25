@@ -109,7 +109,7 @@ public class World {
         // TODO: If system use in different thread, hold components reference pointer.
         int count = mSystemList.size();
         System system;
-        for (int i = 0; i < count ; i++) {
+        for (int i = 0; i < count; i++) {
             system = mSystemList.get(i);
             system.update();
         }

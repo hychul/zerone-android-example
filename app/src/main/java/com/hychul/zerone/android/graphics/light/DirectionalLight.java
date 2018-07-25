@@ -6,10 +6,10 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class DirectionalLight {
 
-    float[] ambient = { 0.2f, 0.2f, 0.2f, 1.0f };
-    float[] diffuse = { 1.0f, 1.0f, 1.0f, 1.0f };
-    float[] specular = { 0.0f, 0.0f, 0.0f, 1.0f };
-    float[] direction = { 0, 0, -1, 0 };
+    float[] ambient = {0.2f, 0.2f, 0.2f, 1.0f};
+    float[] diffuse = {1.0f, 1.0f, 1.0f, 1.0f};
+    float[] specular = {0.0f, 0.0f, 0.0f, 1.0f};
+    float[] direction = {0, 0, -1, 0};
     int lastLightId = 0;
 
     public void setAmbient(float r, float g, float b, float a) {

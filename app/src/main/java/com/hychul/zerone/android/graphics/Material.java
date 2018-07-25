@@ -5,9 +5,9 @@ import android.opengl.GLES10;
 import javax.microedition.khronos.opengles.GL10;
 
 public class Material {
-    float[] ambient = { 0.2f, 0.2f, 0.2f, 1.0f };
-    float[] diffuse = { 1.0f, 1.0f, 1.0f, 1.0f };
-    float[] specular = { 0.0f, 0.0f, 0.0f, 1.0f };    
+    float[] ambient = {0.2f, 0.2f, 0.2f, 1.0f};
+    float[] diffuse = {1.0f, 1.0f, 1.0f, 1.0f};
+    float[] specular = {0.0f, 0.0f, 0.0f, 1.0f};
 
     public void setAmbient(float r, float g, float b, float a) {
         ambient[0] = r;

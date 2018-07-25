@@ -17,26 +17,26 @@ public class Vertices {
     final IntBuffer vertices;
     final int[] tmpBuffer;
     final ShortBuffer indices;
-    
+
     public Vertices(int maxVertices, int maxIndices, boolean hasColor, boolean hasTexCoords) {
         this.hasColor = hasColor;
         this.hasTexCoords = hasTexCoords;
         this.vertexSize = (3 + (hasColor ? 4 : 0) + (hasTexCoords ? 2 : 0)) * 4;
         this.tmpBuffer = new int[maxVertices * vertexSize / 4];
-        
+
         ByteBuffer buffer = ByteBuffer.allocateDirect(maxVertices * vertexSize);
         buffer.order(ByteOrder.nativeOrder());
         vertices = buffer.asIntBuffer();
-        
+
         if (0 < maxIndices) {
             buffer = ByteBuffer.allocateDirect(maxIndices * Short.SIZE / 8);
             buffer.order(ByteOrder.nativeOrder());
             indices = buffer.asShortBuffer();
         } else {
             indices = null;
-        }            
+        }
     }
-    
+
     public void setVertices(float[] vertices, int offset, int length) {
         this.vertices.clear();
         int len = offset + length;
@@ -46,45 +46,45 @@ public class Vertices {
         this.vertices.put(tmpBuffer, 0, length);
         this.vertices.flip();
     }
-    
+
     public void setIndices(short[] indices, int offset, int length) {
         this.indices.clear();
         this.indices.put(indices, offset, length);
         this.indices.flip();
     }
-    
-	public void bind() {
-	    GLES10.glEnableClientState(GL10.GL_VERTEX_ARRAY);
-	    vertices.position(0);
-	    GLES10.glVertexPointer(3, GL10.GL_FLOAT, vertexSize, vertices);
-	    
-	    if (hasColor) {
-	        GLES10.glEnableClientState(GL10.GL_COLOR_ARRAY);
-	        vertices.position(3);
-	        GLES10.glColorPointer(4, GL10.GL_FLOAT, vertexSize, vertices);
-	    }
-	    
-	    if (hasTexCoords) {
-	        GLES10.glEnableClientState(GL10.GL_TEXTURE_COORD_ARRAY);
-	        vertices.position(hasColor ? 7 : 3);
-	        GLES10.glTexCoordPointer(2, GL10.GL_FLOAT, vertexSize, vertices);
-	    }
-	}
-	
-	public void draw(int primitiveType, int offset, int numVertices) {        
-	    if (indices != null) {
-	        indices.position(offset);
-	        GLES10.glDrawElements(primitiveType, numVertices, GL10.GL_UNSIGNED_SHORT, indices);
-	    } else {
-	        GLES10.glDrawArrays(primitiveType, offset, numVertices);
-	    }        
-	}
-	
-	public void unbind() {
-	    if (hasTexCoords)
-	        GLES10.glDisableClientState(GL10.GL_TEXTURE_COORD_ARRAY);
-	
-	    if (hasColor)
-	        GLES10.glDisableClientState(GL10.GL_COLOR_ARRAY);
-	}
+
+    public void bind() {
+        GLES10.glEnableClientState(GL10.GL_VERTEX_ARRAY);
+        vertices.position(0);
+        GLES10.glVertexPointer(3, GL10.GL_FLOAT, vertexSize, vertices);
+
+        if (hasColor) {
+            GLES10.glEnableClientState(GL10.GL_COLOR_ARRAY);
+            vertices.position(3);
+            GLES10.glColorPointer(4, GL10.GL_FLOAT, vertexSize, vertices);
+        }
+
+        if (hasTexCoords) {
+            GLES10.glEnableClientState(GL10.GL_TEXTURE_COORD_ARRAY);
+            vertices.position(hasColor ? 7 : 3);
+            GLES10.glTexCoordPointer(2, GL10.GL_FLOAT, vertexSize, vertices);
+        }
+    }
+
+    public void draw(int primitiveType, int offset, int numVertices) {
+        if (indices != null) {
+            indices.position(offset);
+            GLES10.glDrawElements(primitiveType, numVertices, GL10.GL_UNSIGNED_SHORT, indices);
+        } else {
+            GLES10.glDrawArrays(primitiveType, offset, numVertices);
+        }
+    }
+
+    public void unbind() {
+        if (hasTexCoords)
+            GLES10.glDisableClientState(GL10.GL_TEXTURE_COORD_ARRAY);
+
+        if (hasColor)
+            GLES10.glDisableClientState(GL10.GL_COLOR_ARRAY);
+    }
 }

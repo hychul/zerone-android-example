@@ -25,7 +25,7 @@ public class ObjLoader {
             int numNormals = 0;
             int numUV = 0;
             int numFaces = 0;
-            
+
             int[] facesVerts = new int[lines.size() * 3];
             int[] facesNormals = new int[lines.size() * 3];
             int[] facesUV = new int[lines.size() * 3];
@@ -102,7 +102,7 @@ public class ObjLoader {
             }
 
             float[] verts = new float[(numFaces * 3)
-                                      * (3 + (numNormals > 0 ? 3 : 0) + (numUV > 0 ? 2 : 0))];
+                    * (3 + (numNormals > 0 ? 3 : 0) + (numUV > 0 ? 2 : 0))];
             for (int i = 0, vi = 0; i < numFaces * 3; i++) {
                 int vertexIdx = facesVerts[i] * 3;
                 verts[vi++] = vertices[vertexIdx];

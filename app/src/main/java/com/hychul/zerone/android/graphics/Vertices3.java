@@ -106,7 +106,7 @@ public class Vertices3 {
         if (hasNormals)
             GLES10.glDisableClientState(GL10.GL_NORMAL_ARRAY);
     }
-    
+
     public int getNumIndices() {
         return indices.limit();
     }

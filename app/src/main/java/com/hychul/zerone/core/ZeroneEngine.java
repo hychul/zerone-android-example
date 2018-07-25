@@ -15,11 +15,11 @@ public class ZeroneEngine {
 
     public ZeroneEngine() {
         mSimulationExecutor = new ThreadPoolExecutor(1,
-                1,
-                0,
-                TimeUnit.MILLISECONDS,
-                new SynchronousQueue<Runnable>(),
-                new ThreadPoolExecutor.DiscardPolicy());
+                                                     1,
+                                                     0,
+                                                     TimeUnit.MILLISECONDS,
+                                                     new SynchronousQueue<Runnable>(),
+                                                     new ThreadPoolExecutor.DiscardPolicy());
 
         mSimulator = new SimulatorTask(60);
     }

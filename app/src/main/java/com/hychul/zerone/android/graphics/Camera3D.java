@@ -27,7 +27,7 @@ public class Camera3D {
 
         this.position = new Vector3();
         this.up = new Vector3(0, 1, 0);
-        this.lookAt = new Vector3(0,0,-1);
+        this.lookAt = new Vector3(0, 0, -1);
 
         this.fieldOfView = fieldOfView;
         this.aspectRatio = (float) graphics.getWidth() / graphics.getHeight();
@@ -35,19 +35,19 @@ public class Camera3D {
         this.near = near;
         this.far = far;
     }
-    
+
     public Vector3 getPosition() {
         return position;
     }
-    
+
     public Vector3 getUp() {
         return up;
     }
-    
+
     public Vector3 getLookAt() {
         return lookAt;
     }
-    
+
     public void setViewport() {
         GL10 gl = graphics.getGL();
 

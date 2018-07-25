@@ -90,11 +90,11 @@ public class Texture {
             if (newWidth <= 0)
                 break;
             Bitmap newBitmap = Bitmap.createBitmap(newWidth, newHeight,
-                    bitmap.getConfig());
+                                                   bitmap.getConfig());
             Canvas canvas = new Canvas(newBitmap);
             canvas.drawBitmap(bitmap,
-                    new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight()),
-                    new Rect(0, 0, newWidth, newHeight), null);
+                              new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight()),
+                              new Rect(0, 0, newWidth, newHeight), null);
             bitmap.recycle();
             bitmap = newBitmap;
             level++;
@@ -121,7 +121,7 @@ public class Texture {
 
     public void dispose() {
         GLES10.glBindTexture(GL10.GL_TEXTURE_2D, textureId);
-        int[] textureIds = { textureId };
+        int[] textureIds = {textureId};
         GLES10.glDeleteTextures(1, textureIds, 0);
         textureId = -1;
     }

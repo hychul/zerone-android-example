@@ -12,12 +12,10 @@ public class CompassHandler implements SensorEventListener {
     float roll;
 
     public CompassHandler(Context context) {
-        SensorManager manager = (SensorManager) context
-                .getSystemService(Context.SENSOR_SERVICE);
+        SensorManager manager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
         if (manager.getSensorList(Sensor.TYPE_ORIENTATION).size() != 0) {
             Sensor compass = manager.getDefaultSensor(Sensor.TYPE_ORIENTATION);
-            manager.registerListener(this, compass,
-                    SensorManager.SENSOR_DELAY_GAME);
+            manager.registerListener(this, compass, SensorManager.SENSOR_DELAY_GAME);
         }
     }
 

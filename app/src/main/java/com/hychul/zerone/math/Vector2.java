@@ -69,7 +69,7 @@ public class Vector2 {
     }
 
     public float len() {
-        return (float)Math.sqrt(x * x + y * y);
+        return (float) Math.sqrt(x * x + y * y);
     }
 
     public Vector2 nor() {
@@ -90,8 +90,8 @@ public class Vector2 {
 
     public Vector2 rotate(float angle) {
         float rad = angle * TO_RADIANS;
-        float cos = (float)Math.cos(rad);
-        float sin = (float)Math.sin(rad);
+        float cos = (float) Math.cos(rad);
+        float sin = (float) Math.sin(rad);
 
         float newX = this.x * cos - this.y * sin;
         float newY = this.x * sin + this.y * cos;
@@ -105,25 +105,25 @@ public class Vector2 {
     public float dist(Vector2 other) {
         float distX = this.x - other.x;
         float distY = this.y - other.y;
-        return (float)Math.sqrt(distX * distX + distY * distY);
+        return (float) Math.sqrt(distX * distX + distY * distY);
     }
 
     public float dist(float x, float y) {
         float distX = this.x - x;
         float distY = this.y - y;
-        return (float)Math.sqrt(distX * distX + distY * distY);
+        return (float) Math.sqrt(distX * distX + distY * distY);
     }
-    
+
     public float distSquared(Vector2 other) {
         float distX = this.x - other.x;
-        float distY = this.y - other.y;        
-        return distX*distX + distY*distY;
-    }   
-    
+        float distY = this.y - other.y;
+        return distX * distX + distY * distY;
+    }
+
     public float distSquared(float x, float y) {
         float distX = this.x - x;
-        float distY = this.y - y;        
-        return distX*distX + distY*distY;
-    }   
+        float distY = this.y - y;
+        return distX * distX + distY * distY;
+    }
 
 }

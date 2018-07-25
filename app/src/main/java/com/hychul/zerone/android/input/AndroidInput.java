@@ -7,7 +7,7 @@ import com.hychul.zerone.Input;
 
 import java.util.List;
 
-public class AndroidInput implements Input {    
+public class AndroidInput implements Input {
     AccelerometerHandler accelHandler;
     KeyboardHandler keyHandler;
     TouchHandler touchHandler;
@@ -49,7 +49,7 @@ public class AndroidInput implements Input {
     public List<TouchEvent> getTouchEvents() {
         return touchHandler.getTouchEvents();
     }
-    
+
     public List<KeyEvent> getKeyEvents() {
         return keyHandler.getKeyEvents();
     }

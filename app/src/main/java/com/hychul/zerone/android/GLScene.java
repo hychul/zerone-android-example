@@ -7,7 +7,7 @@ public abstract class GLScene extends Scene {
 
     protected final ZeroneActivity zeroneActivity;
     protected final Graphics graphics;
-    
+
     public GLScene(Zerone zerone) {
         super(zerone);
         zeroneActivity = (ZeroneActivity) zerone;

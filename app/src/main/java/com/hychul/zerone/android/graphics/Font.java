@@ -22,7 +22,7 @@ public class Font {
                 x = offsetX;
                 y += glyphHeight;
             }
-        }        
+        }
     }
 
     public void drawText(SpriteBatcher batcher, String text, float x, float y) {
@@ -31,7 +31,7 @@ public class Font {
             int c = text.charAt(i) - ' ';
             if (c < 0 || c > glyphs.length - 1)
                 continue;
-            
+
             Sprite glyph = glyphs[c];
             batcher.drawSprite(x, y, glyphWidth, glyphHeight, glyph);
             x += glyphWidth;

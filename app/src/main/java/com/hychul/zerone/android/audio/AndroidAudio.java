@@ -30,7 +30,7 @@ public class AndroidAudio implements Audio {
             throw new RuntimeException("Couldn't load music '" + filename + "'");
         }
     }
-    
+
     public Sound newSound(String filename) {
         try {
             AssetFileDescriptor assetDescriptor = assets.openFd(filename);

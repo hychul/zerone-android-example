@@ -10,32 +10,33 @@ import com.hychul.zerone.android.graphics.SpriteBatcher;
 import javax.microedition.khronos.opengles.GL10;
 
 public class WorldRenderer {
+
     static final float FRUSTUM_WIDTH = 10;
-    static final float FRUSTUM_HEIGHT = 15;    
+    static final float FRUSTUM_HEIGHT = 15;
     Graphics graphics;
     World world;
     Camera2D cam;
     SpriteBatcher batcher;
-    
+
     public WorldRenderer(Graphics graphics, SpriteBatcher batcher, World world) {
         this.graphics = graphics;
         this.world = world;
         this.cam = new Camera2D(graphics, FRUSTUM_WIDTH, FRUSTUM_HEIGHT);
-        this.batcher = batcher;        
+        this.batcher = batcher;
     }
-    
+
     public void render() {
-        if (world.bob.position.y > cam.position.y )
+        if (world.bob.position.y > cam.position.y)
             cam.position.y = world.bob.position.y;
         cam.setViewport();
         renderBackground();
-        renderObjects();        
+        renderObjects();
     }
 
     public void renderBackground() {
         batcher.beginBatch(Assets.background);
         batcher.drawSprite(cam.position.x, cam.position.y,
-                           FRUSTUM_WIDTH, FRUSTUM_HEIGHT, 
+                           FRUSTUM_WIDTH, FRUSTUM_HEIGHT,
                            Assets.backgroundRegion);
         batcher.endBatch();
     }
@@ -43,7 +44,7 @@ public class WorldRenderer {
     public void renderObjects() {
         GLES10.glEnable(GL10.GL_BLEND);
         GLES10.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
-        
+
         batcher.beginBatch(Assets.items);
         renderBob();
         renderPlatforms();
@@ -56,20 +57,20 @@ public class WorldRenderer {
 
     private void renderBob() {
         Sprite keyFrame;
-        switch(world.bob.state) {
-        case Bob.BOB_STATE_FALL:
-            keyFrame = Assets.bobFall.getKeyFrame(world.bob.stateTime, true);
-            break;
-        case Bob.BOB_STATE_JUMP:
-            keyFrame = Assets.bobJump.getKeyFrame(world.bob.stateTime, true);
-            break;
-        case Bob.BOB_STATE_HIT:
-        default:
-            keyFrame = Assets.bobHit;                       
+        switch (world.bob.state) {
+            case Bob.BOB_STATE_FALL:
+                keyFrame = Assets.bobFall.getKeyFrame(world.bob.stateTime, true);
+                break;
+            case Bob.BOB_STATE_JUMP:
+                keyFrame = Assets.bobJump.getKeyFrame(world.bob.stateTime, true);
+                break;
+            case Bob.BOB_STATE_HIT:
+            default:
+                keyFrame = Assets.bobHit;
         }
-        
-        float side = world.bob.velocity.x < 0? -1: 1;        
-        batcher.drawSprite(world.bob.position.x, world.bob.position.y, side * 1, 1, keyFrame);        
+
+        float side = world.bob.velocity.x < 0 ? -1 : 1;
+        batcher.drawSprite(world.bob.position.x, world.bob.position.y, side * 1, 1, keyFrame);
     }
 
     private void renderPlatforms() {
@@ -79,20 +80,20 @@ public class WorldRenderer {
             Sprite keyFrame = Assets.platform;
             if (platform.state == Platform.PLATFORM_STATE_PULVERIZING) {
                 keyFrame = Assets.brakingPlatform.getKeyFrame(platform.stateTime, false);
-            }            
-                                   
-            batcher.drawSprite(platform.position.x, platform.position.y, 
-                               2, 0.5f, keyFrame);            
+            }
+
+            batcher.drawSprite(platform.position.x, platform.position.y,
+                               2, 0.5f, keyFrame);
         }
     }
 
     private void renderItems() {
         int len = world.springs.size();
         for (int i = 0; i < len; i++) {
-            Spring spring = world.springs.get(i);            
+            Spring spring = world.springs.get(i);
             batcher.drawSprite(spring.position.x, spring.position.y, 1, 1, Assets.spring);
         }
-        
+
         len = world.coins.size();
         for (int i = 0; i < len; i++) {
             Coin coin = world.coins.get(i);
@@ -106,7 +107,7 @@ public class WorldRenderer {
         for (int i = 0; i < len; i++) {
             Squirrel squirrel = world.squirrels.get(i);
             Sprite keyFrame = Assets.squirrelFly.getKeyFrame(squirrel.stateTime, true);
-            float side = squirrel.velocity.x < 0?-1:1;
+            float side = squirrel.velocity.x < 0 ? -1 : 1;
             batcher.drawSprite(squirrel.position.x, squirrel.position.y, side * 1, 1, keyFrame);
         }
     }

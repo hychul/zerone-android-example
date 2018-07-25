@@ -20,23 +20,23 @@ public class HighscoreScene extends GLScene {
     SpriteBatcher batcher;
     Rectangle backBounds;
     Vector2 touchPoint;
-    String[] highScores;  
+    String[] highScores;
     float xOffset = 0;
 
     public HighscoreScene(Zerone zerone) {
         super(zerone);
-        
+
         guiCam = new Camera2D(graphics, 320, 480);
         backBounds = new Rectangle(0, 0, 64, 64);
         touchPoint = new Vector2();
         batcher = new SpriteBatcher(100);
-        highScores = new String[5];        
+        highScores = new String[5];
         for (int i = 0; i < 5; i++) {
             highScores[i] = (i + 1) + ". " + Settings.highscores[i];
             xOffset = Math.max(highScores[i].length() * Assets.font.glyphWidth, xOffset);
-        }        
+        }
         xOffset = 160 - xOffset / 2;
-    }    
+    }
 
     @Override
     public void update(float deltaTime) {
@@ -47,7 +47,7 @@ public class HighscoreScene extends GLScene {
             Input.TouchEvent event = touchEvents.get(i);
             touchPoint.set(event.x, event.y);
             guiCam.touchToWorld(touchPoint);
-            
+
             if (event.type == Input.TouchEvent.TOUCH_UP) {
                 if (OverlapTester.pointInRectangle(backBounds, touchPoint)) {
                     zerone.setScene(new MainMenuScene(zerone));
@@ -61,35 +61,35 @@ public class HighscoreScene extends GLScene {
     public void render() {
         GLES10.glClear(GL10.GL_COLOR_BUFFER_BIT);
         guiCam.setViewport();
-        
+
         GLES10.glEnable(GL10.GL_TEXTURE_2D);
-        
+
         batcher.beginBatch(Assets.background);
         batcher.drawSprite(160, 240, 320, 480, Assets.backgroundRegion);
         batcher.endBatch();
-        
+
         GLES10.glEnable(GL10.GL_BLEND);
         GLES10.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
-        
+
         batcher.beginBatch(Assets.items);
         batcher.drawSprite(160, 360, 300, 33, Assets.highScoresRegion);
-        
+
         float y = 240;
         for (int i = 4; i >= 0; i--) {
             Assets.font.drawText(batcher, highScores[i], xOffset, y);
             y += Assets.font.glyphHeight;
         }
-        
+
         batcher.drawSprite(32, 32, 64, 64, Assets.arrow);
         batcher.endBatch();
-        
+
         GLES10.glDisable(GL10.GL_BLEND);
     }
-    
+
     @Override
     public void onResume() {
     }
-    
+
     @Override
     public void onPause() {
     }

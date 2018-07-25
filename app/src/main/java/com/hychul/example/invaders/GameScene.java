@@ -19,25 +19,25 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class GameScene extends GLScene {
     static final int GAME_RUNNING = 0;
-    static final int GAME_PAUSED = 1;    
+    static final int GAME_PAUSED = 1;
     static final int GAME_OVER = 2;
 
     int state;
     Camera2D guiCam;
     Vector2 touchPoint;
-    SpriteBatcher batcher;    
+    SpriteBatcher batcher;
     World world;
     WorldListener worldListener;
-    WorldRenderer renderer;    
+    WorldRenderer renderer;
     Rectangle pauseBounds;
     Rectangle resumeBounds;
     Rectangle quitBounds;
     Rectangle leftBounds;
     Rectangle rightBounds;
     Rectangle shotBounds;
-    int lastScore;       
-    int lastLives;    
-    int lastWaves; 
+    int lastScore;
+    int lastLives;
+    int lastWaves;
     String scoreString;
     FPSCounter fpsCounter;
 
@@ -70,22 +70,22 @@ public class GameScene extends GLScene {
         lastLives = world.ship.lives;
         lastWaves = world.waves;
         scoreString = "lives:" + lastLives + " waves:" + lastWaves + " score:"
-                + lastScore;
+                      + lastScore;
         fpsCounter = new FPSCounter();
     }
 
     @Override
     public void update(float deltaTime) {
         switch (state) {
-        case GAME_PAUSED:
-            updatePaused();
-            break;
-        case GAME_RUNNING:
-            updateRunning(deltaTime);
-            break;
-        case GAME_OVER:
-            updateGameOver();
-            break;
+            case GAME_PAUSED:
+                updatePaused();
+                break;
+            case GAME_RUNNING:
+                updateRunning(deltaTime);
+                break;
+            case GAME_OVER:
+                updateGameOver();
+                break;
         }
     }
 
@@ -131,12 +131,12 @@ public class GameScene extends GLScene {
 
         world.update(deltaTime, calculateInputAcceleration());
         if (world.ship.lives != lastLives || world.score != lastScore
-                || world.waves != lastWaves) {
+            || world.waves != lastWaves) {
             lastLives = world.ship.lives;
             lastScore = world.score;
             lastWaves = world.waves;
             scoreString = "lives:" + lastLives + " waves:" + lastWaves
-                    + " score:" + lastScore;
+                          + " score:" + lastScore;
         }
         if (world.isGameOver()) {
             state = GAME_OVER;
@@ -149,7 +149,7 @@ public class GameScene extends GLScene {
             for (int i = 0; i < 2; i++) {
                 if (zerone.getInput().isTouchDown(i)) {
                     guiCam.touchToWorld(touchPoint.set(zerone.getInput()
-                            .getTouchX(i), zerone.getInput().getTouchY(i)));
+                                                               .getTouchX(i), zerone.getInput().getTouchY(i)));
                     if (OverlapTester.pointInRectangle(leftBounds, touchPoint)) {
                         accelX = -Ship.SHIP_VELOCITY / 5;
                     }
@@ -190,14 +190,14 @@ public class GameScene extends GLScene {
         renderer.render(world);
 
         switch (state) {
-        case GAME_RUNNING:
-            renderRunning();
-            break;
-        case GAME_PAUSED:
-            renderPaused();
-            break;
-        case GAME_OVER:
-            renderGameOver();
+            case GAME_RUNNING:
+                renderRunning();
+                break;
+            case GAME_PAUSED:
+                renderPaused();
+                break;
+            case GAME_OVER:
+                renderGameOver();
         }
 
         fpsCounter.logFrame();
@@ -210,8 +210,8 @@ public class GameScene extends GLScene {
         GLES10.glEnable(GL10.GL_TEXTURE_2D);
 
         batcher.beginBatch(Assets.items);
-        batcher.drawSprite(480- 32, 320 - 32, 64, 64, Assets.pauseButtonRegion);
-        Assets.font.drawText(batcher, scoreString, 10, 320-20);
+        batcher.drawSprite(480 - 32, 320 - 32, 64, 64, Assets.pauseButtonRegion);
+        Assets.font.drawText(batcher, scoreString, 10, 320 - 20);
         if (Settings.touchEnabled) {
             batcher.drawSprite(32, 32, 64, 64, Assets.leftRegion);
             batcher.drawSprite(96, 32, 64, 64, Assets.rightRegion);
@@ -228,12 +228,12 @@ public class GameScene extends GLScene {
         GLES10.glEnable(GL10.GL_BLEND);
         GLES10.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
         GLES10.glEnable(GL10.GL_TEXTURE_2D);
-        
+
         batcher.beginBatch(Assets.items);
-        Assets.font.drawText(batcher, scoreString, 10, 320-20);
+        Assets.font.drawText(batcher, scoreString, 10, 320 - 20);
         batcher.drawSprite(240, 160, 160, 64, Assets.pauseRegion);
         batcher.endBatch();
-        
+
         GLES10.glDisable(GL10.GL_TEXTURE_2D);
         GLES10.glDisable(GL10.GL_BLEND);
     }
@@ -243,12 +243,12 @@ public class GameScene extends GLScene {
         GLES10.glEnable(GL10.GL_BLEND);
         GLES10.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
         GLES10.glEnable(GL10.GL_TEXTURE_2D);
-        
+
         batcher.beginBatch(Assets.items);
         batcher.drawSprite(240, 160, 128, 64, Assets.gameOverRegion);
-        Assets.font.drawText(batcher, scoreString, 10, 320-20);        
+        Assets.font.drawText(batcher, scoreString, 10, 320 - 20);
         batcher.endBatch();
-        
+
         GLES10.glDisable(GL10.GL_TEXTURE_2D);
         GLES10.glDisable(GL10.GL_BLEND);
     }

@@ -13,9 +13,9 @@ import java.util.List;
 public class KeyboardHandler implements OnKeyListener {
     boolean[] pressedKeys = new boolean[128];
     Pool<KeyEvent> keyEventPool;
-    List<KeyEvent> keyEventsBuffer = new ArrayList<KeyEvent>();    
+    List<KeyEvent> keyEventsBuffer = new ArrayList<KeyEvent>();
     List<KeyEvent> keyEvents = new ArrayList<KeyEvent>();
-    
+
     public KeyboardHandler(View view) {
         PoolObjectFactory<KeyEvent> factory = new PoolObjectFactory<KeyEvent>() {
             public KeyEvent create() {

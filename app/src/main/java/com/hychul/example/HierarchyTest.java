@@ -6,19 +6,19 @@ import android.opengl.GLU;
 import com.hychul.zerone.Zerone;
 import com.hychul.zerone.android.GLScene;
 import com.hychul.zerone.android.ZeroneActivity;
-import com.hychul.zerone.core.Scene;
 import com.hychul.zerone.android.graphics.Texture;
 import com.hychul.zerone.android.graphics.Vertices3;
+import com.hychul.zerone.core.Scene;
 
 import javax.microedition.khronos.opengles.GL10;
 
 public class HierarchyTest extends ZeroneActivity {
 
-	public Scene getStartScene() {
-		return new HierarchyScene(this);
-	}
+    public Scene getStartScene() {
+        return new HierarchyScene(this);
+    }
 
-	class HierarchyScene extends GLScene {
+    class HierarchyScene extends GLScene {
         Vertices3 cube;
         Texture texture;
         HierarchicalObject sun;
@@ -41,47 +41,47 @@ public class HierarchyTest extends ZeroneActivity {
             moon.scale = 0.1f;
             planet.children.add(moon);
         }
-        
+
         private Vertices3 createCube() {
-            float[] vertices = { -0.5f, -0.5f,  0.5f, 0, 1,
-                                  0.5f, -0.5f,  0.5f, 1, 1,
-                                  0.5f,  0.5f,  0.5f, 1, 0,
-                                 -0.5f,  0.5f,  0.5f, 0, 0,
-                               
-                                  0.5f, -0.5f,  0.5f, 0, 1,
-                                  0.5f, -0.5f, -0.5f, 1, 1,
-                                  0.5f,  0.5f, -0.5f, 1, 0,
-                                  0.5f,  0.5f,  0.5f, 0, 0,
-                                
-                                  0.5f, -0.5f, -0.5f, 0, 1,
-                                 -0.5f, -0.5f, -0.5f, 1, 1,
-                                 -0.5f,  0.5f, -0.5f, 1, 0,
-                                  0.5f,  0.5f, -0.5f, 0, 0,
-                                
-                                 -0.5f, -0.5f, -0.5f, 0, 1, 
-                                 -0.5f, -0.5f,  0.5f, 1, 1,
-                                 -0.5f,  0.5f,  0.5f, 1, 0,
-                                 -0.5f,  0.5f, -0.5f, 0, 0,
-                               
-                                 -0.5f,  0.5f,  0.5f, 0, 1,
-                                  0.5f,  0.5f,  0.5f, 1, 1,
-                                  0.5f,  0.5f, -0.5f, 1, 0,
-                                 -0.5f,  0.5f, -0.5f, 0, 0,
-                               
-                                 -0.5f, -0.5f,  0.5f, 0, 1,
-                                  0.5f, -0.5f,  0.5f, 1, 1,
-                                  0.5f, -0.5f, -0.5f, 1, 0,
-                                 -0.5f, -0.5f, -0.5f, 0, 0
-            };             
-            
-            short[] indices = { 0, 1, 3, 1, 2, 3,
-                                4, 5, 7, 5, 6, 7,
-                                8, 9, 11, 9, 10, 11,
-                                12, 13, 15, 13, 14, 15,
-                                16, 17, 19, 17, 18, 19,
-                                20, 21, 23, 21, 22, 23,
+            float[] vertices = {-0.5f, -0.5f, 0.5f, 0, 1,
+                                0.5f, -0.5f, 0.5f, 1, 1,
+                                0.5f, 0.5f, 0.5f, 1, 0,
+                                -0.5f, 0.5f, 0.5f, 0, 0,
+
+                                0.5f, -0.5f, 0.5f, 0, 1,
+                                0.5f, -0.5f, -0.5f, 1, 1,
+                                0.5f, 0.5f, -0.5f, 1, 0,
+                                0.5f, 0.5f, 0.5f, 0, 0,
+
+                                0.5f, -0.5f, -0.5f, 0, 1,
+                                -0.5f, -0.5f, -0.5f, 1, 1,
+                                -0.5f, 0.5f, -0.5f, 1, 0,
+                                0.5f, 0.5f, -0.5f, 0, 0,
+
+                                -0.5f, -0.5f, -0.5f, 0, 1,
+                                -0.5f, -0.5f, 0.5f, 1, 1,
+                                -0.5f, 0.5f, 0.5f, 1, 0,
+                                -0.5f, 0.5f, -0.5f, 0, 0,
+
+                                -0.5f, 0.5f, 0.5f, 0, 1,
+                                0.5f, 0.5f, 0.5f, 1, 1,
+                                0.5f, 0.5f, -0.5f, 1, 0,
+                                -0.5f, 0.5f, -0.5f, 0, 0,
+
+                                -0.5f, -0.5f, 0.5f, 0, 1,
+                                0.5f, -0.5f, 0.5f, 1, 1,
+                                0.5f, -0.5f, -0.5f, 1, 0,
+                                -0.5f, -0.5f, -0.5f, 0, 0
             };
-            
+
+            short[] indices = {0, 1, 3, 1, 2, 3,
+                               4, 5, 7, 5, 6, 7,
+                               8, 9, 11, 9, 10, 11,
+                               12, 13, 15, 13, 14, 15,
+                               16, 17, 19, 17, 18, 19,
+                               20, 21, 23, 21, 22, 23,
+                               };
+
             Vertices3 cube = new Vertices3(24, 36, false, true, false);
             cube.setVertices(vertices, 0, vertices.length);
             cube.setIndices(indices, 0, indices.length);
@@ -101,7 +101,7 @@ public class HierarchyTest extends ZeroneActivity {
             GLES10.glMatrixMode(GL10.GL_PROJECTION);
             GLES10.glLoadIdentity();
             GLU.gluPerspective(gl, 67, graphics.getWidth()
-                    / (float) graphics.getHeight(), 0.1f, 10.0f);
+                                       / (float) graphics.getHeight(), 0.1f, 10.0f);
             GLES10.glMatrixMode(GL10.GL_MODELVIEW);
             GLES10.glLoadIdentity();
             GLES10.glTranslatef(0, -2, 0);
@@ -118,17 +118,17 @@ public class HierarchyTest extends ZeroneActivity {
             GLES10.glDisable(GL10.GL_DEPTH_TEST);
         }
 
-		@Override
-		public void onPause() {
-		}
+        @Override
+        public void onPause() {
+        }
 
-		@Override
-		public void onResume() {
-		}
+        @Override
+        public void onResume() {
+        }
 
-		@Override
-		public void onDestroy() {
-		}
-	}
+        @Override
+        public void onDestroy() {
+        }
+    }
 
 }

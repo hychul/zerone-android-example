@@ -12,13 +12,10 @@ public class AccelerometerHandler implements SensorEventListener {
     float accelZ;
 
     public AccelerometerHandler(Context context) {
-        SensorManager manager = (SensorManager) context
-                .getSystemService(Context.SENSOR_SERVICE);
+        SensorManager manager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
         if (manager.getSensorList(Sensor.TYPE_ACCELEROMETER).size() != 0) {
-            Sensor accelerometer = manager.getSensorList(
-                    Sensor.TYPE_ACCELEROMETER).get(0);
-            manager.registerListener(this, accelerometer,
-                    SensorManager.SENSOR_DELAY_GAME);
+            Sensor accelerometer = manager.getSensorList(Sensor.TYPE_ACCELEROMETER).get(0);
+            manager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_GAME);
         }
     }
 

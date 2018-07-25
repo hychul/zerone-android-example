@@ -32,21 +32,21 @@ public class MainMenuScene extends GLScene {
         playBounds = new Rectangle(160 - 150, 200 + 18, 300, 36);
         highscoresBounds = new Rectangle(160 - 150, 200 - 18, 300, 36);
         helpBounds = new Rectangle(160 - 150, 200 - 18 - 36, 300, 36);
-        touchPoint = new Vector2();               
-    }       
+        touchPoint = new Vector2();
+    }
 
     @Override
     public void update(float deltaTime) {
         List<Input.TouchEvent> touchEvents = zerone.getInput().getTouchEvents();
         zerone.getInput().getKeyEvents();
-        
+
         int len = touchEvents.size();
         for (int i = 0; i < len; i++) {
             Input.TouchEvent event = touchEvents.get(i);
             if (event.type == Input.TouchEvent.TOUCH_UP) {
                 touchPoint.set(event.x, event.y);
                 guiCam.touchToWorld(touchPoint);
-                
+
                 if (OverlapTester.pointInRectangle(playBounds, touchPoint)) {
                     Assets.playSound(Assets.clickSound);
                     zerone.setScene(new GameScene(zerone));
@@ -78,24 +78,24 @@ public class MainMenuScene extends GLScene {
     public void render() {
         GLES10.glClear(GL10.GL_COLOR_BUFFER_BIT);
         guiCam.setViewport();
-        
+
         GLES10.glEnable(GL10.GL_TEXTURE_2D);
-        
+
         batcher.beginBatch(Assets.background);
         batcher.drawSprite(160, 240, 320, 480, Assets.backgroundRegion);
         batcher.endBatch();
-        
+
         GLES10.glEnable(GL10.GL_BLEND);
         GLES10.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
-        
-        batcher.beginBatch(Assets.items);                 
-        
+
+        batcher.beginBatch(Assets.items);
+
         batcher.drawSprite(160, 480 - 10 - 71, 274, 142, Assets.logo);
         batcher.drawSprite(160, 200, 300, 110, Assets.mainMenu);
-        batcher.drawSprite(32, 32, 64, 64, Settings.soundEnabled?Assets.soundOn:Assets.soundOff);
-                
+        batcher.drawSprite(32, 32, 64, 64, Settings.soundEnabled ? Assets.soundOn : Assets.soundOff);
+
         batcher.endBatch();
-        
+
         GLES10.glDisable(GL10.GL_BLEND);
     }
 
@@ -106,7 +106,7 @@ public class MainMenuScene extends GLScene {
 
     @Override
     public void onResume() {
-    }       
+    }
 
     @Override
     public void onDestroy() {

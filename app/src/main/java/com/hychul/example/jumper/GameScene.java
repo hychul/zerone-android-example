@@ -16,24 +16,24 @@ import java.util.List;
 import javax.microedition.khronos.opengles.GL10;
 
 public class GameScene extends GLScene {
-    static final int GAME_READY = 0;    
+    static final int GAME_READY = 0;
     static final int GAME_RUNNING = 1;
     static final int GAME_PAUSED = 2;
     static final int GAME_LEVEL_END = 3;
     static final int GAME_OVER = 4;
-  
+
     int state;
     Camera2D guiCam;
     Vector2 touchPoint;
     SpriteBatcher batcher;
     World world;
     World.WorldListener worldListener;
-    WorldRenderer renderer;    
+    WorldRenderer renderer;
     Rectangle pauseBounds;
     Rectangle resumeBounds;
     Rectangle quitBounds;
     int lastScore;
-    String scoreString;    
+    String scoreString;
 
     public GameScene(Zerone zerone) {
         super(zerone);
@@ -42,7 +42,7 @@ public class GameScene extends GLScene {
         touchPoint = new Vector2();
         batcher = new SpriteBatcher(1000);
         worldListener = new World.WorldListener() {
-            public void jump() {            
+            public void jump() {
                 Assets.playSound(Assets.jumpSound);
             }
 
@@ -56,11 +56,11 @@ public class GameScene extends GLScene {
 
             public void coin() {
                 Assets.playSound(Assets.coinSound);
-            }                      
+            }
         };
         world = new World(worldListener);
         renderer = new WorldRenderer(graphics, batcher, world);
-        pauseBounds = new Rectangle(320- 64, 480- 64, 64, 64);
+        pauseBounds = new Rectangle(320 - 64, 480 - 64, 64, 64);
         resumeBounds = new Rectangle(160 - 96, 240, 192, 36);
         quitBounds = new Rectangle(160 - 96, 240 - 36, 192, 36);
         lastScore = 0;
@@ -71,23 +71,23 @@ public class GameScene extends GLScene {
     public void update(float deltaTime) {
         if (deltaTime > 0.1f)
             deltaTime = 0.1f;
-        
-        switch(state) {
-        case GAME_READY:
-            updateReady();
-            break;
-        case GAME_RUNNING:
-            updateRunning(deltaTime);
-            break;
-        case GAME_PAUSED:
-            updatePaused();
-            break;
-        case GAME_LEVEL_END:
-            updateLevelEnd();
-            break;
-        case GAME_OVER:
-            updateGameOver();
-            break;
+
+        switch (state) {
+            case GAME_READY:
+                updateReady();
+                break;
+            case GAME_RUNNING:
+                updateRunning(deltaTime);
+                break;
+            case GAME_PAUSED:
+                updatePaused();
+                break;
+            case GAME_LEVEL_END:
+                updateLevelEnd();
+                break;
+            case GAME_OVER:
+                updateGameOver();
+                break;
         }
     }
 
@@ -104,24 +104,24 @@ public class GameScene extends GLScene {
             Input.TouchEvent event = touchEvents.get(i);
             if (event.type != Input.TouchEvent.TOUCH_UP)
                 continue;
-            
+
             touchPoint.set(event.x, event.y);
             guiCam.touchToWorld(touchPoint);
-            
+
             if (OverlapTester.pointInRectangle(pauseBounds, touchPoint)) {
                 Assets.playSound(Assets.clickSound);
                 state = GAME_PAUSED;
                 return;
-            }            
+            }
         }
-        
+
         world.update(deltaTime, zerone.getInput().getAccelX());
         if (world.score != lastScore) {
             lastScore = world.score;
             scoreString = "" + lastScore;
         }
         if (world.state == World.WORLD_STATE_NEXT_LEVEL) {
-            state = GAME_LEVEL_END;        
+            state = GAME_LEVEL_END;
         }
         if (world.state == World.WORLD_STATE_GAME_OVER) {
             state = GAME_OVER;
@@ -141,21 +141,21 @@ public class GameScene extends GLScene {
             Input.TouchEvent event = touchEvents.get(i);
             if (event.type != Input.TouchEvent.TOUCH_UP)
                 continue;
-            
+
             touchPoint.set(event.x, event.y);
             guiCam.touchToWorld(touchPoint);
-            
+
             if (OverlapTester.pointInRectangle(resumeBounds, touchPoint)) {
                 Assets.playSound(Assets.clickSound);
                 state = GAME_RUNNING;
                 return;
             }
-            
+
             if (OverlapTester.pointInRectangle(quitBounds, touchPoint)) {
                 Assets.playSound(Assets.clickSound);
                 zerone.setScene(new MainMenuScene(zerone));
                 return;
-            
+
             }
         }
     }
@@ -189,29 +189,29 @@ public class GameScene extends GLScene {
     public void render() {
         GLES10.glClear(GL10.GL_COLOR_BUFFER_BIT);
         GLES10.glEnable(GL10.GL_TEXTURE_2D);
-        
+
         renderer.render();
-        
+
         guiCam.setViewport();
         GLES10.glEnable(GL10.GL_BLEND);
         GLES10.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
         batcher.beginBatch(Assets.items);
-        switch(state) {
-        case GAME_READY:
-            presentReady();
-            break;
-        case GAME_RUNNING:
-            presentRunning();
-            break;
-        case GAME_PAUSED:
-            presentPaused();
-            break;
-        case GAME_LEVEL_END:
-            presentLevelEnd();
-            break;
-        case GAME_OVER:
-            presentGameOver();
-            break;
+        switch (state) {
+            case GAME_READY:
+                presentReady();
+                break;
+            case GAME_RUNNING:
+                presentRunning();
+                break;
+            case GAME_PAUSED:
+                presentPaused();
+                break;
+            case GAME_LEVEL_END:
+                presentLevelEnd();
+                break;
+            case GAME_OVER:
+                presentGameOver();
+                break;
         }
         batcher.endBatch();
         GLES10.glDisable(GL10.GL_BLEND);
@@ -223,12 +223,12 @@ public class GameScene extends GLScene {
 
     private void presentRunning() {
         batcher.drawSprite(320 - 32, 480 - 32, 64, 64, Assets.pause);
-        Assets.font.drawText(batcher, scoreString, 16, 480-20);
+        Assets.font.drawText(batcher, scoreString, 16, 480 - 20);
     }
 
-    private void presentPaused() {        
+    private void presentPaused() {
         batcher.drawSprite(160, 240, 192, 96, Assets.pauseMenu);
-        Assets.font.drawText(batcher, scoreString, 16, 480-20);
+        Assets.font.drawText(batcher, scoreString, 16, 480 - 20);
     }
 
     private void presentLevelEnd() {
@@ -241,9 +241,9 @@ public class GameScene extends GLScene {
     }
 
     private void presentGameOver() {
-        batcher.drawSprite(160, 240, 160, 96, Assets.gameOver);        
+        batcher.drawSprite(160, 240, 160, 96, Assets.gameOver);
         float scoreWidth = Assets.font.glyphWidth * scoreString.length();
-        Assets.font.drawText(batcher, scoreString, 160 - scoreWidth / 2, 480-20);
+        Assets.font.drawText(batcher, scoreString, 160 - scoreWidth / 2, 480 - 20);
     }
 
     @Override

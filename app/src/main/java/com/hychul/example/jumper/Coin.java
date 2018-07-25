@@ -8,11 +8,12 @@ public class Coin extends GameObject {
     public static final int COIN_SCORE = 10;
 
     float stateTime;
+
     public Coin(float x, float y) {
         super(x, y, COIN_WIDTH, COIN_HEIGHT);
         stateTime = 0;
     }
-    
+
     public void update(float deltaTime) {
         stateTime += deltaTime;
     }

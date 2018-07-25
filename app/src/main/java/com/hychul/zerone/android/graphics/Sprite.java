@@ -5,7 +5,7 @@ public class Sprite {
     public final Texture texture;
     public final float u1, v1;
     public final float u2, v2;
-    
+
     public Sprite(Texture texture, float x, float y, float width, float height) {
         this.texture = texture;
         this.u1 = x / texture.width;

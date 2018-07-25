@@ -11,8 +11,8 @@ import com.hychul.zerone.android.graphics.Texture;
 public class Assets {
     public static Texture background;
     public static Sprite backgroundRegion;
-    
-    public static Texture items;        
+
+    public static Texture items;
     public static Sprite mainMenu;
     public static Sprite pauseMenu;
     public static Sprite ready;
@@ -22,7 +22,7 @@ public class Assets {
     public static Sprite soundOn;
     public static Sprite soundOff;
     public static Sprite arrow;
-    public static Sprite pause;    
+    public static Sprite pause;
     public static Sprite spring;
     public static Sprite castle;
     public static SpriteAnimation coinAnim;
@@ -33,7 +33,7 @@ public class Assets {
     public static Sprite platform;
     public static SpriteAnimation brakingPlatform;
     public static Font font;
-    
+
     public static Music music;
     public static Sound jumpSound;
     public static Sound highJumpSound;
@@ -44,7 +44,7 @@ public class Assets {
     public static void load(ZeroneActivity zeroneActivity) {
         background = new Texture(zeroneActivity.getFileIO(), "jumper/background.png");
         backgroundRegion = new Sprite(background, 0, 0, 320, 480);
-        
+
         items = new Texture(zeroneActivity.getFileIO(), "jumper/items.png");
         mainMenu = new Sprite(items, 0, 224, 300, 110);
         pauseMenu = new Sprite(items, 224, 128, 192, 96);
@@ -56,33 +56,33 @@ public class Assets {
         soundOn = new Sprite(items, 64, 0, 64, 64);
         arrow = new Sprite(items, 0, 64, 64, 64);
         pause = new Sprite(items, 64, 64, 64, 64);
-        
+
         spring = new Sprite(items, 128, 0, 32, 32);
         castle = new Sprite(items, 128, 64, 64, 64);
         coinAnim = new SpriteAnimation(0.2f,
-                                 new Sprite(items, 128, 32, 32, 32),
-                                 new Sprite(items, 160, 32, 32, 32),
-                                 new Sprite(items, 192, 32, 32, 32),
-                                 new Sprite(items, 160, 32, 32, 32));
+                                       new Sprite(items, 128, 32, 32, 32),
+                                       new Sprite(items, 160, 32, 32, 32),
+                                       new Sprite(items, 192, 32, 32, 32),
+                                       new Sprite(items, 160, 32, 32, 32));
         bobJump = new SpriteAnimation(0.2f,
-                                new Sprite(items, 0, 128, 32, 32),
-                                new Sprite(items, 32, 128, 32, 32));
+                                      new Sprite(items, 0, 128, 32, 32),
+                                      new Sprite(items, 32, 128, 32, 32));
         bobFall = new SpriteAnimation(0.2f,
-                                new Sprite(items, 64, 128, 32, 32),
-                                new Sprite(items, 96, 128, 32, 32));
+                                      new Sprite(items, 64, 128, 32, 32),
+                                      new Sprite(items, 96, 128, 32, 32));
         bobHit = new Sprite(items, 128, 128, 32, 32);
         squirrelFly = new SpriteAnimation(0.2f,
-                                    new Sprite(items, 0, 160, 32, 32),
-                                    new Sprite(items, 32, 160, 32, 32));
+                                          new Sprite(items, 0, 160, 32, 32),
+                                          new Sprite(items, 32, 160, 32, 32));
         platform = new Sprite(items, 64, 160, 64, 16);
         brakingPlatform = new SpriteAnimation(0.2f,
-                                     new Sprite(items, 64, 160, 64, 16),
-                                     new Sprite(items, 64, 176, 64, 16),
-                                     new Sprite(items, 64, 192, 64, 16),
-                                     new Sprite(items, 64, 208, 64, 16));
-        
+                                              new Sprite(items, 64, 160, 64, 16),
+                                              new Sprite(items, 64, 176, 64, 16),
+                                              new Sprite(items, 64, 192, 64, 16),
+                                              new Sprite(items, 64, 208, 64, 16));
+
         font = new Font(items, 224, 0, 16, 16, 20);
-        
+
         music = zeroneActivity.getAudio().newMusic("jumper/music.mp3");
         music.setLooping(true);
         music.setVolume(0.5f);
@@ -93,7 +93,7 @@ public class Assets {
         hitSound = zeroneActivity.getAudio().newSound("jumper/hit.ogg");
         coinSound = zeroneActivity.getAudio().newSound("jumper/coin.ogg");
         clickSound = zeroneActivity.getAudio().newSound("jumper/click.ogg");
-    }       
+    }
 
     public static void reload() {
         background.reload();

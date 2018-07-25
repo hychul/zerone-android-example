@@ -15,7 +15,7 @@ public class Platform extends GameObject {
     int type;
     int state;
     float stateTime;
-    
+
     public Platform(int type, float x, float y) {
         super(x, y, PLATFORM_WIDTH, PLATFORM_HEIGHT);
         this.type = type;
@@ -30,7 +30,7 @@ public class Platform extends GameObject {
         if (type == PLATFORM_TYPE_MOVING) {
             position.add(velocity.x * deltaTime, 0);
             bounds.lowerLeft.set(position).sub(PLATFORM_WIDTH / 2, PLATFORM_HEIGHT / 2);
-            
+
             if (position.x < PLATFORM_WIDTH / 2) {
                 velocity.x = -velocity.x;
                 position.x = PLATFORM_WIDTH / 2;
@@ -38,10 +38,10 @@ public class Platform extends GameObject {
             if (position.x > World.WORLD_WIDTH - PLATFORM_WIDTH / 2) {
                 velocity.x = -velocity.x;
                 position.x = World.WORLD_WIDTH - PLATFORM_WIDTH / 2;
-            }            
+            }
         }
-                
-        stateTime += deltaTime;        
+
+        stateTime += deltaTime;
     }
 
     public void pulverize() {

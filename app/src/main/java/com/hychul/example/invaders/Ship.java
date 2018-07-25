@@ -10,7 +10,7 @@ public class Ship extends GameObject3D {
     static float SHIP_EXPLOSION_TIME = 1.6f;
     static float SHIP_RADIUS = 0.5f;
 
-    int lives;    
+    int lives;
     int state;
     float stateTime = 0;
 
@@ -45,6 +45,6 @@ public class Ship extends GameObject3D {
     public void kill() {
         state = SHIP_EXPLODING;
         stateTime = 0;
-        velocity.x = 0;        
+        velocity.x = 0;
     }
 }

@@ -5,10 +5,10 @@ import android.opengl.GLES10;
 import javax.microedition.khronos.opengles.GL10;
 
 public class PointLight {
-    float[] ambient = { 0.2f, 0.2f, 0.2f, 1.0f };
-    float[] diffuse = { 1.0f, 1.0f, 1.0f, 1.0f };
-    float[] specular = { 0.0f, 0.0f, 0.0f, 1.0f };
-    float[] position = { 0, 0, 0, 1 };
+    float[] ambient = {0.2f, 0.2f, 0.2f, 1.0f};
+    float[] diffuse = {1.0f, 1.0f, 1.0f, 1.0f};
+    float[] specular = {0.0f, 0.0f, 0.0f, 1.0f};
+    float[] position = {0, 0, 0, 1};
     int lastLightId = 0;
 
     public void setAmbient(float r, float g, float b, float a) {

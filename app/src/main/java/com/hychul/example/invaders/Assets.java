@@ -30,7 +30,7 @@ public class Assets {
     public static Sprite fireRegion;
     public static Sprite pauseButtonRegion;
     public static Font font;
-    
+
     public static Texture explosionTexture;
     public static SpriteAnimation explosionAnim;
     public static Vertices3 shipModel;

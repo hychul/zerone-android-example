@@ -20,11 +20,11 @@ public class EulerCamera {
     float far;
 
     final float[] matrix = new float[16];
-    final float[] inVec = { 0, 0, -1, 1 };
+    final float[] inVec = {0, 0, -1, 1};
     final float[] outVec = new float[4];
     final Vector3 direction = new Vector3();
 
-    public EulerCamera(Graphics graphics, float fieldOfView, float aspectRatio, float near, float far){
+    public EulerCamera(Graphics graphics, float fieldOfView, float aspectRatio, float near, float far) {
         this.graphics = graphics;
         this.fieldOfView = fieldOfView;
         this.aspectRatio = aspectRatio;
@@ -35,10 +35,11 @@ public class EulerCamera {
     public Vector3 getPosition() {
         return position;
     }
+
     public float getYaw() {
         return yaw;
     }
-    
+
     public float getPitch() {
         return pitch;
     }

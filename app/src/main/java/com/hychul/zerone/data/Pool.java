@@ -3,7 +3,7 @@ package com.hychul.zerone.data;
 import java.util.Stack;
 
 public class Pool<T> {
-	
+
     public interface PoolObjectFactory<T> {
         T create();
     }

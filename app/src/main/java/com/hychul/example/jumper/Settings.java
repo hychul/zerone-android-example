@@ -10,7 +10,7 @@ import java.io.OutputStreamWriter;
 
 public class Settings {
     public static boolean soundEnabled = true;
-    public final static int[] highscores = new int[] { 100, 80, 50, 30, 10 };
+    public final static int[] highscores = new int[]{100, 80, 50, 30, 10};
     public final static String file = ".superjumper";
 
     public static void load(FileIO files) {
@@ -57,10 +57,10 @@ public class Settings {
     }
 
     public static void addScore(int score) {
-        for (int i=0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {
             if (highscores[i] < score) {
-                for (int j= 4; j > i; j--)
-                    highscores[j] = highscores[j-1];
+                for (int j = 4; j > i; j--)
+                    highscores[j] = highscores[j - 1];
                 highscores[i] = score;
                 break;
             }

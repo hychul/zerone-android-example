@@ -12,23 +12,23 @@ public class Graphics {
 
     int width;
     int height;
-    
+
     Graphics(GLSurfaceView glView) {
         this.glView = glView;
     }
-    
+
     public GL10 getGL() {
         return gl;
     }
-    
+
     void setGL(GL10 gl) {
         this.gl = gl;
     }
-    
+
     public int getWidth() {
         return width;
     }
-    
+
     public int getHeight() {
         return height;
     }

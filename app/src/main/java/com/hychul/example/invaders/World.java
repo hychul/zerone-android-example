@@ -40,7 +40,7 @@ public class World {
         for (int row = 0; row < 4; row++) {
             for (int column = 0; column < 8; column++) {
                 Invader invader = new Invader(-WORLD_MAX_X / 2 + column * 2f,
-                        0, WORLD_MIN_Z + row * 2f);
+                                              0, WORLD_MIN_Z + row * 2f);
                 invaders.add(invader);
             }
         }
@@ -84,16 +84,16 @@ public class World {
             if (invader.state == Invader.INVADER_ALIVE) {
                 if (random.nextFloat() < 0.001f) {
                     Shot shot = new Shot(invader.position.x,
-                                 invader.position.y, 
-                                                             invader.position.z,
-                                 Shot.SHOT_VELOCITY);
+                                         invader.position.y,
+                                         invader.position.z,
+                                         Shot.SHOT_VELOCITY);
                     shots.add(shot);
                     listener.shot();
                 }
             }
 
-            if (invader.state == Invader.INVADER_DEAD && 
-                            invader.stateTime > Invader.INVADER_EXPLOSION_TIME) {
+            if (invader.state == Invader.INVADER_DEAD &&
+                invader.stateTime > Invader.INVADER_EXPLOSION_TIME) {
                 invaders.remove(i);
                 i--;
                 len--;
@@ -156,8 +156,8 @@ public class World {
                 for (int j = 0; j < len2; j++) {
                     Invader invader = invaders.get(j);
                     if (OverlapTester.overlapSpheres(invader.bounds,
-                            shot.bounds)
-                            && invader.state == Invader.INVADER_ALIVE) {
+                                                     shot.bounds)
+                        && invader.state == Invader.INVADER_ALIVE) {
                         invader.kill();
                         listener.explosion();
                         score += 10;
@@ -169,7 +169,7 @@ public class World {
                 }
             } else {
                 if (OverlapTester.overlapSpheres(shot.bounds, ship.bounds)
-                        && ship.state == Ship.SHIP_ALIVE) {
+                    && ship.state == Ship.SHIP_ALIVE) {
                     ship.kill();
                     listener.explosion();
                     shots.remove(i);
@@ -197,7 +197,7 @@ public class World {
 
         if (System.nanoTime() - lastShotTime > 1000000000 || friendlyShots == 0) {
             shots.add(new Shot(ship.position.x, ship.position.y,
-                    ship.position.z, -Shot.SHOT_VELOCITY));
+                               ship.position.z, -Shot.SHOT_VELOCITY));
             lastShotTime = System.nanoTime();
             listener.shot();
         }

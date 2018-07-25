@@ -16,8 +16,8 @@ public class AndroidMusic implements Music, OnCompletionListener {
         mediaPlayer = new MediaPlayer();
         try {
             mediaPlayer.setDataSource(assetDescriptor.getFileDescriptor(),
-                    assetDescriptor.getStartOffset(),
-                    assetDescriptor.getLength());
+                                      assetDescriptor.getStartOffset(),
+                                      assetDescriptor.getLength());
             mediaPlayer.prepare();
             isPrepared = true;
             mediaPlayer.setOnCompletionListener(this);
@@ -31,7 +31,7 @@ public class AndroidMusic implements Music, OnCompletionListener {
             mediaPlayer.stop();
         mediaPlayer.release();
     }
-    
+
     public boolean isLooping() {
         return mediaPlayer.isLooping();
     }
@@ -43,12 +43,12 @@ public class AndroidMusic implements Music, OnCompletionListener {
     public boolean isStopped() {
         return !isPrepared;
     }
-    
+
     public void pause() {
         if (mediaPlayer.isPlaying())
             mediaPlayer.pause();
     }
-    
+
     public void play() {
         if (mediaPlayer.isPlaying())
             return;
@@ -72,7 +72,7 @@ public class AndroidMusic implements Music, OnCompletionListener {
     public void setVolume(float volume) {
         mediaPlayer.setVolume(volume, volume);
     }
-    
+
     public void stop() {
         mediaPlayer.stop();
         synchronized (this) {

@@ -27,7 +27,7 @@ public abstract class ZeroneActivity extends Activity implements Zerone, Rendere
         Finished,
         Idle
     }
-    
+
     GLSurfaceView glView;
     Graphics graphics;
 
@@ -51,13 +51,13 @@ public abstract class ZeroneActivity extends Activity implements Zerone, Rendere
         glView = new GLSurfaceView(this);
         glView.setRenderer(this);
         setContentView(glView);
-        
+
         graphics = new Graphics(glView);
         fileIO = new AndroidFileIO(this);
         audio = new AndroidAudio(this);
         input = new AndroidInput(this, glView, 1, 1);
     }
-    
+
     @Override
     public void onResume() {
         super.onResume();
@@ -68,7 +68,7 @@ public abstract class ZeroneActivity extends Activity implements Zerone, Rendere
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
         graphics.setGL(gl);
 
-        synchronized(stateLock) {
+        synchronized (stateLock) {
             if (state == GLGameState.Initialized)
                 scene = getStartScene();
             state = GLGameState.Running;
@@ -86,31 +86,31 @@ public abstract class ZeroneActivity extends Activity implements Zerone, Rendere
     @Override
     public void onDrawFrame(GL10 gl) {
         GLGameState state = null;
-        
-        synchronized(stateLock) {
+
+        synchronized (stateLock) {
             state = this.state;
         }
-        
+
         if (state == GLGameState.Running) {
             float deltaTime = (System.nanoTime() - startTime) / 1000000000.0f;
             startTime = System.nanoTime();
-            
+
             scene.update(deltaTime);
             scene.render();
         }
-        
+
         if (state == GLGameState.Paused) {
             scene.onPause();
-            synchronized(stateLock) {
+            synchronized (stateLock) {
                 this.state = GLGameState.Idle;
                 stateLock.notifyAll();
             }
         }
-        
+
         if (state == GLGameState.Finished) {
             scene.onPause();
             scene.onDestroy();
-            synchronized(stateLock) {
+            synchronized (stateLock) {
                 this.state = GLGameState.Idle;
                 stateLock.notifyAll();
             }
@@ -119,17 +119,17 @@ public abstract class ZeroneActivity extends Activity implements Zerone, Rendere
 
     @Override
     public void onPause() {
-        synchronized(stateLock) {
+        synchronized (stateLock) {
             if (isFinishing())
                 state = GLGameState.Finished;
             else
                 state = GLGameState.Paused;
 
-            while(true) {
+            while (true) {
                 try {
                     stateLock.wait();
                     break;
-                } catch(InterruptedException e) {
+                } catch (InterruptedException e) {
 
                 }
             }
