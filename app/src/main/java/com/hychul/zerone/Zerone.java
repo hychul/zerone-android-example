@@ -12,7 +12,7 @@ public interface Zerone {
 
     void setScene(Scene scene);
 
-    Scene getCurrentScene();
-
     Scene getStartScene();
+
+    Scene getCurrentScene();
 }
