@@ -9,27 +9,27 @@ public final class Mathf {
     public static final float RAD_TO_DEGREES = 180.0f / PI;
 
     public static float sin(float var0) {
-        return Mathf.sin(var0);
+        return (float) Math.sin(var0);
     }
 
     public static float cos(float var0) {
-        return Mathf.cos(var0);
+        return (float) Math.cos(var0);
     }
 
     public static float tan(float var0) {
-        return Mathf.tan(var0);
+        return (float) Math.tan(var0);
     }
 
     public static float asin(float var0) {
-        return Mathf.asin(var0);
+        return (float) Math.asin(var0);
     }
 
     public static float acos(float var0) {
-        return Mathf.acos(var0);
+        return (float) Math.acos(var0);
     }
 
     public static float atan(float var0) {
-        return Mathf.atan(var0);
+        return (float) Math.atan(var0);
     }
 
     public static float toRadians(float angdeg) {
@@ -41,47 +41,47 @@ public final class Mathf {
     }
 
     public static float exp(float var0) {
-        return Mathf.exp(var0);
+        return (float) Math.exp(var0);
     }
 
     public static float log(float var0) {
-        return Mathf.log(var0);
+        return (float) Math.log(var0);
     }
 
     public static float log10(float var0) {
-        return Mathf.log10(var0);
+        return (float) Math.log10(var0);
     }
 
     public static float sqrt(float var0) {
-        return Mathf.sqrt(var0);
+        return (float) Math.sqrt(var0);
     }
 
     public static float cbrt(float var0) {
-        return Mathf.cbrt(var0);
+        return (float) Math.cbrt(var0);
     }
 
     public static float IEEEremainder(float var0, float var2) {
-        return Mathf.IEEEremainder(var0, var2);
+        return (float) Math.IEEEremainder(var0, var2);
     }
 
     public static float ceil(float var0) {
-        return Mathf.ceil(var0);
+        return (float) Math.ceil(var0);
     }
 
     public static float floor(float var0) {
-        return Mathf.floor(var0);
+        return (float) Math.floor(var0);
     }
 
     public static float rint(float var0) {
-        return Mathf.rint(var0);
+        return (float) Math.rint(var0);
     }
 
     public static float atan2(float var0, float var2) {
-        return Mathf.atan2(var0, var2);
+        return (float) Math.atan2(var0, var2);
     }
 
     public static float pow(float var0, float var2) {
-        return Mathf.pow(var0, var2);
+        return (float) Math.pow(var0, var2);
     }
 
     public static int round(float a) {
@@ -113,27 +113,27 @@ public final class Mathf {
     }
 
     public static float sinh(float var0) {
-        return Mathf.sinh(var0);
+        return (float) Math.sinh(var0);
     }
 
     public static float cosh(float var0) {
-        return Mathf.cosh(var0);
+        return (float) Math.cosh(var0);
     }
 
     public static float tanh(float var0) {
-        return Mathf.tanh(var0);
+        return (float) Math.tanh(var0);
     }
 
     public static float hypot(float var0, float var2) {
-        return Mathf.hypot(var0, var2);
+        return (float) Math.hypot(var0, var2);
     }
 
     public static float expm1(float var0) {
-        return Mathf.expm1(var0);
+        return (float) Math.expm1(var0);
     }
 
     public static float log1p(float var0) {
-        return Mathf.log1p(var0);
+        return (float) Math.log1p(var0);
     }
 
     public static float copySign(float magnitude, float sign) {
@@ -145,6 +145,6 @@ public final class Mathf {
     }
 
     public static float scalb(float f, int scaleFactor) {
-        return Mathf.scalb(f, scaleFactor);
+        return Math.scalb(f, scaleFactor);
     }
 }
