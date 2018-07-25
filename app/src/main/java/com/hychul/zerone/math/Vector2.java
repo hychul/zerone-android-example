@@ -2,9 +2,6 @@ package com.hychul.zerone.math;
 
 public class Vector2 {
 
-    public static float TO_RADIANS = (1 / 180.0f) * (float) Math.PI;
-    public static float TO_DEGREES = (1 / (float) Math.PI) * 180;
-
     public float x;
     public float y;
 
@@ -82,14 +79,14 @@ public class Vector2 {
     }
 
     public float angle() {
-        float angle = (float) Math.atan2(y, x) * TO_DEGREES;
+        float angle = (float) Math.atan2(y, x) * Mathf.RAD_TO_DEGREES;
         if (angle < 0)
             angle += 360;
         return angle;
     }
 
     public Vector2 rotate(float angle) {
-        float rad = angle * TO_RADIANS;
+        float rad = angle * Mathf.DEG_TO_RADIANS;
         float cos = (float) Math.cos(rad);
         float sin = (float) Math.sin(rad);
 

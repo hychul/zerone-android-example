@@ -9,6 +9,7 @@ import com.hychul.zerone.android.Graphics;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Vertices;
 import com.hychul.zerone.core.Scene;
+import com.hychul.zerone.math.Mathf;
 import com.hychul.zerone.math.Vector2;
 
 import java.util.List;
@@ -62,7 +63,7 @@ public class CannonGravityTest extends ZeroneActivity {
                 cannonAngle = touchPos.sub(cannonPos).angle();
 
                 if (event.type == TouchEvent.TOUCH_UP) {
-                    float radians = cannonAngle * Vector2.TO_RADIANS;
+                    float radians = cannonAngle * Mathf.DEG_TO_RADIANS;
                     float ballSpeed = touchPos.len();
                     ballPos.set(cannonPos);
                     ballVelocity.x = (float) Math.cos(radians) * ballSpeed;

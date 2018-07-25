@@ -1,5 +1,6 @@
 package com.hychul.zerone.android.graphics;
 
+import com.hychul.zerone.math.Mathf;
 import com.hychul.zerone.math.Vector2;
 
 import javax.microedition.khronos.opengles.GL10;
@@ -86,7 +87,7 @@ public class SpriteBatcher {
         float halfWidth = width / 2;
         float halfHeight = height / 2;
 
-        float rad = angle * Vector2.TO_RADIANS;
+        float rad = angle * Mathf.DEG_TO_RADIANS;
         float cos = (float) Math.cos(rad);
         float sin = (float) Math.sin(rad);
 

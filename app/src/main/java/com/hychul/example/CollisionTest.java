@@ -10,6 +10,7 @@ import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Vertices;
 import com.hychul.zerone.core.GameObject;
 import com.hychul.zerone.core.Scene;
+import com.hychul.zerone.math.Mathf;
 import com.hychul.zerone.math.OverlapTester;
 import com.hychul.zerone.math.Vector2;
 
@@ -90,7 +91,7 @@ public class CollisionTest extends ZeroneActivity {
                 cannon.angle = touchPos.sub(cannon.position).angle();
 
                 if (event.type == TouchEvent.TOUCH_UP) {
-                    float radians = cannon.angle * Vector2.TO_RADIANS;
+                    float radians = cannon.angle * Mathf.DEG_TO_RADIANS;
                     float ballSpeed = touchPos.len() * 2;
                     ball.position.set(cannon.position);
                     ball.velocity.x = (float) Math.cos(radians) * ballSpeed;
