@@ -81,22 +81,22 @@ public class SettingsScene extends GLScene {
         GLES10.glEnable(GL10.GL_TEXTURE_2D);
 
         batcher.beginBatch(Assets.background);
-        batcher.drawSprite(240, 160, 0, 480, 320, Assets.backgroundRegion);
+        batcher.drawSprite(Assets.backgroundRegion, 480, 320, 240, 160, 0, 0);
         batcher.endBatch();
 
         GLES10.glEnable(GL10.GL_BLEND);
         GLES10.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
 
         batcher.beginBatch(Assets.items);
-        batcher.drawSprite(240, 280, 0, 224, 32, Assets.settingsRegion);
-        batcher.drawSprite(120, 160, 0, 64, 64,
-                           Settings.touchEnabled ? Assets.touchEnabledRegion : Assets.touchRegion);
-        batcher.drawSprite(240, 160, 0, 64, 64,
-                           Settings.touchEnabled ? Assets.accelRegion
-                                                 : Assets.accelEnabledRegion);
-        batcher.drawSprite(360, 160, 0, 64, 64,
-                           Settings.soundEnabled ? Assets.soundEnabledRegion : Assets.soundRegion);
-        batcher.drawSprite(32, 32, 0, 64, 64, Assets.leftRegion);
+        batcher.drawSprite(Assets.settingsRegion, 224, 32, 240, 280, 0, 0);
+        batcher.drawSprite(Settings.touchEnabled ? Assets.touchEnabledRegion : Assets.touchRegion, 64, 64, 120, 160, 0,
+                           0);
+        batcher.drawSprite(Settings.touchEnabled ? Assets.accelRegion
+                              : Assets.accelEnabledRegion, 64, 64, 240, 160, 0,
+                           0);
+        batcher.drawSprite(Settings.soundEnabled ? Assets.soundEnabledRegion : Assets.soundRegion, 64, 64, 360, 160, 0,
+                           0);
+        batcher.drawSprite(Assets.leftRegion, 64, 64, 32, 32, 0, 0);
         batcher.endBatch();
 
         GLES10.glDisable(GL10.GL_BLEND);

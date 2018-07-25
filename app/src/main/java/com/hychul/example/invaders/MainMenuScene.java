@@ -61,15 +61,15 @@ public class MainMenuScene extends GLScene {
         GLES10.glEnable(GL10.GL_TEXTURE_2D);
 
         batcher.beginBatch(Assets.background);
-        batcher.drawSprite(240, 160, 0, 480, 320, Assets.backgroundRegion);
+        batcher.drawSprite(Assets.backgroundRegion, 480, 320, 240, 160, 0, 0);
         batcher.endBatch();
 
         GLES10.glEnable(GL10.GL_BLEND);
         GLES10.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
 
         batcher.beginBatch(Assets.items);
-        batcher.drawSprite(240, 240, 0, 384, 128, Assets.logoRegion);
-        batcher.drawSprite(240, 100, 0, 224, 64, Assets.menuRegion);
+        batcher.drawSprite(Assets.logoRegion, 384, 128, 240, 240, 0, 0);
+        batcher.drawSprite(Assets.menuRegion, 224, 64, 240, 100, 0, 0);
         batcher.endBatch();
 
         GLES10.glDisable(GL10.GL_BLEND);

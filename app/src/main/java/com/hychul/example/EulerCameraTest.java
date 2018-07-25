@@ -164,7 +164,7 @@ public class EulerCameraTest extends ZeroneActivity {
 
             guiCamera.setViewport();
             batcher.beginBatch(buttonTexture);
-            batcher.drawSprite(32, 32, 0, 64, 64, buttonRegion);
+            batcher.drawSprite(buttonRegion, 64, 64, 32, 32, 0, 0);
             batcher.endBatch();
 
             GLES10.glDisable(GL10.GL_BLEND);

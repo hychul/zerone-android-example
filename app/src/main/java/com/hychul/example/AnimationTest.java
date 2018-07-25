@@ -110,7 +110,7 @@ public class AnimationTest extends ZeroneActivity {
             GLES10.glEnable(GL10.GL_TEXTURE_2D);
 
             batcher.beginBatch(texture);
-            batcher.drawSprite(0, 0, 0, 1000, 1000, sprite);
+            batcher.drawSprite(sprite, 1000, 1000, 0, 0, 0, 0);
             batcher.endBatch();
         }
 

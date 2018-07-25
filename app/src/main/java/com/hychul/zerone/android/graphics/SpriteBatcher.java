@@ -37,9 +37,19 @@ public class SpriteBatcher {
         bufferIndex = 0;
     }
 
-    public void drawSprite(float x, float y, float z, float width, float height, Sprite sprite) {
+    public void drawSprite(Sprite sprite, float width, float height, float x, float y, float z, float angle) {
+        // TODO: Change float comparison
+        if (angle == 0)
+            draw(sprite, width, height, x, y, z);
+        else
+            draw(sprite, width, height, x, y, z, angle);
+
+    }
+
+    private void draw(Sprite sprite, float width, float height, float x, float y, float z) {
         float halfWidth = width / 2;
         float halfHeight = height / 2;
+
         float x1 = x - halfWidth;
         float y1 = y - halfHeight;
         float x2 = x + halfWidth;
@@ -72,7 +82,7 @@ public class SpriteBatcher {
         numSprites++;
     }
 
-    public void drawSprite(float x, float y, float z, float width, float height, float angle, Sprite sprite) {
+    private void draw(Sprite sprite, float width, float height, float x, float y, float z, float angle) {
         float halfWidth = width / 2;
         float halfHeight = height / 2;
 
@@ -80,23 +90,17 @@ public class SpriteBatcher {
         float cos = (float) Math.cos(rad);
         float sin = (float) Math.sin(rad);
 
-        float x1 = -halfWidth * cos - (-halfHeight) * sin;
-        float y1 = -halfWidth * sin + (-halfHeight) * cos;
-        float x2 = halfWidth * cos - (-halfHeight) * sin;
-        float y2 = halfWidth * sin + (-halfHeight) * cos;
-        float x3 = halfWidth * cos - halfHeight * sin;
-        float y3 = halfWidth * sin + halfHeight * cos;
-        float x4 = -halfWidth * cos - halfHeight * sin;
-        float y4 = -halfWidth * sin + halfHeight * cos;
+        float x1 = x - halfWidth * cos - (-halfHeight) * sin;
+        float y1 = y - halfWidth * sin + (-halfHeight) * cos;
 
-        x1 += x;
-        y1 += y;
-        x2 += x;
-        y2 += y;
-        x3 += x;
-        y3 += y;
-        x4 += x;
-        y4 += y;
+        float x2 = x + halfWidth * cos - (-halfHeight) * sin;
+        float y2 = y + halfWidth * sin + (-halfHeight) * cos;
+
+        float x3 = x + halfWidth * cos - halfHeight * sin;
+        float y3 = y + halfWidth * sin + halfHeight * cos;
+
+        float x4 = x - halfWidth * cos - halfHeight * sin;
+        float y4 = y - halfWidth * sin + halfHeight * cos;
 
         verticesBuffer[bufferIndex++] = x1;
         verticesBuffer[bufferIndex++] = y1;

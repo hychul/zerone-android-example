@@ -127,11 +127,11 @@ public class SpriteBatcherTest extends ZeroneActivity {
             int len = targets.size();
             for (int i = 0; i < len; i++) {
                 GameObject target = targets.get(i);
-                batcher.drawSprite(target.position.x, target.position.y, 0, 0.5f, 0.5f, bobRegion);
+                batcher.drawSprite(bobRegion, 0.5f, 0.5f, target.position.x, target.position.y, 0, 0);
             }
 
-            batcher.drawSprite(ball.position.x, ball.position.y, 0, 0.2f, 0.2f, ballRegion);
-            batcher.drawSprite(cannon.position.x, cannon.position.y, 0, 1, 0.5f, cannon.angle, cannonRegion);
+            batcher.drawSprite(ballRegion, 0.2f, 0.2f, ball.position.x, ball.position.y, 0, 0);
+            batcher.drawSprite(cannonRegion, 1, 0.5f, cannon.position.x, cannon.position.y, 0, cannon.angle);
             batcher.endBatch();
 
         }

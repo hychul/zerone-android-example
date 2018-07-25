@@ -33,7 +33,7 @@ public class Font {
                 continue;
 
             Sprite glyph = glyphs[c];
-            batcher.drawSprite(x, y, 0, glyphWidth, glyphHeight, glyph);
+            batcher.drawSprite(glyph, glyphWidth, glyphHeight, x, y, 0, 0);
             x += glyphWidth;
         }
     }

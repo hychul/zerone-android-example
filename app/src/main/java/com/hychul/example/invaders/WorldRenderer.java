@@ -145,7 +145,7 @@ public class WorldRenderer {
         GLES10.glPushMatrix();
         GLES10.glTranslatef(position.x, position.y, position.z);
         batcher.beginBatch(Assets.explosionTexture);
-        batcher.drawSprite(0, 0, 0, 2, 2, frame);
+        batcher.drawSprite(frame, 2, 2, 0, 0, 0, 0);
         batcher.endBatch();
         GLES10.glPopMatrix();
         GLES10.glDisable(GL10.GL_BLEND);

@@ -183,7 +183,7 @@ public class GameScene extends GLScene {
 
         GLES10.glEnable(GL10.GL_TEXTURE_2D);
         batcher.beginBatch(Assets.background);
-        batcher.drawSprite(240, 160, 0, 480, 320, Assets.backgroundRegion);
+        batcher.drawSprite(Assets.backgroundRegion, 480, 320, 240, 160, 0, 0);
         batcher.endBatch();
         GLES10.glDisable(GL10.GL_TEXTURE_2D);
 
@@ -210,13 +210,13 @@ public class GameScene extends GLScene {
         GLES10.glEnable(GL10.GL_TEXTURE_2D);
 
         batcher.beginBatch(Assets.items);
-        batcher.drawSprite(480 - 32, 320 - 32, 0, 64, 64, Assets.pauseButtonRegion);
+        batcher.drawSprite(Assets.pauseButtonRegion, 64, 64, 480 - 32, 320 - 32, 0, 0);
         Assets.font.drawText(batcher, scoreString, 10, 320 - 20);
         if (Settings.touchEnabled) {
-            batcher.drawSprite(32, 32, 0, 64, 64, Assets.leftRegion);
-            batcher.drawSprite(96, 32, 0, 64, 64, Assets.rightRegion);
+            batcher.drawSprite(Assets.leftRegion, 64, 64, 32, 32, 0, 0);
+            batcher.drawSprite(Assets.rightRegion, 64, 64, 96, 32, 0, 0);
         }
-        batcher.drawSprite(480 - 40, 32, 0, 64, 64, Assets.fireRegion);
+        batcher.drawSprite(Assets.fireRegion, 64, 64, 480 - 40, 32, 0, 0);
         batcher.endBatch();
 
         GLES10.glDisable(GL10.GL_TEXTURE_2D);
@@ -231,7 +231,7 @@ public class GameScene extends GLScene {
 
         batcher.beginBatch(Assets.items);
         Assets.font.drawText(batcher, scoreString, 10, 320 - 20);
-        batcher.drawSprite(240, 160, 0, 160, 64, Assets.pauseRegion);
+        batcher.drawSprite(Assets.pauseRegion, 160, 64, 240, 160, 0, 0);
         batcher.endBatch();
 
         GLES10.glDisable(GL10.GL_TEXTURE_2D);
@@ -245,7 +245,7 @@ public class GameScene extends GLScene {
         GLES10.glEnable(GL10.GL_TEXTURE_2D);
 
         batcher.beginBatch(Assets.items);
-        batcher.drawSprite(240, 160, 0, 128, 64, Assets.gameOverRegion);
+        batcher.drawSprite(Assets.gameOverRegion, 128, 64, 240, 160, 0, 0);
         Assets.font.drawText(batcher, scoreString, 10, 320 - 20);
         batcher.endBatch();
 
