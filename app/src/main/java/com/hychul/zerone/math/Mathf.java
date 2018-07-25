@@ -89,7 +89,7 @@ public final class Mathf {
     }
 
     public static float random() {
-        return Mathf.random();
+        return (float) Math.random();
     }
 
     public static float abs(float a) {
