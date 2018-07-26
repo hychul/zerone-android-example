@@ -6,6 +6,10 @@ public abstract class Component {
 
     Entity entity;
 
+    public Entity getEntity() {
+        return entity;
+    }
+
     public ArrayList<Component> getComponents() {
         return entity.getComponents();
     }
