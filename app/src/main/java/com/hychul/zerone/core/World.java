@@ -33,28 +33,6 @@ public class World {
         });
     }
 
-    public void add(System system) {
-        setComponentFilter(system);
-        mSystemList.add(system);
-    }
-
-    private void setComponentFilter(System system) {
-        RequireComponent annotation = system.getClass().getAnnotation(RequireComponent.class);
-        if (annotation == null)
-            return;
-
-        Class<? extends Component>[] requireComponents = annotation.value();
-        int length = requireComponents.length;
-        if (length < 1)
-            return;
-
-        // TODO: Set filter callbacks by using system's annotation : RequireComponent
-    }
-
-    public void remove(System system) {
-        mSystemList.remove(system);
-    }
-
     public void add(Entity entity) {
         entity.id = mEntityIdPool.get();
         mEntityMap.put(entity.id, entity);
@@ -103,6 +81,28 @@ public class World {
             return null;
 
         return (ArrayList<T>) components;
+    }
+
+    public void add(System system) {
+        setComponentFilter(system);
+        mSystemList.add(system);
+    }
+
+    private void setComponentFilter(System system) {
+        RequireComponent annotation = system.getClass().getAnnotation(RequireComponent.class);
+        if (annotation == null)
+            return;
+
+        Class<? extends Component>[] requireComponents = annotation.value();
+        int length = requireComponents.length;
+        if (length < 1)
+            return;
+
+        // TODO: Set filter callbacks by using system's annotation : RequireComponent
+    }
+
+    public void remove(System system) {
+        mSystemList.remove(system);
     }
 
     public final void update() {

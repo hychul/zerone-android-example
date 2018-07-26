@@ -8,6 +8,8 @@ public abstract class Scene {
 
     private boolean isLoaded;
 
+    private World world;
+
     public Scene(Zerone zerone) {
         this.zerone = zerone;
     }
@@ -31,7 +33,9 @@ public abstract class Scene {
 
     public abstract void onDestroy();
 
-    public abstract void update(float deltaTime);
+    public void update(float deltaTime) {
+        world.update();
+    }
 
     // TODO: Toss this to RenderSystem
     public abstract void render();
