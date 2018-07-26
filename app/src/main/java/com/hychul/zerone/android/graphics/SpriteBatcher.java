@@ -38,8 +38,7 @@ public class SpriteBatcher {
     }
 
     public void drawSprite(Sprite sprite, float width, float height, float x, float y, float z, float angle) {
-        // TODO: Change float comparison
-        if (angle == 0)
+        if (Mathf.abs(angle) < 0.001f)
             draw(sprite, width, height, x, y, z);
         else
             draw(sprite, width, height, x, y, z, angle);
