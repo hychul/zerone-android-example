@@ -8,18 +8,15 @@ import java.util.HashMap;
 
 public class World {
 
+    private Pool<Integer> mEntityIdPool;
     private final HashMap<Integer, Entity> mEntityMap;
+
+    private final ArrayList<BehaviorComponent> mBehaviorList;
+
     private final HashMap<Class, ArrayList<Component>> mComponentsMap;
     private final ArrayList<System> mSystemList;
-    // TODO: Add callbacks for system that use specific component
-
-    private Pool<Integer> mEntityIdPool;
 
     public World() {
-        mEntityMap = new HashMap<>();
-        mComponentsMap = new HashMap<>();
-        mSystemList = new ArrayList<>();
-
         mEntityIdPool = new Pool<>(new Pool.PoolObjectFactory<Integer>() {
             private final static int MIN_ID = Integer.MIN_VALUE;
             private final static int MAX_ID = Integer.MAX_VALUE;
@@ -31,27 +28,31 @@ public class World {
                 return mIdCounter++;
             }
         });
+        mEntityMap = new HashMap<>();
+
+        mBehaviorList = new ArrayList<>();
+
+        mComponentsMap = new HashMap<>();
+        mSystemList = new ArrayList<>();
     }
 
-    public void add(Entity entity) {
+    public void addEntity(Entity entity) {
         entity.id = mEntityIdPool.get();
         mEntityMap.put(entity.id, entity);
 
         ArrayList<Component> components = entity.getComponents();
         for (int i = 0; i < components.size(); i++) {
             addComponent(components.get(i));
-            // TODO: Check tuple filter of component and notify it to system
         }
     }
 
-    public void remove(Entity entity) {
+    public void removeEntity(Entity entity) {
         mEntityMap.remove(entity.id);
         mEntityIdPool.put(entity.id);
 
         ArrayList<Component> components = entity.getComponents();
         for (int i = 0; i < components.size(); i++) {
             removeComponent(components.get(i));
-            // TODO: Check tuple filter of component and notify it to system
         }
     }
 
@@ -83,7 +84,7 @@ public class World {
         return (ArrayList<T>) components;
     }
 
-    public void add(System system) {
+    public void addSystem(System system) {
         setComponentFilter(system);
         mSystemList.add(system);
     }
@@ -98,14 +99,27 @@ public class World {
         if (length < 1)
             return;
 
-        // TODO: Set filter callbacks by using system's annotation : RequireComponent
     }
 
-    public void remove(System system) {
+    public void removeSystem(System system) {
         mSystemList.remove(system);
     }
 
     public final void update() {
+        updateBehaivor();
+        updateSystem();
+    }
+
+    private final void updateBehaivor() {
+        int count = mBehaviorList.size();
+        BehaviorComponent behavior;
+        for (int i = 0; i < count; i++) {
+            behavior = mBehaviorList.get(i);
+            behavior.update();
+        }
+    }
+
+    private final void updateSystem() {
         // TODO: If system use in different thread, hold components reference pointer.
         int count = mSystemList.size();
         System system;
