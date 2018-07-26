@@ -12,6 +12,8 @@ public abstract class Scene {
 
     public Scene(Zerone zerone) {
         this.zerone = zerone;
+
+        world = new World();
     }
 
     public final void load() {

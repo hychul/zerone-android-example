@@ -114,4 +114,3 @@ public class WorldRenderer {
         batcher.drawSprite(Assets.castle, 2, 2, castle.position.x, castle.position.y, 0, 0);
     }
 }
-
