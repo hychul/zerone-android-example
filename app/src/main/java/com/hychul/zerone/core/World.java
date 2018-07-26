@@ -8,17 +8,17 @@ import java.util.HashMap;
 
 public class World {
 
-    private final ArrayList<System> mSystemList;
     private final HashMap<Integer, Entity> mEntityMap;
     private final HashMap<Class, ArrayList<Component>> mComponentsMap;
+    private final ArrayList<System> mSystemList;
     // TODO: Add callbacks for system that use specific component
 
     private Pool<Integer> mEntityIdPool;
 
     public World() {
-        mSystemList = new ArrayList<>();
         mEntityMap = new HashMap<>();
         mComponentsMap = new HashMap<>();
+        mSystemList = new ArrayList<>();
 
         mEntityIdPool = new Pool<>(new Pool.PoolObjectFactory<Integer>() {
             private final static int MIN_ID = Integer.MIN_VALUE;
