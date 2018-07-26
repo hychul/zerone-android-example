@@ -6,14 +6,14 @@ public abstract class Scene {
 
     protected final Zerone zerone;
 
-    private boolean isLoaded;
+    private final World world;
 
-    private World world;
+    private boolean isLoaded;
 
     public Scene(Zerone zerone) {
         this.zerone = zerone;
 
-        world = new World();
+        this.world = new World();
     }
 
     public final void load() {
