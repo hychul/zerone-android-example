@@ -98,8 +98,8 @@ public class ZeroneEngine {
                 if (elapseTime < mSimulationDuration) {
                     try {
                         Thread.sleep(TimeUnit.NANOSECONDS.toMillis(mSimulationDuration - elapseTime));
-                    } catch (InterruptedException e) {
-                        // DO NOTHING
+                    } catch (InterruptedException ignored) {
+
                     }
                 }
 
