@@ -6,6 +6,8 @@ public abstract class Scene {
 
     protected final Zerone zerone;
 
+    private Renderer renderer;
+
     private final World world;
 
     private boolean isLoaded;
@@ -14,6 +16,10 @@ public abstract class Scene {
         this.zerone = zerone;
 
         this.world = new World();
+    }
+
+    public void setRenderer(Renderer renderer) {
+        this.renderer = renderer;
     }
 
     public final void load() {
@@ -39,6 +45,11 @@ public abstract class Scene {
         world.update();
     }
 
-    // TODO: Toss this to RenderSystem
-    public abstract void draw();
+    public void draw() {
+        renderer.draw();
+    }
+
+    public interface Renderer {
+        void draw();
+    }
 }
