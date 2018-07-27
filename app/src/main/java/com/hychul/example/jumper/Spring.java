@@ -1,6 +1,6 @@
 package com.hychul.example.jumper;
 
-import com.hychul.zerone.core.GameObject;
+import com.hychul.example.common.GameObject;
 
 public class Spring extends GameObject {
     public static float SPRING_WIDTH = 0.3f;

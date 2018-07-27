@@ -1,6 +1,6 @@
 package com.hychul.example.jumper;
 
-import com.hychul.zerone.core.GameObject;
+import com.hychul.example.common.GameObject;
 
 public class Coin extends GameObject {
     public static final float COIN_WIDTH = 0.5f;

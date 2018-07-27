@@ -2,7 +2,7 @@ package com.hychul.example;
 
 import android.opengl.GLES10;
 
-import com.hychul.example.eulercamera.EulerCamera;
+import com.hychul.example.common.EulerCamera;
 import com.hychul.zerone.Zerone;
 import com.hychul.zerone.android.GLScene;
 import com.hychul.zerone.android.ZeroneActivity;

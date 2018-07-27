@@ -1,6 +1,4 @@
-package com.hychul.example;
-
-import com.hychul.zerone.core.GameObject;
+package com.hychul.example.common;
 
 import java.util.ArrayList;
 import java.util.List;

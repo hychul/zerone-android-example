@@ -1,6 +1,6 @@
 package com.hychul.example.invaders;
 
-import com.hychul.zerone.core.GameObject3D;
+import com.hychul.example.common.GameObject3D;
 
 public class Invader extends GameObject3D {
     static final int INVADER_ALIVE = 0;

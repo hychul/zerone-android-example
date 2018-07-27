@@ -1,6 +1,4 @@
-package com.hychul.example;
-
-import com.hychul.zerone.core.GameObject;
+package com.hychul.example.common;
 
 public class Cannon extends GameObject {
     public float angle;

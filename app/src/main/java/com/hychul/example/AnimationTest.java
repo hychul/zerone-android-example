@@ -10,7 +10,7 @@ import com.hychul.zerone.android.graphics.Sprite;
 import com.hychul.zerone.android.graphics.SpriteAnimation;
 import com.hychul.zerone.android.graphics.SpriteBatcher;
 import com.hychul.zerone.android.graphics.Texture;
-import com.hychul.zerone.core.GameObject;
+import com.hychul.example.common.GameObject;
 import com.hychul.zerone.core.Scene;
 import com.hychul.zerone.math.Mathf;
 

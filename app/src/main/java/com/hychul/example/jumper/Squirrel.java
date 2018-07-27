@@ -1,6 +1,6 @@
 package com.hychul.example.jumper;
 
-import com.hychul.zerone.core.GameObject;
+import com.hychul.example.common.GameObject;
 
 public class Squirrel extends GameObject {
     public static final float SQUIRREL_WIDTH = 1;

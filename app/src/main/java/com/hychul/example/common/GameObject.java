@@ -1,4 +1,4 @@
-package com.hychul.zerone.core;
+package com.hychul.example.common;
 
 import com.hychul.zerone.math.Rectangle;
 import com.hychul.zerone.math.Vector2;

@@ -1,6 +1,6 @@
 package com.hychul.example.invaders;
 
-import com.hychul.zerone.core.GameObject3D;
+import com.hychul.example.common.GameObject3D;
 
 public class Shield extends GameObject3D {
     static float SHIELD_RADIUS = 0.5f;

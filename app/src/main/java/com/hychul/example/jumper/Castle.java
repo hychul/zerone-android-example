@@ -1,6 +1,6 @@
 package com.hychul.example.jumper;
 
-import com.hychul.zerone.core.GameObject;
+import com.hychul.example.common.GameObject;
 
 public class Castle extends GameObject {
     public static float CASTLE_WIDTH = 1.7f;

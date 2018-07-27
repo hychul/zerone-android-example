@@ -1,6 +1,6 @@
 package com.hychul.example.jumper;
 
-import com.hychul.zerone.core.GameObject;
+import com.hychul.example.common.GameObject;
 
 public class Bob extends GameObject {
     public static final int BOB_STATE_JUMP = 0;

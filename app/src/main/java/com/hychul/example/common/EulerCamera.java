@@ -1,4 +1,4 @@
-package com.hychul.example.eulercamera;
+package com.hychul.example.common;
 
 import android.opengl.GLES10;
 import android.opengl.GLU;

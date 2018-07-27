@@ -1,4 +1,4 @@
-package com.hychul.example;
+package com.hychul.example.common;
 
 import android.opengl.GLES10;
 
