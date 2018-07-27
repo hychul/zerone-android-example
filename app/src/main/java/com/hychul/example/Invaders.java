@@ -17,8 +17,7 @@ public class Invaders extends ZeroneActivity {
     }
 
     @Override
-    public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-        super.onSurfaceCreated(gl, config);
+    public void onInitialized() {
         if (firstTimeCreate) {
             Settings.load(getFileIO());
             Assets.load(this);

@@ -10,6 +10,7 @@ import android.view.WindowManager;
 import com.hychul.zerone.Audio;
 import com.hychul.zerone.FileIO;
 import com.hychul.zerone.Input;
+import com.hychul.zerone.SimulationUnit;
 import com.hychul.zerone.Zerone;
 import com.hychul.zerone.android.audio.AndroidAudio;
 import com.hychul.zerone.android.input.AndroidInput;
@@ -18,7 +19,7 @@ import com.hychul.zerone.core.Scene;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-public abstract class ZeroneActivity extends Activity implements Zerone, Renderer {
+public abstract class ZeroneActivity extends Activity implements Zerone {
 
     enum GLGameState {
         Initialized,
@@ -36,6 +37,8 @@ public abstract class ZeroneActivity extends Activity implements Zerone, Rendere
     Input input;
     FileIO fileIO;
 
+    SimulationUnit simulationUnit;
+
     Scene scene;
 
     GLGameState state = GLGameState.Initialized;
@@ -51,7 +54,7 @@ public abstract class ZeroneActivity extends Activity implements Zerone, Rendere
                              WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         glView = new GLSurfaceView(this);
-        glView.setRenderer(this);
+        glView.setRenderer(new RenderTask());
         setContentView(glView);
 
         graphics = new Graphics(glView);
@@ -65,65 +68,6 @@ public abstract class ZeroneActivity extends Activity implements Zerone, Rendere
     public void onResume() {
         super.onResume();
         glView.onResume();
-    }
-
-    @Override
-    public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-        graphics.setGL(gl);
-
-        synchronized (stateLock) {
-            if (state == GLGameState.Initialized)
-                scene = getStartScene();
-
-            scene.onResume();
-            state = GLGameState.Running;
-
-            startTime = System.nanoTime();
-        }
-    }
-
-    @Override
-    public void onSurfaceChanged(GL10 gl, int width, int height) {
-        graphics.width = width;
-        graphics.height = height;
-    }
-
-    @Override
-    public void onDrawFrame(GL10 gl) {
-        GLGameState state;
-
-        synchronized (stateLock) {
-            state = this.state;
-        }
-
-        switch (state)
-        {
-            case Running:
-                float deltaTime = (System.nanoTime() - startTime) / 1000000000.0f;
-                startTime = System.nanoTime();
-
-                scene.update(deltaTime);
-                // TODO: Fix this
-                getCurrentScene().draw();
-                break;
-            case Paused:
-                scene.onPause();
-
-                synchronized (stateLock) {
-                    this.state = GLGameState.Idle;
-                    stateLock.notifyAll();
-                }
-                break;
-            case Finished:
-                scene.onPause();
-                scene.onDestroy();
-
-                synchronized (stateLock) {
-                    this.state = GLGameState.Idle;
-                    stateLock.notifyAll();
-                }
-                break;
-        }
     }
 
     @Override
@@ -178,5 +122,73 @@ public abstract class ZeroneActivity extends Activity implements Zerone, Rendere
 
     public Scene getCurrentScene() {
         return scene;
+    }
+
+    public void onInitialized() {
+        // TODO: Stub
+    }
+
+    class RenderTask implements Renderer {
+
+        @Override
+        public void onSurfaceCreated(GL10 gl10, EGLConfig eglConfig) {
+            graphics.setGL(gl10);
+
+            synchronized (stateLock) {
+                if (state == GLGameState.Initialized)
+                    scene = getStartScene();
+
+                scene.onResume();
+                state = GLGameState.Running;
+
+                startTime = System.nanoTime();
+            }
+
+            onInitialized();
+        }
+
+        @Override
+        public void onSurfaceChanged(GL10 gl10, int width, int height) {
+            graphics.width = width;
+            graphics.height = height;
+        }
+
+        @Override
+        public void onDrawFrame(GL10 gl10) {
+            GLGameState glState;
+
+            synchronized (stateLock) {
+                glState = state;
+            }
+
+            switch (glState)
+            {
+                case Running:
+                    float deltaTime = (System.nanoTime() - startTime) / 1000000000.0f;
+                    startTime = System.nanoTime();
+
+                    scene.update(deltaTime);
+                    // TODO: Fix this
+                    getCurrentScene().draw();
+                    break;
+                case Paused:
+                    scene.onPause();
+
+                    synchronized (stateLock) {
+                        state = GLGameState.Idle;
+                        stateLock.notifyAll();
+                    }
+                    break;
+                case Finished:
+                    scene.onPause();
+                    scene.onDestroy();
+
+                    synchronized (stateLock) {
+                        state = GLGameState.Idle;
+                        stateLock.notifyAll();
+                    }
+                    break;
+            }
+        }
     }
 }
