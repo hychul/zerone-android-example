@@ -25,15 +25,15 @@ public class ZeroneEngine {
     }
 
     public void loadScene(Scene scene) {
-        // TODO: Fix to proper shape
-//        if (!scene.isLoaded())
-//            scene.load();
-//
-//        Scene preScene = mScene;
-//        mScene = scene;
-//
-//        if (preScene != null)
-//            preScene.unload();
+        if (mScene != null) {
+            mScene.onPause();
+            mScene.onDestroy();
+        }
+
+        scene.onCreate();
+        scene.onResume();
+
+        mScene = scene;
     }
 
     public Scene getScene() {
@@ -48,16 +48,19 @@ public class ZeroneEngine {
         mSimulationExecutor.execute(mSimulator);
     }
 
-    public void stop() {
-        mSimulator.stop();
+    public void update(float deltaTime) {
+        mScene.update(deltaTime);
     }
 
-    private void onSimulate() {
-        if (mScene == null)
-            return;
+    public void pause() {
+        mScene.onPause();
+    }
 
-        // TODO: Fix to proper shape
-//        mScene.update();
+    public void stop() {
+        mSimulator.stop();
+
+        mScene.onPause();
+        mScene.onDestroy();
     }
 
     class SimulatorTask implements Runnable {
@@ -87,7 +90,8 @@ public class ZeroneEngine {
                 startTime = nanoTime();
 
                 // TODO: Use input queue
-                onSimulate();
+
+                update(0);
 
                 elapseTime = nanoTime() - startTime;
 
