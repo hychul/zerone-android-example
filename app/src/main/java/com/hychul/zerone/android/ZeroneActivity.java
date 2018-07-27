@@ -40,7 +40,7 @@ public abstract class ZeroneActivity extends Activity implements Zerone, Rendere
 
     GLGameState state = GLGameState.Initialized;
 
-    Object stateLock = new Object();
+    final Object stateLock = new Object();
     long startTime = System.nanoTime();
 
     @Override
@@ -138,7 +138,7 @@ public abstract class ZeroneActivity extends Activity implements Zerone, Rendere
                 try {
                     stateLock.wait();
                     break;
-                } catch (InterruptedException e) {
+                } catch (InterruptedException ignored) {
 
                 }
             }
