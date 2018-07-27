@@ -10,8 +10,6 @@ public abstract class Scene {
 
     private Renderer renderer;
 
-    private boolean isLoaded;
-
     public Scene(Zerone zerone) {
         this.zerone = zerone;
 
@@ -22,24 +20,11 @@ public abstract class Scene {
         this.renderer = renderer;
     }
 
-    public final void load() {
-        onLoad();
-        isLoaded = true;
-    }
-
-    public void onLoad() {
+    public void onCreate() {
         // TODO: Load resources. Make it abstract
     }
 
-    public boolean isLoaded() {
-        return isLoaded;
-    }
-
     public abstract void onResume();
-
-    public abstract void onPause();
-
-    public abstract void onDestroy();
 
     public void update(float deltaTime) {
         world.update();
@@ -48,6 +33,10 @@ public abstract class Scene {
     public void draw() {
         renderer.draw();
     }
+
+    public abstract void onPause();
+
+    public abstract void onDestroy();
 
     public interface Renderer {
         void draw();
