@@ -58,7 +58,7 @@ public class HighscoreScene extends GLScene {
     }
 
     @Override
-    public void render() {
+    public void draw() {
         GLES10.glClear(GL10.GL_COLOR_BUFFER_BIT);
         guiCam.setViewport();
 

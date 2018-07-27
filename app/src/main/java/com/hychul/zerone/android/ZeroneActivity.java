@@ -96,7 +96,7 @@ public abstract class ZeroneActivity extends Activity implements Zerone, Rendere
             startTime = System.nanoTime();
 
             scene.update(deltaTime);
-            scene.render();
+            scene.draw();
         }
 
         if (state == GLGameState.Paused) {

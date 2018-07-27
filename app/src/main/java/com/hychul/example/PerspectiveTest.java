@@ -34,7 +34,7 @@ public class PerspectiveTest extends ZeroneActivity {
         }
 
         @Override
-        public void render() {
+        public void draw() {
             GL10 gl = graphics.getGL();
             GLES10.glClear(GL10.GL_COLOR_BUFFER_BIT);
             GLES10.glViewport(0, 0, graphics.getWidth(), graphics.getHeight());

@@ -100,7 +100,7 @@ public class LightTest extends ZeroneActivity {
         }
 
         @Override
-        public void render() {
+        public void draw() {
             GL10 gl = graphics.getGL();
             GLES10.glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
             GLES10.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);

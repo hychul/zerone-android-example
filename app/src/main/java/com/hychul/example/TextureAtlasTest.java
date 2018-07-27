@@ -135,7 +135,7 @@ public class TextureAtlasTest extends ZeroneActivity {
         }
 
         @Override
-        public void render() {
+        public void draw() {
             GLES10.glClear(GL10.GL_COLOR_BUFFER_BIT);
             camera.setViewport();
 

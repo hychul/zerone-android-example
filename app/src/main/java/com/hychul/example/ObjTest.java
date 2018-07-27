@@ -58,7 +58,7 @@ public class ObjTest extends ZeroneActivity {
         }
 
         @Override
-        public void render() {
+        public void draw() {
             GL10 gl = graphics.getGL();
 
             GLES10.glClearColor(0.2f, 0.2f, 0.2f, 1.0f);

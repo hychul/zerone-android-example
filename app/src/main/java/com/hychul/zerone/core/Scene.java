@@ -40,5 +40,5 @@ public abstract class Scene {
     }
 
     // TODO: Toss this to RenderSystem
-    public abstract void render();
+    public abstract void draw();
 }
