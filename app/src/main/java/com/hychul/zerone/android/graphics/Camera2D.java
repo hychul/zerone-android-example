@@ -13,7 +13,6 @@ public class Camera2D {
 
     public final Vector2 position;
 
-    // TODO: Use screen resolution
     public final float frustumWidth;
     public final float frustumHeight;
 
@@ -27,7 +26,9 @@ public class Camera2D {
 
         this.frustumWidth = frustumWidth;
         this.frustumHeight = frustumHeight;
+
         this.position = new Vector2(frustumWidth / 2, frustumHeight / 2);
+
         this.zoom = 1.0f;
 
         this.near = -1;

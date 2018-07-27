@@ -13,6 +13,7 @@ public class Camera3D {
     final Graphics graphics;
 
     final Vector3 position;
+
     final Vector3 up;
     final Vector3 lookAt;
 
