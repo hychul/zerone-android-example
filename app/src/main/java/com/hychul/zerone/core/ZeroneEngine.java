@@ -1,5 +1,7 @@
 package com.hychul.zerone.core;
 
+import com.hychul.zerone.SimulationUnit;
+
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -8,10 +10,12 @@ import static java.lang.System.nanoTime;
 
 public class ZeroneEngine {
 
-    private Scene mScene;
-
     private ThreadPoolExecutor mSimulationExecutor;
     private SimulatorTask mSimulator;
+
+    private SimulationUnit simulationUnit;
+
+    private Scene mScene;
 
     public ZeroneEngine() {
         mSimulationExecutor = new ThreadPoolExecutor(1,
@@ -22,6 +26,17 @@ public class ZeroneEngine {
                                                      new ThreadPoolExecutor.DiscardPolicy());
 
         mSimulator = new SimulatorTask(60);
+
+        setSimulationUnit(new SimulationUnit() {
+            @Override
+            public void onSimulate() {
+                update(0);
+            }
+        });
+    }
+
+    public void setSimulationUnit(SimulationUnit unit) {
+        simulationUnit = unit;
     }
 
     public void loadScene(Scene scene) {
@@ -91,7 +106,8 @@ public class ZeroneEngine {
 
                 // TODO: Use input queue
 
-                update(0);
+                if (simulationUnit != null)
+                    simulationUnit.onSimulate();
 
                 elapseTime = nanoTime() - startTime;
 
