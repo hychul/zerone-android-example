@@ -134,7 +134,6 @@ public class SpriteBatcherTest extends ZeroneActivity {
             batcher.drawSprite(ballRegion, 0.2f, 0.2f, ball.position.x, ball.position.y, 0, 0);
             batcher.drawSprite(cannonRegion, 1, 0.5f, cannon.position.x, cannon.position.y, 0, cannon.angle);
             batcher.endBatch();
-
         }
 
         @Override
