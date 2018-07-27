@@ -10,7 +10,6 @@ import android.view.WindowManager;
 import com.hychul.zerone.Audio;
 import com.hychul.zerone.FileIO;
 import com.hychul.zerone.Input;
-import com.hychul.zerone.SimulationUnit;
 import com.hychul.zerone.Zerone;
 import com.hychul.zerone.android.audio.AndroidAudio;
 import com.hychul.zerone.android.input.AndroidInput;
@@ -37,8 +36,6 @@ public abstract class ZeroneActivity extends Activity implements Zerone {
     Input input;
     FileIO fileIO;
 
-    SimulationUnit simulationUnit;
-
     Scene scene;
 
     GLGameState state = GLGameState.Initialized;
@@ -51,7 +48,7 @@ public abstract class ZeroneActivity extends Activity implements Zerone {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                             WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         glView = new GLSurfaceView(this);
         glView.setRenderer(new RenderTask());
@@ -161,8 +158,7 @@ public abstract class ZeroneActivity extends Activity implements Zerone {
                 glState = state;
             }
 
-            switch (glState)
-            {
+            switch (glState) {
                 case Running:
                     float deltaTime = (System.nanoTime() - startTime) / 1000000000.0f;
                     startTime = System.nanoTime();
