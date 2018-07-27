@@ -6,9 +6,9 @@ public abstract class Scene {
 
     protected final Zerone zerone;
 
-    private Renderer renderer;
-
     private final World world;
+
+    private Renderer renderer;
 
     private boolean isLoaded;
 
