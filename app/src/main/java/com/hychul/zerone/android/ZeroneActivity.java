@@ -22,7 +22,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 public abstract class ZeroneActivity extends Activity implements Zerone {
 
-    enum GLGameState {
+    enum ActivityState {
         Initialized,
         Running,
         Paused,
@@ -40,7 +40,7 @@ public abstract class ZeroneActivity extends Activity implements Zerone {
 
     Scene scene;
 
-    GLGameState state = GLGameState.Initialized;
+    ActivityState state = ActivityState.Initialized;
 
     final Object stateLock = new Object();
     long startTime = System.nanoTime();
@@ -80,9 +80,9 @@ public abstract class ZeroneActivity extends Activity implements Zerone {
     public void onPause() {
         synchronized (stateLock) {
             if (isFinishing())
-                state = GLGameState.Finished;
+                state = ActivityState.Finished;
             else
-                state = GLGameState.Paused;
+                state = ActivityState.Paused;
 
             while (true) {
                 try {
@@ -124,12 +124,12 @@ public abstract class ZeroneActivity extends Activity implements Zerone {
             graphics.setGL(gl10);
 
             synchronized (stateLock) {
-                if (state == GLGameState.Initialized)
+                if (state == ActivityState.Initialized)
                     SceneManager.loadScene(getStartScene());
 //                    scene = getStartScene();
 
 //                scene.onResume();
-                state = GLGameState.Running;
+                state = ActivityState.Running;
 
                 startTime = System.nanoTime();
             }
@@ -145,7 +145,7 @@ public abstract class ZeroneActivity extends Activity implements Zerone {
 
         @Override
         public void onDrawFrame(GL10 gl10) {
-            GLGameState glState;
+            ActivityState glState;
 
             synchronized (stateLock) {
                 glState = state;
@@ -163,7 +163,7 @@ public abstract class ZeroneActivity extends Activity implements Zerone {
                     scene.onPause();
 
                     synchronized (stateLock) {
-                        state = GLGameState.Idle;
+                        state = ActivityState.Idle;
                         stateLock.notifyAll();
                     }
                     break;
@@ -172,7 +172,7 @@ public abstract class ZeroneActivity extends Activity implements Zerone {
                     scene.onDestroy();
 
                     synchronized (stateLock) {
-                        state = GLGameState.Idle;
+                        state = ActivityState.Idle;
                         stateLock.notifyAll();
                     }
                     break;
