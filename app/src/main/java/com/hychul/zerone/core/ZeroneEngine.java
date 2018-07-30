@@ -11,8 +11,6 @@ public class ZeroneEngine {
     private ThreadPoolExecutor mSimulationExecutor;
     private SimulatorTask mSimulator;
 
-    private Scene mScene;
-
     public ZeroneEngine() {
         mSimulationExecutor = new ThreadPoolExecutor(1,
                                                      1,
@@ -24,23 +22,6 @@ public class ZeroneEngine {
         mSimulator = new SimulatorTask(60);
     }
 
-    public void setScene(Scene scene) {
-        if (mScene != null) {
-            mScene.onPause();
-            mScene.onDestroy();
-        }
-
-        // TODO: Only running
-        scene.onCreate();
-        scene.onResume();
-
-        mScene = scene;
-    }
-
-    public Scene getScene() {
-        return mScene;
-    }
-
     public void setSimulationRate(long fps) {
         mSimulator.setSimulationRate(fps);
     }
@@ -49,22 +30,13 @@ public class ZeroneEngine {
         mSimulationExecutor.execute(mSimulator);
     }
 
-    public void update(float deltaTime) {
-        mScene.update(deltaTime);
-    }
-
-    public void pause() {
-        mScene.onPause();
-    }
-
     public void stop() {
         mSimulator.stop();
-
-        mScene.onPause();
-        mScene.onDestroy();
     }
 
     class SimulatorTask implements Runnable {
+
+        private Scene mScene;
 
         private boolean mShutdown;
 
@@ -72,6 +44,13 @@ public class ZeroneEngine {
 
         SimulatorTask(long simulationRate) {
             setSimulationRate(simulationRate);
+
+            SceneManager.onSceneLoaded.addSubscriber(new Event.Subscriber<Scene>() {
+                @Override
+                public void onInvoked(Scene param) {
+                    mScene = param;
+                }
+            });
         }
 
         void setSimulationRate(long fps) {
@@ -80,6 +59,9 @@ public class ZeroneEngine {
 
         void stop() {
             mShutdown = true;
+
+            mScene.onPause();
+            mScene.onDestroy();
         }
 
         @Override
