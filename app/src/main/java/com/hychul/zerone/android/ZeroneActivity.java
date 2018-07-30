@@ -38,8 +38,6 @@ public abstract class ZeroneActivity extends Activity implements Zerone {
     Input input;
     FileIO fileIO;
 
-    Scene scene;
-
     ActivityState state = ActivityState.Initialized;
 
     final Object stateLock = new Object();
@@ -62,12 +60,6 @@ public abstract class ZeroneActivity extends Activity implements Zerone {
         audio = new AndroidAudio(this);
         input = new AndroidInput(this, glView, 1, 1);
 
-        SceneManager.onSceneLoaded.addSubscriber(new Event.Subscriber<Scene>() {
-            @Override
-            public void onInvoked(Scene param) {
-                scene = param;
-            }
-        });
     }
 
     @Override
@@ -118,6 +110,17 @@ public abstract class ZeroneActivity extends Activity implements Zerone {
     }
 
     class RenderTask implements Renderer {
+
+        Scene scene;
+
+        public RenderTask() {
+            SceneManager.onSceneLoaded.addSubscriber(new Event.Subscriber<Scene>() {
+                @Override
+                public void onInvoked(Scene param) {
+                    scene = param;
+                }
+            });
+        }
 
         @Override
         public void onSurfaceCreated(GL10 gl10, EGLConfig eglConfig) {
