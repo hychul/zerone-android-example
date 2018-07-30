@@ -4,7 +4,7 @@ import com.hychul.zerone.core.Scene;
 
 public interface Zerone {
 
-    // TODO: Static classes
+    // TODO: Static classes like datasource
     Input getInput();
 
     FileIO getFileIO();
