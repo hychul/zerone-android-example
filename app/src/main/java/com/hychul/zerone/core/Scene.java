@@ -8,16 +8,10 @@ public abstract class Scene {
 
     private final World world;
 
-    private Renderer renderer;
-
     public Scene(Zerone zerone) {
         this.zerone = zerone;
 
         this.world = new World();
-    }
-
-    public void setRenderer(Renderer renderer) {
-        this.renderer = renderer;
     }
 
     public void onCreate() {
@@ -31,14 +25,10 @@ public abstract class Scene {
     }
 
     public void draw() {
-        renderer.draw();
+
     }
 
     public abstract void onPause();
 
     public abstract void onDestroy();
-
-    public interface Renderer {
-        void draw();
-    }
 }
