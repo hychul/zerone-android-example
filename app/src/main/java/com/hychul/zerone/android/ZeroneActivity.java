@@ -126,9 +126,9 @@ public abstract class ZeroneActivity extends Activity implements Zerone {
             synchronized (stateLock) {
                 if (state == ActivityState.Initialized)
                     SceneManager.loadScene(getStartScene());
-//                    scene = getStartScene();
+                else
+                    scene.onResume();
 
-//                scene.onResume();
                 state = ActivityState.Running;
 
                 startTime = System.nanoTime();
