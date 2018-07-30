@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Event<T> {
 
-    private ArrayList<Subscriber<T>> subscriberList;
+    private final ArrayList<Subscriber<T>> subscriberList = new ArrayList<>();
 
     public void addSubscriber(Subscriber<T> subscriber) {
         subscriberList.add(subscriber);
