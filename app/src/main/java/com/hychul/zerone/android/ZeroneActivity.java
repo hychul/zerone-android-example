@@ -117,7 +117,7 @@ public abstract class ZeroneActivity extends Activity implements Zerone {
         this.scene = newScene;
     }
 
-    public Scene getCurrentScene() {
+    public Scene getActiveScene() {
         return scene;
     }
 
@@ -165,7 +165,7 @@ public abstract class ZeroneActivity extends Activity implements Zerone {
 
                     scene.update(deltaTime);
                     // TODO: Fix this
-                    getCurrentScene().draw();
+                    getActiveScene().draw();
                     break;
                 case Paused:
                     scene.onPause();

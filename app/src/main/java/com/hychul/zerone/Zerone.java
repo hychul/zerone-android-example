@@ -12,9 +12,9 @@ public interface Zerone {
     Audio getAudio();
 
     // TODO: SceneManager
-    void setScene(Scene scene);
-
     Scene getStartScene();
 
-    Scene getCurrentScene();
+    void setScene(Scene scene);
+
+    Scene getActiveScene();
 }

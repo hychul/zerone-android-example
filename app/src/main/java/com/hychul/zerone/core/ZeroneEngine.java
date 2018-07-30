@@ -24,12 +24,13 @@ public class ZeroneEngine {
         mSimulator = new SimulatorTask(60);
     }
 
-    public void loadScene(Scene scene) {
+    public void setScene(Scene scene) {
         if (mScene != null) {
             mScene.onPause();
             mScene.onDestroy();
         }
 
+        // TODO: Only running
         scene.onCreate();
         scene.onResume();
 
