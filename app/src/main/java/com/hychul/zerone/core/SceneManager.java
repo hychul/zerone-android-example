@@ -4,8 +4,8 @@ public class SceneManager {
 
     static Scene scene;
 
-    static final Event<Scene> onSceneLoaded;
-    static final Event<Scene> onSceneUnloaded;
+    public static final Event<Scene> onSceneLoaded;
+    public static final Event<Scene> onSceneUnloaded;
 
     static {
         onSceneLoaded = new Event<>();

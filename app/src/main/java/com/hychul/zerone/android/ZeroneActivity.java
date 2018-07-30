@@ -13,7 +13,9 @@ import com.hychul.zerone.Input;
 import com.hychul.zerone.Zerone;
 import com.hychul.zerone.android.audio.AndroidAudio;
 import com.hychul.zerone.android.input.AndroidInput;
+import com.hychul.zerone.core.Event;
 import com.hychul.zerone.core.Scene;
+import com.hychul.zerone.core.SceneManager;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -59,6 +61,13 @@ public abstract class ZeroneActivity extends Activity implements Zerone {
         fileIO = new AndroidFileIO(this);
         audio = new AndroidAudio(this);
         input = new AndroidInput(this, glView, 1, 1);
+
+        SceneManager.onSceneLoaded.addSubscriber(new Event.Subscriber<Scene>() {
+            @Override
+            public void onInvoked(Scene param) {
+                scene = param;
+            }
+        });
     }
 
     @Override
@@ -105,20 +114,22 @@ public abstract class ZeroneActivity extends Activity implements Zerone {
     }
 
     public void setScene(Scene newScene) {
-        if (newScene == null)
-            throw new IllegalArgumentException("Scene must not be null");
-
-        this.scene.onPause();
-        this.scene.onDestroy();
-
-        newScene.onResume();
-        newScene.update(0);
-
-        this.scene = newScene;
+        SceneManager.loadScene(newScene);
+//        if (newScene == null)
+//            throw new IllegalArgumentException("Scene must not be null");
+//
+//        this.scene.onPause();
+//        this.scene.onDestroy();
+//
+//        newScene.onResume();
+//        newScene.update(0);
+//
+//        this.scene = newScene;
     }
 
     public Scene getActiveScene() {
-        return scene;
+        return SceneManager.getLoadedScene();
+//        return scene;
     }
 
     public void onInitialized() {
@@ -133,9 +144,10 @@ public abstract class ZeroneActivity extends Activity implements Zerone {
 
             synchronized (stateLock) {
                 if (state == GLGameState.Initialized)
-                    scene = getStartScene();
+                    SceneManager.loadScene(getStartScene());
+//                    scene = getStartScene();
 
-                scene.onResume();
+//                scene.onResume();
                 state = GLGameState.Running;
 
                 startTime = System.nanoTime();
@@ -164,8 +176,7 @@ public abstract class ZeroneActivity extends Activity implements Zerone {
                     startTime = System.nanoTime();
 
                     scene.update(deltaTime);
-                    // TODO: Fix this
-                    getActiveScene().draw();
+                    scene.draw();
                     break;
                 case Paused:
                     scene.onPause();
