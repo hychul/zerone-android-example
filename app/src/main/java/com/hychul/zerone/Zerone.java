@@ -13,8 +13,4 @@ public interface Zerone {
 
     // TODO: SceneManager
     Scene getStartScene();
-
-    void setScene(Scene scene);
-
-    Scene getActiveScene();
 }

@@ -9,6 +9,7 @@ import com.hychul.zerone.android.GLScene;
 import com.hychul.zerone.android.graphics.Camera2D;
 import com.hychul.zerone.android.graphics.FPSCounter;
 import com.hychul.zerone.android.graphics.SpriteBatcher;
+import com.hychul.zerone.core.SceneManager;
 import com.hychul.zerone.math.OverlapTester;
 import com.hychul.zerone.math.Rectangle;
 import com.hychul.zerone.math.Vector2;
@@ -105,7 +106,7 @@ public class GameScene extends GLScene {
 
             if (OverlapTester.pointInRectangle(quitBounds, touchPoint)) {
                 Assets.playSound(Assets.clickSound);
-                zerone.setScene(new MainMenuScene(zerone));
+                SceneManager.loadScene(new MainMenuScene(zerone));
             }
         }
     }
@@ -171,7 +172,7 @@ public class GameScene extends GLScene {
             TouchEvent event = events.get(i);
             if (event.type == TouchEvent.TOUCH_UP) {
                 Assets.playSound(Assets.clickSound);
-                zerone.setScene(new MainMenuScene(zerone));
+                SceneManager.loadScene(new MainMenuScene(zerone));
             }
         }
     }

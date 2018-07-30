@@ -7,6 +7,7 @@ import com.hychul.zerone.Zerone;
 import com.hychul.zerone.android.GLScene;
 import com.hychul.zerone.android.graphics.Camera2D;
 import com.hychul.zerone.android.graphics.SpriteBatcher;
+import com.hychul.zerone.core.SceneManager;
 import com.hychul.zerone.math.OverlapTester;
 import com.hychul.zerone.math.Rectangle;
 import com.hychul.zerone.math.Vector2;
@@ -68,7 +69,7 @@ public class SettingsScene extends GLScene {
             }
             if (OverlapTester.pointInRectangle(backBounds, touchPoint)) {
                 Assets.playSound(Assets.clickSound);
-                zerone.setScene(new MainMenuScene(zerone));
+                SceneManager.loadScene(new MainMenuScene(zerone));
             }
         }
     }

@@ -7,6 +7,7 @@ import com.hychul.zerone.Zerone;
 import com.hychul.zerone.android.GLScene;
 import com.hychul.zerone.android.graphics.Camera2D;
 import com.hychul.zerone.android.graphics.SpriteBatcher;
+import com.hychul.zerone.core.SceneManager;
 import com.hychul.zerone.math.OverlapTester;
 import com.hychul.zerone.math.Rectangle;
 import com.hychul.zerone.math.Vector2;
@@ -49,17 +50,17 @@ public class MainMenuScene extends GLScene {
 
                 if (OverlapTester.pointInRectangle(playBounds, touchPoint)) {
                     Assets.playSound(Assets.clickSound);
-                    zerone.setScene(new GameScene(zerone));
+                    SceneManager.loadScene(new GameScene(zerone));
                     return;
                 }
                 if (OverlapTester.pointInRectangle(highscoresBounds, touchPoint)) {
                     Assets.playSound(Assets.clickSound);
-                    zerone.setScene(new HighscoreScene(zerone));
+                    SceneManager.loadScene(new HighscoreScene(zerone));
                     return;
                 }
                 if (OverlapTester.pointInRectangle(helpBounds, touchPoint)) {
                     Assets.playSound(Assets.clickSound);
-                    zerone.setScene(new HelpScene(zerone));
+                    SceneManager.loadScene(new HelpScene(zerone));
                     return;
                 }
                 if (OverlapTester.pointInRectangle(soundBounds, touchPoint)) {

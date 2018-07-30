@@ -113,25 +113,6 @@ public abstract class ZeroneActivity extends Activity implements Zerone {
         return audio;
     }
 
-    public void setScene(Scene newScene) {
-        SceneManager.loadScene(newScene);
-//        if (newScene == null)
-//            throw new IllegalArgumentException("Scene must not be null");
-//
-//        this.scene.onPause();
-//        this.scene.onDestroy();
-//
-//        newScene.onResume();
-//        newScene.update(0);
-//
-//        this.scene = newScene;
-    }
-
-    public Scene getActiveScene() {
-        return SceneManager.getLoadedScene();
-//        return scene;
-    }
-
     public void onInitialized() {
         // TODO: Stub
     }
