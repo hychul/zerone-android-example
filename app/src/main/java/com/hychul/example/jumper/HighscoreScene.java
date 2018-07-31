@@ -17,6 +17,7 @@ import java.util.List;
 import javax.microedition.khronos.opengles.GL10;
 
 public class HighscoreScene extends GLScene {
+
     Camera2D guiCam;
     SpriteBatcher batcher;
     Rectangle backBounds;
@@ -26,7 +27,10 @@ public class HighscoreScene extends GLScene {
 
     public HighscoreScene(Zerone zerone) {
         super(zerone);
+    }
 
+    @Override
+    public void onCreate() {
         guiCam = new Camera2D(graphics, 320, 480);
         backBounds = new Rectangle(0, 0, 64, 64);
         touchPoint = new Vector2();

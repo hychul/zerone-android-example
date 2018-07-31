@@ -15,17 +15,23 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class CubeTest extends ZeroneActivity {
 
+    @Override
     public Scene getStartScene() {
         return new CubeScene(this);
     }
 
     class CubeScene extends GLScene {
+
         Vertices cube;
         Texture texture;
         float angle = 0;
 
         public CubeScene(Zerone zerone) {
             super(zerone);
+        }
+
+        @Override
+        public void onCreate() {
             cube = createCube();
             texture = new Texture(zeroneActivity.getFileIO(), "crate.png");
         }

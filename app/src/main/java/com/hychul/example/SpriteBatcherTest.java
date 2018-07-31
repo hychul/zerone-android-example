@@ -26,14 +26,17 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class SpriteBatcherTest extends ZeroneActivity {
 
+    @Override
     public Scene getStartScene() {
         return new SpriteBatcherScene(this);
     }
 
     class SpriteBatcherScene extends GLScene {
+
         final int NUM_TARGETS = 20;
         final float WORLD_WIDTH = 9.6f;
         final float WORLD_HEIGHT = 4.8f;
+
         Cannon cannon;
         GameObject ball;
         List<GameObject> targets;
@@ -53,7 +56,10 @@ public class SpriteBatcherTest extends ZeroneActivity {
 
         public SpriteBatcherScene(Zerone zerone) {
             super(zerone);
+        }
 
+        @Override
+        public void onCreate() {
             cannon = new Cannon(0, 0, 1, 0.5f);
             ball = new GameObject(0, 0, 0.2f, 0.2f);
             targets = new ArrayList<GameObject>(NUM_TARGETS);

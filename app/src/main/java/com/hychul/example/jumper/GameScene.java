@@ -18,6 +18,7 @@ import java.util.List;
 import javax.microedition.khronos.opengles.GL10;
 
 public class GameScene extends GLScene {
+
     static final int GAME_READY = 0;
     static final int GAME_RUNNING = 1;
     static final int GAME_PAUSED = 2;
@@ -39,6 +40,10 @@ public class GameScene extends GLScene {
 
     public GameScene(Zerone zerone) {
         super(zerone);
+    }
+
+    @Override
+    public void onCreate() {
         state = GAME_READY;
         guiCam = new Camera2D(graphics, 320, 480);
         touchPoint = new Vector2();

@@ -18,11 +18,14 @@ import com.hychul.zerone.core.Time;
 import javax.microedition.khronos.opengles.GL10;
 
 public class LightTest extends ZeroneActivity {
+
+    @Override
     public Scene getStartScene() {
         return new LightScene(this);
     }
 
     class LightScene extends GLScene {
+
         float angle;
         Vertices cube;
         Texture texture;
@@ -33,7 +36,10 @@ public class LightTest extends ZeroneActivity {
 
         public LightScene(Zerone zerone) {
             super(zerone);
+        }
 
+        @Override
+        public void onCreate() {
             cube = createCube();
             texture = new Texture(zeroneActivity.getFileIO(), "crate.png");
             ambientLight = new AmbientLight();

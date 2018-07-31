@@ -14,9 +14,7 @@ public abstract class Scene {
         this.world = new World();
     }
 
-    public void onCreate() {
-        // TODO: Load resources. Make it abstract
-    }
+    public abstract void onCreate();
 
     public abstract void onResume();
 

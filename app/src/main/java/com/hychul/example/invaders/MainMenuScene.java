@@ -17,6 +17,7 @@ import java.util.List;
 import javax.microedition.khronos.opengles.GL10;
 
 public class MainMenuScene extends GLScene {
+
     Camera2D guiCam;
     SpriteBatcher batcher;
     Vector2 touchPoint;
@@ -25,7 +26,10 @@ public class MainMenuScene extends GLScene {
 
     public MainMenuScene(Zerone zerone) {
         super(zerone);
+    }
 
+    @Override
+    public void onCreate() {
         guiCam = new Camera2D(graphics, 480, 320);
         batcher = new SpriteBatcher(10);
         touchPoint = new Vector2();

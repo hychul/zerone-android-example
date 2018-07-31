@@ -13,6 +13,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class ZBlendingTest extends ZeroneActivity {
 
+    @Override
     public Scene getStartScene() {
         return new ZBlendingScene(this);
     }
@@ -22,7 +23,10 @@ public class ZBlendingTest extends ZeroneActivity {
 
         public ZBlendingScene(Zerone zerone) {
             super(zerone);
+        }
 
+        @Override
+        public void onCreate() {
             vertices = new Vertices(6, 0, true, false, false);
             vertices.setVertices(new float[]{-0.5f, -0.5f, -3, 1, 0, 0, 0.5f,
                                              0.5f, -0.5f, -3, 1, 0, 0, 0.5f,

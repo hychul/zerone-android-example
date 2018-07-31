@@ -16,6 +16,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class HierarchyTest extends ZeroneActivity {
 
+    @Override
     public Scene getStartScene() {
         return new HierarchyScene(this);
     }
@@ -27,6 +28,10 @@ public class HierarchyTest extends ZeroneActivity {
 
         public HierarchyScene(Zerone zerone) {
             super(zerone);
+        }
+
+        @Override
+        public void onCreate() {
             cube = createCube();
             texture = new Texture(zeroneActivity.getFileIO(), "crate.png");
 

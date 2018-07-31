@@ -17,6 +17,7 @@ import java.util.List;
 import javax.microedition.khronos.opengles.GL10;
 
 public class MainMenuScene extends GLScene {
+
     Camera2D guiCam;
     SpriteBatcher batcher;
     Rectangle soundBounds;
@@ -27,6 +28,10 @@ public class MainMenuScene extends GLScene {
 
     public MainMenuScene(Zerone zerone) {
         super(zerone);
+    }
+
+    @Override
+    public void onCreate() {
         guiCam = new Camera2D(graphics, 320, 480);
         batcher = new SpriteBatcher(100);
         soundBounds = new Rectangle(0, 0, 64, 64);

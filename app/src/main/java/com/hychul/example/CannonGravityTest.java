@@ -17,13 +17,17 @@ import java.util.List;
 import javax.microedition.khronos.opengles.GL10;
 
 public class CannonGravityTest extends ZeroneActivity {
+
+    @Override
     public Scene getStartScene() {
         return new CannonGravityScene(this);
     }
 
     class CannonGravityScene extends GLScene {
+
         float FRUSTUM_WIDTH = 9.6f;
         float FRUSTUM_HEIGHT = 6.4f;
+
         Vertices cannonVertices;
         Vertices ballVertices;
         Vector2 cannonPos = new Vector2();
@@ -35,6 +39,10 @@ public class CannonGravityTest extends ZeroneActivity {
 
         public CannonGravityScene(Zerone zerone) {
             super(zerone);
+        }
+
+        @Override
+        public void onCreate() {
             cannonVertices = new Vertices(3, 0, false, false);
             cannonVertices.setVertices(new float[]{-0.5f, -0.5f, 0.0f,
                                                    0.5f, 0.0f, 0.0f,

@@ -21,11 +21,13 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class EulerCameraTest extends ZeroneActivity {
 
+    @Override
     public Scene getStartScene() {
         return new EulerCameraScene(this);
     }
 
     class EulerCameraScene extends GLScene {
+
         Texture crateTexture;
         Vertices cube;
         PointLight light;
@@ -40,7 +42,10 @@ public class EulerCameraTest extends ZeroneActivity {
 
         public EulerCameraScene(Zerone zerone) {
             super(zerone);
+        }
 
+        @Override
+        public void onCreate() {
             crateTexture = new Texture(zeroneActivity.getFileIO(), "crate.png", true);
             cube = createCube();
             light = new PointLight();

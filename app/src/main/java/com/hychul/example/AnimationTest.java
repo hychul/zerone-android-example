@@ -18,12 +18,14 @@ import com.hychul.zerone.math.Mathf;
 import javax.microedition.khronos.opengles.GL10;
 
 public class AnimationTest extends ZeroneActivity {
-    public Scene getStartScene() {
-        return new AnimationScene(this);
-    }
 
     static final float WORLD_WIDTH = 480f;
     static final float WORLD_HEIGHT = 320f;
+
+    @Override
+    public Scene getStartScene() {
+        return new AnimationScene(this);
+    }
 
     static class Caveman extends GameObject {
         public float walkingTime = 0;
@@ -45,7 +47,9 @@ public class AnimationTest extends ZeroneActivity {
     }
 
     class AnimationScene extends GLScene {
+
         static final int NUM_CAVEMEN = 10;
+
         Caveman[] cavemen;
         SpriteBatcher batcher;
         Camera2D camera;
@@ -54,6 +58,10 @@ public class AnimationTest extends ZeroneActivity {
 
         public AnimationScene(Zerone zerone) {
             super(zerone);
+        }
+
+        @Override
+        public void onCreate() {
             cavemen = new Caveman[NUM_CAVEMEN];
             for (int i = 0; i < NUM_CAVEMEN; i++) {
                 cavemen[i] = new Caveman(Mathf.random(), Mathf.random(), 1, 1);

@@ -19,6 +19,7 @@ import java.util.List;
 import javax.microedition.khronos.opengles.GL10;
 
 public class HelpScene4 extends GLScene {
+
     Camera2D guiCam;
     SpriteBatcher batcher;
     Rectangle nextBounds;
@@ -28,7 +29,10 @@ public class HelpScene4 extends GLScene {
 
     public HelpScene4(Zerone zerone) {
         super(zerone);
+    }
 
+    @Override
+    public void onCreate() {
         guiCam = new Camera2D(graphics, 320, 480);
         nextBounds = new Rectangle(320 - 64, 0, 64, 64);
         touchPoint = new Vector2();

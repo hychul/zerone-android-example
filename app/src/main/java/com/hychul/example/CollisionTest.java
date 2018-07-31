@@ -23,6 +23,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class CollisionTest extends ZeroneActivity {
 
+    @Override
     public Scene getStartScene() {
         return new CollisionScene(this);
     }
@@ -32,6 +33,7 @@ public class CollisionTest extends ZeroneActivity {
         final int NUM_TARGETS = 20;
         final float WORLD_WIDTH = 9.6f;
         final float WORLD_HEIGHT = 4.8f;
+
         Cannon cannon;
         GameObject ball;
         List<GameObject> targets;
@@ -46,7 +48,10 @@ public class CollisionTest extends ZeroneActivity {
 
         public CollisionScene(Zerone zerone) {
             super(zerone);
+        }
 
+        @Override
+        public void onCreate() {
             cannon = new Cannon(0, 0, 1, 1);
             ball = new GameObject(0, 0, 0.2f, 0.2f);
             targets = new ArrayList<GameObject>(NUM_TARGETS);

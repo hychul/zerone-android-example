@@ -13,6 +13,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class ZBufferTest extends ZeroneActivity {
 
+    @Override
     public Scene getStartScene() {
         return new ZBufferScene(this);
     }
@@ -22,7 +23,10 @@ public class ZBufferTest extends ZeroneActivity {
 
         public ZBufferScene(Zerone zerone) {
             super(zerone);
+        }
 
+        @Override
+        public void onCreate() {
             vertices = new Vertices(6, 0, true, false, false);
             vertices.setVertices(new float[]{-0.5f, -0.5f, -3, 1, 0, 0, 1,
                                              0.5f, -0.5f, -3, 1, 0, 0, 1,
