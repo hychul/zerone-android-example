@@ -82,6 +82,7 @@ public class ZeroneEngine {
 
                 synchronized (lock) {
                     mScene.update(deltaTime);
+
                     lock.notifyAll();
                 }
 
