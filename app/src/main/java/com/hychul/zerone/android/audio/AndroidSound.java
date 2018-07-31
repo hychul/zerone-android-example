@@ -5,6 +5,7 @@ import android.media.SoundPool;
 import com.hychul.zerone.Sound;
 
 public class AndroidSound implements Sound {
+
     int soundId;
     SoundPool soundPool;
 

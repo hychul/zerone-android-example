@@ -2,7 +2,7 @@ package com.hychul.zerone.core;
 
 public class SceneManager {
 
-    static Scene scene;
+    private static Scene scene;
 
     public static final Event<Scene> onSceneLoaded;
     public static final Event<Scene> onSceneUnloaded;

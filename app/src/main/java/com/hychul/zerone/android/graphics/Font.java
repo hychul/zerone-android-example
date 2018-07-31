@@ -1,6 +1,7 @@
 package com.hychul.zerone.android.graphics;
 
 public class Font {
+
     public final Texture texture;
     public final int glyphWidth;
     public final int glyphHeight;

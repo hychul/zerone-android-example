@@ -13,6 +13,7 @@ import com.hychul.zerone.Sound;
 import java.io.IOException;
 
 public class AndroidAudio implements Audio {
+
     AssetManager assets;
     SoundPool soundPool;
 

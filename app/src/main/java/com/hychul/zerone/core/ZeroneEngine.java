@@ -8,42 +8,42 @@ import static java.lang.System.nanoTime;
 
 public class ZeroneEngine {
 
-    private ThreadPoolExecutor mSimulationExecutor;
-    private SimulatorTask mSimulator;
+    private ThreadPoolExecutor threadPoolExecutor;
+    private SimulatorTask simulatorTask;
 
     public Object lock;
 
     public ZeroneEngine() {
-        mSimulationExecutor = new ThreadPoolExecutor(1,
-                                                     1,
-                                                     0,
-                                                     TimeUnit.MILLISECONDS,
-                                                     new SynchronousQueue<Runnable>(),
-                                                     new ThreadPoolExecutor.DiscardPolicy());
-        mSimulator = new SimulatorTask(60);
+        threadPoolExecutor = new ThreadPoolExecutor(1,
+                                                    1,
+                                                    0,
+                                                    TimeUnit.MILLISECONDS,
+                                                    new SynchronousQueue<Runnable>(),
+                                                    new ThreadPoolExecutor.DiscardPolicy());
+        simulatorTask = new SimulatorTask(60);
 
         lock = new Object();
     }
 
     public void setSimulationRate(long fps) {
-        mSimulator.setSimulationRate(fps);
+        simulatorTask.setSimulationRate(fps);
     }
 
     public void start() {
-        mSimulationExecutor.execute(mSimulator);
+        threadPoolExecutor.execute(simulatorTask);
     }
 
     public void stop() {
-        mSimulator.stop();
+        simulatorTask.stop();
     }
 
     class SimulatorTask implements Runnable {
 
-        private Scene mScene;
+        private Scene scene;
 
-        private boolean mShutdown;
+        private boolean shutdown;
 
-        private long mSimulationDuration;
+        private long duration;
 
         SimulatorTask(long simulationRate) {
             setSimulationRate(simulationRate);
@@ -51,20 +51,20 @@ public class ZeroneEngine {
             SceneManager.onSceneLoaded.addSubscriber(new Event.Subscriber<Scene>() {
                 @Override
                 public void onInvoked(Scene param) {
-                    mScene = param;
+                    scene = param;
                 }
             });
         }
 
         void setSimulationRate(long fps) {
-            mSimulationDuration = TimeUnit.SECONDS.toNanos(1) / fps;
+            duration = TimeUnit.SECONDS.toNanos(1) / fps;
         }
 
         void stop() {
-            mShutdown = true;
+            shutdown = true;
 
-            mScene.onPause();
-            mScene.onDestroy();
+            scene.onPause();
+            scene.onDestroy();
         }
 
         @Override
@@ -81,26 +81,26 @@ public class ZeroneEngine {
                 // TODO: Use input queue
 
                 synchronized (lock) {
-                    mScene.update(deltaTime);
+                    scene.update(deltaTime);
 
                     lock.notifyAll();
                 }
 
                 elapseTime = nanoTime() - startTime;
 
-                if (elapseTime < mSimulationDuration) {
+                if (elapseTime < duration) {
                     try {
-                        Thread.sleep(TimeUnit.NANOSECONDS.toMillis(mSimulationDuration - elapseTime));
+                        Thread.sleep(TimeUnit.NANOSECONDS.toMillis(duration - elapseTime));
                     } catch (InterruptedException ignored) {
 
                     }
                 }
 
-                if (mShutdown)
+                if (shutdown)
                     break;
             }
 
-            mShutdown = false;
+            shutdown = false;
         }
     }
 }

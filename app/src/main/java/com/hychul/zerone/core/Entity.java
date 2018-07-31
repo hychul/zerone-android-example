@@ -8,25 +8,25 @@ public class Entity {
 
     public boolean isActive;
 
-    private ArrayList<Component> mComponentList;
+    private ArrayList<Component> componentList;
 
     public Entity() {
         isActive = true;
 
-        mComponentList = new ArrayList<>();
+        componentList = new ArrayList<>();
     }
 
     public ArrayList<Component> getComponents() {
-        return mComponentList;
+        return componentList;
     }
 
     @SuppressWarnings("unchecked")
     public <T extends Component> ArrayList<T> getComponents(Class<T> type) {
         ArrayList<T> ret = new ArrayList<>();
-        int count = mComponentList.size();
+        int count = componentList.size();
         Component comp;
         for (int i = 0; i < count; i++) {
-            comp = mComponentList.get(i);
+            comp = componentList.get(i);
             if (comp.getClass() == type) {
                 ret.add((T) comp);
             }
@@ -36,10 +36,10 @@ public class Entity {
 
     @SuppressWarnings("unchecked")
     public <T extends Component> T getComponent(Class<T> type) {
-        int count = mComponentList.size();
+        int count = componentList.size();
         Component comp;
         for (int i = 0; i < count; i++) {
-            comp = mComponentList.get(i);
+            comp = componentList.get(i);
             if (comp.getClass() == type) {
                 return (T) comp;
             }
@@ -50,6 +50,6 @@ public class Entity {
     // TODO: Block this on running
     public void addComponent(Component component) {
         component.entity = this;
-        mComponentList.add(component);
+        componentList.add(component);
     }
 }

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TouchHandler implements View.OnTouchListener {
+    
     private static final int MAX_TOUCHPOINTS = 10;
 
     boolean[] isTouched = new boolean[MAX_TOUCHPOINTS];

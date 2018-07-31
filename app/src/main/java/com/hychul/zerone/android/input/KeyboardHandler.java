@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class KeyboardHandler implements OnKeyListener {
+    
     boolean[] pressedKeys = new boolean[128];
     Pool<KeyEvent> keyEventPool;
     List<KeyEvent> keyEventsBuffer = new ArrayList<KeyEvent>();

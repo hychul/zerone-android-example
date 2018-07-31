@@ -7,6 +7,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
 public class CompassHandler implements SensorEventListener {
+
     float yaw;
     float pitch;
     float roll;

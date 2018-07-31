@@ -9,8 +9,9 @@ import com.hychul.zerone.Music;
 import java.io.IOException;
 
 public class AndroidMusic implements Music, OnCompletionListener {
+
     MediaPlayer mediaPlayer;
-    boolean isPrepared = false;
+    boolean isPrepared;
 
     public AndroidMusic(AssetFileDescriptor assetDescriptor) {
         mediaPlayer = new MediaPlayer();
