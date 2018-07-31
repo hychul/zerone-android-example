@@ -70,18 +70,18 @@ public class ZeroneEngine {
         @Override
         public void run() {
 
-            long startTime = 0L;
+            long startTime = nanoTime();
             long elapseTime = 0L;
 
             while (true) {
                 // TODO: Move time to static class
-                float deltaTime = (nanoTime() - startTime) / 1000000000.0f;
+                Time.setDeltaTime((nanoTime() - startTime) / 1000000000.0f);
                 startTime = nanoTime();
 
                 // TODO: Use input queue
 
                 synchronized (lock) {
-                    scene.update(deltaTime);
+                    scene.update();
 
                     lock.notifyAll();
                 }

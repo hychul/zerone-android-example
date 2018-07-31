@@ -8,6 +8,7 @@ import com.hychul.zerone.android.GLScene;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Vertices;
 import com.hychul.zerone.core.Scene;
+import com.hychul.zerone.core.Time;
 import com.hychul.zerone.math.Mathf;
 import com.hychul.zerone.math.Vector2;
 
@@ -47,7 +48,8 @@ public class CannonGravityTest extends ZeroneActivity {
         }
 
         @Override
-        public void update(float deltaTime) {
+        public void update() {
+            float deltaTime = Time.getDeltaTime();
             List<TouchEvent> touchEvents = zerone.getInput().getTouchEvents();
             zerone.getInput().getKeyEvents();
 

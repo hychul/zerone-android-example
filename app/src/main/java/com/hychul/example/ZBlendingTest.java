@@ -59,7 +59,7 @@ public class ZBlendingTest extends ZeroneActivity {
         }
 
         @Override
-        public void update(float deltaTime) {
+        public void update() {
         }
 
         @Override

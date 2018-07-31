@@ -38,7 +38,7 @@ public class SettingsScene extends GLScene {
     }
 
     @Override
-    public void update(float deltaTime) {
+    public void update() {
         List<TouchEvent> events = zerone.getInput().getTouchEvents();
         int len = events.size();
         for (int i = 0; i < len; i++) {

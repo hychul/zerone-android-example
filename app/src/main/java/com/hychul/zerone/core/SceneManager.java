@@ -39,12 +39,6 @@ public class SceneManager {
         scene.onResume();
     }
 
-    static void update(boolean draw) {
-        scene.update(0);
-        if (draw)
-            scene.draw();
-    }
-
     static void pause() {
         scene.onPause();
     }

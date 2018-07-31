@@ -20,7 +20,7 @@ public abstract class Scene {
 
     public abstract void onResume();
 
-    public void update(float deltaTime) {
+    public void update() {
         world.update();
     }
 

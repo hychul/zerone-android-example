@@ -13,6 +13,7 @@ import com.hychul.zerone.android.graphics.Texture;
 import com.hychul.zerone.android.graphics.Vertices;
 import com.hychul.zerone.android.graphics.light.PointLight;
 import com.hychul.zerone.core.Scene;
+import com.hychul.zerone.core.Time;
 import com.hychul.zerone.math.Vector2;
 import com.hychul.zerone.math.Vector3;
 
@@ -103,7 +104,8 @@ public class EulerCameraTest extends ZeroneActivity {
         }
 
         @Override
-        public void update(float deltaTime) {
+        public void update() {
+            float deltaTime = Time.getDeltaTime();
             zerone.getInput().getTouchEvents();
             float x = zerone.getInput().getTouchX(0);
             float y = zerone.getInput().getTouchY(0);

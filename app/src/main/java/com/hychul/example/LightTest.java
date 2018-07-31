@@ -13,6 +13,7 @@ import com.hychul.zerone.android.graphics.light.AmbientLight;
 import com.hychul.zerone.android.graphics.light.DirectionalLight;
 import com.hychul.zerone.android.graphics.light.PointLight;
 import com.hychul.zerone.core.Scene;
+import com.hychul.zerone.core.Time;
 
 import javax.microedition.khronos.opengles.GL10;
 
@@ -95,7 +96,8 @@ public class LightTest extends ZeroneActivity {
         }
 
         @Override
-        public void update(float deltaTime) {
+        public void update() {
+            float deltaTime = Time.getDeltaTime();
             angle += deltaTime * 20;
         }
 

@@ -52,7 +52,7 @@ public class PerspectiveTest extends ZeroneActivity {
         }
 
         @Override
-        public void update(float deltaTime) {
+        public void update() {
         }
 
         @Override

@@ -37,7 +37,7 @@ public class MainMenuScene extends GLScene {
     }
 
     @Override
-    public void update(float deltaTime) {
+    public void update() {
         List<Input.TouchEvent> touchEvents = zerone.getInput().getTouchEvents();
         zerone.getInput().getKeyEvents();
 

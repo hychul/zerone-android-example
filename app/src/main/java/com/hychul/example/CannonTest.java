@@ -36,7 +36,7 @@ public class CannonTest extends ZeroneActivity {
         }
 
         @Override
-        public void update(float deltaTime) {
+        public void update() {
             List<TouchEvent> touchEvents = zerone.getInput().getTouchEvents();
             zerone.getInput().getKeyEvents();
 

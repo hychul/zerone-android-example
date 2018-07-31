@@ -9,6 +9,7 @@ import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Texture;
 import com.hychul.zerone.android.graphics.Vertices;
 import com.hychul.zerone.core.Scene;
+import com.hychul.zerone.core.Time;
 
 import javax.microedition.khronos.opengles.GL10;
 
@@ -81,7 +82,8 @@ public class CubeTest extends ZeroneActivity {
         }
 
         @Override
-        public void update(float deltaTime) {
+        public void update() {
+            float deltaTime = Time.getDeltaTime();
             angle += 45 * deltaTime;
         }
 

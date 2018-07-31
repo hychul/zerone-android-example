@@ -12,6 +12,7 @@ import com.hychul.zerone.android.graphics.Camera2D;
 import com.hychul.zerone.android.graphics.Vertices;
 import com.hychul.example.common.GameObject;
 import com.hychul.zerone.core.Scene;
+import com.hychul.zerone.core.Time;
 import com.hychul.zerone.math.Mathf;
 import com.hychul.zerone.math.OverlapTester;
 import com.hychul.zerone.math.Vector2;
@@ -82,7 +83,8 @@ public class Camera2DTest extends ZeroneActivity {
             camera = new Camera2D(graphics, WORLD_WIDTH, WORLD_HEIGHT);
         }
 
-        public void update(float deltaTime) {
+        public void update() {
+            float deltaTime = Time.getDeltaTime();
             List<TouchEvent> touchEvents = zerone.getInput().getTouchEvents();
             zerone.getInput().getKeyEvents();
 

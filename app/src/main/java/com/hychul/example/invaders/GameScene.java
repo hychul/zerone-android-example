@@ -10,6 +10,7 @@ import com.hychul.zerone.android.graphics.Camera2D;
 import com.hychul.zerone.android.graphics.FPSCounter;
 import com.hychul.zerone.android.graphics.SpriteBatcher;
 import com.hychul.zerone.core.SceneManager;
+import com.hychul.zerone.core.Time;
 import com.hychul.zerone.math.OverlapTester;
 import com.hychul.zerone.math.Rectangle;
 import com.hychul.zerone.math.Vector2;
@@ -76,7 +77,8 @@ public class GameScene extends GLScene {
     }
 
     @Override
-    public void update(float deltaTime) {
+    public void update() {
+        float deltaTime = Time.getDeltaTime();
         switch (state) {
             case GAME_PAUSED:
                 updatePaused();

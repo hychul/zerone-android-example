@@ -47,7 +47,7 @@ public class Vertices3Test extends ZeroneActivity {
         }
 
         @Override
-        public void update(float deltaTime) {
+        public void update() {
         }
 
         @Override
