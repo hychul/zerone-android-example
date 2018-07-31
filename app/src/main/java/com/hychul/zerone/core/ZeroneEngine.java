@@ -1,7 +1,5 @@
 package com.hychul.zerone.core;
 
-import android.util.Log;
-
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
