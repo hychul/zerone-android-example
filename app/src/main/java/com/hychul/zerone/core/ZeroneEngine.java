@@ -1,5 +1,7 @@
 package com.hychul.zerone.core;
 
+import android.util.Log;
+
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -39,6 +41,8 @@ public class ZeroneEngine {
 
     class SimulatorTask implements Runnable {
 
+        private float NANO_TO_SEC = 1 / 1000000000.0f;
+
         private Scene scene;
 
         private boolean shutdown;
@@ -74,7 +78,7 @@ public class ZeroneEngine {
             long elapseTime = 0L;
 
             while (true) {
-                Time.setDeltaTime((nanoTime() - startTime) / 1000000000.0f);
+                Time.setDeltaTime((nanoTime() - startTime) * NANO_TO_SEC);
                 startTime = nanoTime();
 
                 // TODO: Use input queue
