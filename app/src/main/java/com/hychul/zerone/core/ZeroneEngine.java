@@ -45,7 +45,7 @@ public class ZeroneEngine {
 
         private long duration;
 
-        SimulatorTask(long simulationRate) {
+        public SimulatorTask(long simulationRate) {
             setSimulationRate(simulationRate);
 
             SceneManager.onSceneLoaded.addSubscriber(new Event.Subscriber<Scene>() {
@@ -74,7 +74,6 @@ public class ZeroneEngine {
             long elapseTime = 0L;
 
             while (true) {
-                // TODO: Move time to static class
                 Time.setDeltaTime((nanoTime() - startTime) / 1000000000.0f);
                 startTime = nanoTime();
 

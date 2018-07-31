@@ -6,7 +6,7 @@ public abstract class Scene {
 
     protected final Zerone zerone;
 
-    private final World world;
+    protected final World world;
 
     public Scene(Zerone zerone) {
         this.zerone = zerone;

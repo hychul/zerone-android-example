@@ -120,7 +120,6 @@ public class World {
     }
 
     private final void updateSystem() {
-        // TODO: If system use in different thread, hold components reference pointer.
         int count = systemList.size();
         System system;
         for (int i = 0; i < count; i++) {

@@ -11,6 +11,5 @@ public interface Zerone {
 
     Audio getAudio();
 
-    // TODO: SceneManager
     Scene getStartScene();
 }
