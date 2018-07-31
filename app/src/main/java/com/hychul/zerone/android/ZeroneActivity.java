@@ -59,7 +59,6 @@ public abstract class ZeroneActivity extends Activity implements Zerone {
         fileIO = new AndroidFileIO(this);
         audio = new AndroidAudio(this);
         input = new AndroidInput(this, glView, 1, 1);
-
     }
 
     @Override

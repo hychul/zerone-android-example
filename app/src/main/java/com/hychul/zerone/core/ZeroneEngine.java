@@ -66,6 +66,7 @@ public class ZeroneEngine {
 
         @Override
         public void run() {
+
             long startTime;
             long elapseTime;
 
