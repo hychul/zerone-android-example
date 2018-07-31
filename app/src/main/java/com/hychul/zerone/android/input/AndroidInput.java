@@ -8,6 +8,7 @@ import com.hychul.zerone.Input;
 import java.util.List;
 
 public class AndroidInput implements Input {
+
     AccelerometerHandler accelHandler;
     KeyboardHandler keyHandler;
     TouchHandler touchHandler;
