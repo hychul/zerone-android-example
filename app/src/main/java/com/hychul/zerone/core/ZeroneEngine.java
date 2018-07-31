@@ -58,19 +58,30 @@ public class ZeroneEngine {
             });
         }
 
-        void setSimulationRate(long fps) {
+        public void setDuration(long duration) {
+            this.duration = duration;
+        }
+
+        public void setSimulationRate(long fps) {
             duration = TimeUnit.SECONDS.toNanos(1) / fps;
         }
 
-        void stop() {
+        public void stop() {
             shutdown = true;
+        }
 
+        public void onResume() {
+
+        }
+
+        public void onPause() {
             scene.onPause();
             scene.onDestroy();
         }
 
         @Override
         public void run() {
+            onResume();
 
             long startTime = nanoTime();
             long elapseTime = 0L;
@@ -102,6 +113,8 @@ public class ZeroneEngine {
             }
 
             shutdown = false;
+
+            onPause();
         }
     }
 }
