@@ -151,13 +151,13 @@ public abstract class ZeroneActivity extends Activity implements Zerone {
 
         @Override
         public void onDrawFrame(GL10 gl10) {
-            ActivityState glState;
+            ActivityState stateSync;
 
             synchronized (stateLock) {
-                glState = state;
+                stateSync = state;
             }
 
-            switch (glState) {
+            switch (stateSync) {
                 case Running:
                     synchronized (engine.lock) {
                         scene.draw();
