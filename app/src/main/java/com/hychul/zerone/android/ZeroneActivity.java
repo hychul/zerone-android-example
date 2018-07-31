@@ -16,6 +16,7 @@ import com.hychul.zerone.android.input.AndroidInput;
 import com.hychul.zerone.core.Event;
 import com.hychul.zerone.core.Scene;
 import com.hychul.zerone.core.SceneManager;
+import com.hychul.zerone.core.ZeroneEngine;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -30,6 +31,8 @@ public abstract class ZeroneActivity extends Activity implements Zerone {
         Idle
     }
 
+    ZeroneEngine engine;
+
     GLSurfaceView glView;
 
     Graphics graphics;
@@ -41,14 +44,15 @@ public abstract class ZeroneActivity extends Activity implements Zerone {
     ActivityState state = ActivityState.Initialized;
 
     final Object stateLock = new Object();
-    long startTime = System.nanoTime();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                             WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        engine = new ZeroneEngine();
 
         glView = new GLSurfaceView(this);
         glView.setRenderer(new RenderTask());
@@ -84,6 +88,7 @@ public abstract class ZeroneActivity extends Activity implements Zerone {
                 }
             }
         }
+        engine.stop();
         glView.onPause();
         super.onPause();
     }
@@ -132,8 +137,7 @@ public abstract class ZeroneActivity extends Activity implements Zerone {
                     scene.onResume();
 
                 state = ActivityState.Running;
-
-                startTime = System.nanoTime();
+                engine.start();
             }
 
             onInitialized();
@@ -155,11 +159,15 @@ public abstract class ZeroneActivity extends Activity implements Zerone {
 
             switch (glState) {
                 case Running:
-                    float deltaTime = (System.nanoTime() - startTime) / 1000000000.0f;
-                    startTime = System.nanoTime();
+                    synchronized (engine.lock) {
+                        scene.draw();
 
-                    scene.update(deltaTime);
-                    scene.draw();
+                        try {
+                            engine.lock.wait();
+                        } catch (InterruptedException ignored) {
+
+                        }
+                    }
                     break;
                 case Paused:
                     scene.onPause();

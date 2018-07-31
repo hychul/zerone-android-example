@@ -11,6 +11,8 @@ public class ZeroneEngine {
     private ThreadPoolExecutor mSimulationExecutor;
     private SimulatorTask mSimulator;
 
+    public Object lock;
+
     public ZeroneEngine() {
         mSimulationExecutor = new ThreadPoolExecutor(1,
                                                      1,
@@ -18,8 +20,9 @@ public class ZeroneEngine {
                                                      TimeUnit.MILLISECONDS,
                                                      new SynchronousQueue<Runnable>(),
                                                      new ThreadPoolExecutor.DiscardPolicy());
-
         mSimulator = new SimulatorTask(60);
+
+        lock = new Object();
     }
 
     public void setSimulationRate(long fps) {
@@ -67,15 +70,20 @@ public class ZeroneEngine {
         @Override
         public void run() {
 
-            long startTime;
-            long elapseTime;
+            long startTime = 0L;
+            long elapseTime = 0L;
 
             while (true) {
+                // TODO: Move time to static class
+                float deltaTime = (nanoTime() - startTime) / 1000000000.0f;
                 startTime = nanoTime();
 
                 // TODO: Use input queue
 
-                mScene.update(0);
+                synchronized (lock) {
+                    mScene.update(deltaTime);
+                    lock.notifyAll();
+                }
 
                 elapseTime = nanoTime() - startTime;
 
