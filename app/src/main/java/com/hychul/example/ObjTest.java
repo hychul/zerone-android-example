@@ -35,14 +35,14 @@ public class ObjTest extends ZeroneActivity {
         DirectionalLight directionalLight;
         Material material;
 
-        public ObjScene(Zerone zerone) {
+        public ObjScene(ZeroneActivity zerone) {
             super(zerone);
         }
 
         @Override
         public void onCreate() {
-            cube = ObjLoader.load(zeroneActivity.getFileIO(), "cube.obj");
-            texture = new Texture(zeroneActivity.getFileIO(), "crate.png");
+            cube = ObjLoader.load(zerone.getFileIO(), "cube.obj");
+            texture = new Texture(zerone.getFileIO(), "crate.png");
             ambientLight = new AmbientLight();
             ambientLight.setColor(0, 0.2f, 0, 1);
             pointLight = new PointLight();

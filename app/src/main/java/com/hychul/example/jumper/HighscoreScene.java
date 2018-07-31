@@ -5,6 +5,7 @@ import android.opengl.GLES10;
 import com.hychul.zerone.Input;
 import com.hychul.zerone.Zerone;
 import com.hychul.zerone.android.GLScene;
+import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Camera2D;
 import com.hychul.zerone.android.graphics.SpriteBatcher;
 import com.hychul.zerone.core.SceneManager;
@@ -25,7 +26,7 @@ public class HighscoreScene extends GLScene {
     String[] highScores;
     float xOffset = 0;
 
-    public HighscoreScene(Zerone zerone) {
+    public HighscoreScene(ZeroneActivity zerone) {
         super(zerone);
     }
 

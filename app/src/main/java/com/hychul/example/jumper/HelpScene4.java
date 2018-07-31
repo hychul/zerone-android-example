@@ -5,6 +5,7 @@ import android.opengl.GLES10;
 import com.hychul.zerone.Input;
 import com.hychul.zerone.Zerone;
 import com.hychul.zerone.android.GLScene;
+import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Camera2D;
 import com.hychul.zerone.android.graphics.Sprite;
 import com.hychul.zerone.android.graphics.SpriteBatcher;
@@ -27,7 +28,7 @@ public class HelpScene4 extends GLScene {
     Texture helpImage;
     Sprite helpRegion;
 
-    public HelpScene4(Zerone zerone) {
+    public HelpScene4(ZeroneActivity zerone) {
         super(zerone);
     }
 
@@ -41,7 +42,7 @@ public class HelpScene4 extends GLScene {
 
     @Override
     public void onResume() {
-        helpImage = new Texture(zeroneActivity.getFileIO(), "jumper/help4.png");
+        helpImage = new Texture(zerone.getFileIO(), "jumper/help4.png");
         helpRegion = new Sprite(helpImage, 0, 0, 320, 480);
     }
 

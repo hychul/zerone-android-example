@@ -1,16 +1,10 @@
 package com.hychul.zerone.core;
 
-import com.hychul.zerone.Zerone;
-
 public abstract class Scene {
-
-    protected final Zerone zerone;
 
     protected final World world;
 
-    public Scene(Zerone zerone) {
-        this.zerone = zerone;
-
+    public Scene() {
         this.world = new World();
     }
 

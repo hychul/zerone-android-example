@@ -34,14 +34,14 @@ public class LightTest extends ZeroneActivity {
         DirectionalLight directionalLight;
         Material material;
 
-        public LightScene(Zerone zerone) {
+        public LightScene(ZeroneActivity zerone) {
             super(zerone);
         }
 
         @Override
         public void onCreate() {
             cube = createCube();
-            texture = new Texture(zeroneActivity.getFileIO(), "crate.png");
+            texture = new Texture(zerone.getFileIO(), "crate.png");
             ambientLight = new AmbientLight();
             ambientLight.setColor(0, 0.2f, 0, 1);
             pointLight = new PointLight();

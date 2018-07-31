@@ -56,7 +56,7 @@ public class AnimationTest extends ZeroneActivity {
         Texture texture;
         SpriteAnimation walkAnim;
 
-        public AnimationScene(Zerone zerone) {
+        public AnimationScene(ZeroneActivity zerone) {
             super(zerone);
         }
 

@@ -54,7 +54,7 @@ public class SpriteBatcherTest extends ZeroneActivity {
 
         Texture texture;
 
-        public SpriteBatcherScene(Zerone zerone) {
+        public SpriteBatcherScene(ZeroneActivity zerone) {
             super(zerone);
         }
 

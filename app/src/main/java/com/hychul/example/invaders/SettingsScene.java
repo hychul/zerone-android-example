@@ -5,6 +5,7 @@ import android.opengl.GLES10;
 import com.hychul.zerone.Input.TouchEvent;
 import com.hychul.zerone.Zerone;
 import com.hychul.zerone.android.GLScene;
+import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Camera2D;
 import com.hychul.zerone.android.graphics.SpriteBatcher;
 import com.hychul.zerone.core.SceneManager;
@@ -26,7 +27,7 @@ public class SettingsScene extends GLScene {
     Rectangle soundBounds;
     Rectangle backBounds;
 
-    public SettingsScene(Zerone zerone) {
+    public SettingsScene(ZeroneActivity zerone) {
         super(zerone);
     }
 

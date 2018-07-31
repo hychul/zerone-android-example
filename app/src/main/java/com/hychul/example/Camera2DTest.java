@@ -49,7 +49,7 @@ public class Camera2DTest extends ZeroneActivity {
 
         Camera2D camera;
 
-        public Camera2DScene(Zerone zerone) {
+        public Camera2DScene(ZeroneActivity zerone) {
             super(zerone);
         }
 

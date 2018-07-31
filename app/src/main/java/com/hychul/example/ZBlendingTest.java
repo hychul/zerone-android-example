@@ -21,7 +21,7 @@ public class ZBlendingTest extends ZeroneActivity {
     class ZBlendingScene extends GLScene {
         Vertices vertices;
 
-        public ZBlendingScene(Zerone zerone) {
+        public ZBlendingScene(ZeroneActivity zerone) {
             super(zerone);
         }
 

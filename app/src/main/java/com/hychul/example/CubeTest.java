@@ -26,14 +26,14 @@ public class CubeTest extends ZeroneActivity {
         Texture texture;
         float angle = 0;
 
-        public CubeScene(Zerone zerone) {
+        public CubeScene(ZeroneActivity zerone) {
             super(zerone);
         }
 
         @Override
         public void onCreate() {
             cube = createCube();
-            texture = new Texture(zeroneActivity.getFileIO(), "crate.png");
+            texture = new Texture(zerone.getFileIO(), "crate.png");
         }
 
         private Vertices createCube() {

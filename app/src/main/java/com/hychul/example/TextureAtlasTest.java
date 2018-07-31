@@ -51,7 +51,7 @@ public class TextureAtlasTest extends ZeroneActivity {
 
         Texture texture;
 
-        public TextureAtlasScene(Zerone zerone) {
+        public TextureAtlasScene(ZeroneActivity zerone) {
             super(zerone);
         }
 

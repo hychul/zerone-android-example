@@ -6,6 +6,7 @@ import com.hychul.example.invaders.World.WorldListener;
 import com.hychul.zerone.Input.TouchEvent;
 import com.hychul.zerone.Zerone;
 import com.hychul.zerone.android.GLScene;
+import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Camera2D;
 import com.hychul.zerone.android.graphics.FPSCounter;
 import com.hychul.zerone.android.graphics.SpriteBatcher;
@@ -44,7 +45,7 @@ public class GameScene extends GLScene {
     String scoreString;
     FPSCounter fpsCounter;
 
-    public GameScene(Zerone zerone) {
+    public GameScene(ZeroneActivity zerone) {
         super(zerone);
     }
 

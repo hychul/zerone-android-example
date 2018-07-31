@@ -37,7 +37,7 @@ public class CannonGravityTest extends ZeroneActivity {
         Vector2 ballVelocity = new Vector2(0, 0);
         Vector2 gravity = new Vector2(0, -10);
 
-        public CannonGravityScene(Zerone zerone) {
+        public CannonGravityScene(ZeroneActivity zerone) {
             super(zerone);
         }
 

@@ -40,20 +40,20 @@ public class EulerCameraTest extends ZeroneActivity {
         float lastX = -1;
         float lastY = -1;
 
-        public EulerCameraScene(Zerone zerone) {
+        public EulerCameraScene(ZeroneActivity zerone) {
             super(zerone);
         }
 
         @Override
         public void onCreate() {
-            crateTexture = new Texture(zeroneActivity.getFileIO(), "crate.png", true);
+            crateTexture = new Texture(zerone.getFileIO(), "crate.png", true);
             cube = createCube();
             light = new PointLight();
             light.setPosition(3, 3, -3);
             camera = new EulerCamera(graphics, 67, graphics.getWidth() / (float) graphics.getHeight(), 1, 100);
             camera.getPosition().set(0, 1, 3);
 
-            buttonTexture = new Texture(zeroneActivity.getFileIO(), "button.png");
+            buttonTexture = new Texture(zerone.getFileIO(), "button.png");
             batcher = new SpriteBatcher(1);
             guiCamera = new Camera2D(graphics, 480, 320);
             buttonRegion = new Sprite(buttonTexture, 0, 0, 64, 64);

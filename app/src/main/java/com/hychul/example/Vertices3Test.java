@@ -20,7 +20,7 @@ public class Vertices3Test extends ZeroneActivity {
     class Vertices3Scene extends GLScene {
         Vertices vertices;
 
-        public Vertices3Scene(Zerone zerone) {
+        public Vertices3Scene(ZeroneActivity zerone) {
             super(zerone);
         }
 

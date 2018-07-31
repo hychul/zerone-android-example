@@ -31,7 +31,7 @@ public class CannonTest extends ZeroneActivity {
         float cannonAngle = 0;
         Vector2 touchPos = new Vector2();
 
-        public CannonScene(Zerone zerone) {
+        public CannonScene(ZeroneActivity zerone) {
             super(zerone);
         }
 

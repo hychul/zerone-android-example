@@ -21,7 +21,7 @@ public class PerspectiveTest extends ZeroneActivity {
     class PerspectiveScene extends GLScene {
         Vertices vertices;
 
-        public PerspectiveScene(Zerone zerone) {
+        public PerspectiveScene(ZeroneActivity zerone) {
             super(zerone);
         }
 

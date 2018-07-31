@@ -21,7 +21,7 @@ public class ZBufferTest extends ZeroneActivity {
     class ZBufferScene extends GLScene {
         Vertices vertices;
 
-        public ZBufferScene(Zerone zerone) {
+        public ZBufferScene(ZeroneActivity zerone) {
             super(zerone);
         }
 

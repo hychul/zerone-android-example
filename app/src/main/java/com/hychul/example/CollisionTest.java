@@ -46,7 +46,7 @@ public class CollisionTest extends ZeroneActivity {
         Vector2 touchPos = new Vector2();
         Vector2 gravity = new Vector2(0, -10);
 
-        public CollisionScene(Zerone zerone) {
+        public CollisionScene(ZeroneActivity zerone) {
             super(zerone);
         }
 

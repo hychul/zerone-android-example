@@ -5,6 +5,7 @@ import android.opengl.GLES10;
 import com.hychul.zerone.Input;
 import com.hychul.zerone.Zerone;
 import com.hychul.zerone.android.GLScene;
+import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Camera2D;
 import com.hychul.zerone.android.graphics.SpriteBatcher;
 import com.hychul.zerone.core.SceneManager;
@@ -26,7 +27,7 @@ public class MainMenuScene extends GLScene {
     Rectangle helpBounds;
     Vector2 touchPoint;
 
-    public MainMenuScene(Zerone zerone) {
+    public MainMenuScene(ZeroneActivity zerone) {
         super(zerone);
     }
 

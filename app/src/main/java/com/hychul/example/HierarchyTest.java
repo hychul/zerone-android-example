@@ -26,14 +26,14 @@ public class HierarchyTest extends ZeroneActivity {
         Texture texture;
         HierarchicalObject sun;
 
-        public HierarchyScene(Zerone zerone) {
+        public HierarchyScene(ZeroneActivity zerone) {
             super(zerone);
         }
 
         @Override
         public void onCreate() {
             cube = createCube();
-            texture = new Texture(zeroneActivity.getFileIO(), "crate.png");
+            texture = new Texture(zerone.getFileIO(), "crate.png");
 
             sun = new HierarchicalObject(cube, false);
             sun.z = -5;
