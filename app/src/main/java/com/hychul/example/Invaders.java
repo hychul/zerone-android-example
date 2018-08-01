@@ -6,9 +6,6 @@ import com.hychul.example.invaders.Settings;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.core.Scene;
 
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
-
 public class Invaders extends ZeroneActivity {
     boolean firstTimeCreate = true;
 

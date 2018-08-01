@@ -4,7 +4,6 @@ import android.opengl.GLES10;
 import android.opengl.GLU;
 
 import com.hychul.example.common.HierarchicalObject;
-import com.hychul.zerone.Zerone;
 import com.hychul.zerone.android.GLScene;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Texture;

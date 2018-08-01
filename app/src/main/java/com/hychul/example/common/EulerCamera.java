@@ -12,17 +12,16 @@ import javax.microedition.khronos.opengles.GL10;
 public class EulerCamera {
     final Graphics graphics;
     final Vector3 position = new Vector3();
+    final float[] matrix = new float[16];
+    final float[] inVec = {0, 0, -1, 1};
+    final float[] outVec = new float[4];
+    final Vector3 direction = new Vector3();
     float yaw;
     float pitch;
     float fieldOfView;
     float aspectRatio;
     float near;
     float far;
-
-    final float[] matrix = new float[16];
-    final float[] inVec = {0, 0, -1, 1};
-    final float[] outVec = new float[4];
-    final Vector3 direction = new Vector3();
 
     public EulerCamera(Graphics graphics, float fieldOfView, float aspectRatio, float near, float far) {
         this.graphics = graphics;

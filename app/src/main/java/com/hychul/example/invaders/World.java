@@ -7,27 +7,19 @@ import java.util.List;
 import java.util.Random;
 
 public class World {
-    public interface WorldListener {
-        void explosion();
-
-        void shot();
-    }
-
     final static float WORLD_MIN_X = -14;
     final static float WORLD_MAX_X = 14;
     final static float WORLD_MIN_Z = -15;
-
-    WorldListener listener;
-    int waves = 1;
-    int score = 0;
-    float speedMultiplier = 1;
     final List<Shot> shots = new ArrayList<Shot>();
     final List<Invader> invaders = new ArrayList<Invader>();
     final List<Shield> shields = new ArrayList<Shield>();
     final Ship ship;
+    WorldListener listener;
+    int waves = 1;
+    int score = 0;
+    float speedMultiplier = 1;
     long lastShotTime;
     Random random;
-
     public World() {
         ship = new Ship(0, 0, 0);
         generateInvaders();
@@ -201,5 +193,11 @@ public class World {
             lastShotTime = System.nanoTime();
             listener.shot();
         }
+    }
+
+    public interface WorldListener {
+        void explosion();
+
+        void shot();
     }
 }

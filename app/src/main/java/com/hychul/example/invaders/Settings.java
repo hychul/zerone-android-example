@@ -9,9 +9,9 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 public class Settings {
+    public final static String file = ".androidinvaders";
     public static boolean soundEnabled = true;
     public static boolean touchEnabled = true;
-    public final static String file = ".androidinvaders";
 
     public static void load(FileIO files) {
         BufferedReader in = null;

@@ -9,36 +9,23 @@ import java.util.Random;
 
 public class World {
 
-    public interface WorldListener {
-        void jump();
-
-        void highJump();
-
-        void hit();
-
-        void coin();
-    }
-
     public static final float WORLD_WIDTH = 10;
     public static final float WORLD_HEIGHT = 15 * 20;
     public static final int WORLD_STATE_RUNNING = 0;
     public static final int WORLD_STATE_NEXT_LEVEL = 1;
     public static final int WORLD_STATE_GAME_OVER = 2;
     public static final Vector2 gravity = new Vector2(0, -12);
-
     public final Bob bob;
     public final List<Platform> platforms;
     public final List<Spring> springs;
     public final List<Squirrel> squirrels;
     public final List<Coin> coins;
-    public Castle castle;
     public final WorldListener listener;
     public final Random rand;
-
+    public Castle castle;
     public float heightSoFar;
     public int score;
     public int state;
-
     public World(WorldListener listener) {
         this.bob = new Bob(5, 1);
         this.platforms = new ArrayList<>();
@@ -217,5 +204,15 @@ public class World {
         if (heightSoFar - 7.5f > bob.position.y) {
             state = WORLD_STATE_GAME_OVER;
         }
+    }
+
+    public interface WorldListener {
+        void jump();
+
+        void highJump();
+
+        void hit();
+
+        void coin();
     }
 }

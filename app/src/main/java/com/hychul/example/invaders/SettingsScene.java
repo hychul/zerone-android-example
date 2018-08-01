@@ -3,7 +3,6 @@ package com.hychul.example.invaders;
 import android.opengl.GLES10;
 
 import com.hychul.zerone.Input.TouchEvent;
-import com.hychul.zerone.Zerone;
 import com.hychul.zerone.android.GLScene;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Camera2D;
@@ -99,7 +98,7 @@ public class SettingsScene extends GLScene {
         batcher.drawSprite(Settings.touchEnabled ? Assets.touchEnabledRegion : Assets.touchRegion, 64, 64, 120, 160, 0,
                            0);
         batcher.drawSprite(Settings.touchEnabled ? Assets.accelRegion
-                              : Assets.accelEnabledRegion, 64, 64, 240, 160, 0,
+                                                 : Assets.accelEnabledRegion, 64, 64, 240, 160, 0,
                            0);
         batcher.drawSprite(Settings.soundEnabled ? Assets.soundEnabledRegion : Assets.soundRegion, 64, 64, 360, 160, 0,
                            0);

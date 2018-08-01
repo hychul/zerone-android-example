@@ -3,7 +3,6 @@ package com.hychul.example.jumper;
 import android.opengl.GLES10;
 
 import com.hychul.zerone.Input;
-import com.hychul.zerone.Zerone;
 import com.hychul.zerone.android.GLScene;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Camera2D;

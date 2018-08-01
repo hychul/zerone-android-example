@@ -10,12 +10,12 @@ import java.util.List;
 import javax.microedition.khronos.opengles.GL10;
 
 public class HierarchicalObject {
+    public final List<HierarchicalObject> children = new ArrayList<HierarchicalObject>();
+    public final Vertices mesh;
     public float x, y, z;
     public float scale = 1;
     public float rotationY, rotationParent;
     public boolean hasParent;
-    public final List<HierarchicalObject> children = new ArrayList<HierarchicalObject>();
-    public final Vertices mesh;
 
     public HierarchicalObject(Vertices mesh, boolean hasParent) {
         this.mesh = mesh;

@@ -10,7 +10,6 @@ import android.view.WindowManager;
 import com.hychul.zerone.Audio;
 import com.hychul.zerone.FileIO;
 import com.hychul.zerone.Input;
-import com.hychul.zerone.Zerone;
 import com.hychul.zerone.android.audio.AndroidAudio;
 import com.hychul.zerone.android.input.AndroidInput;
 import com.hychul.zerone.core.Event;
@@ -21,7 +20,7 @@ import com.hychul.zerone.core.ZeroneEngine;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-public abstract class ZeroneActivity extends Activity implements Zerone {
+public abstract class ZeroneActivity extends Activity {
 
     enum ActivityState {
         Initialized,
@@ -92,6 +91,8 @@ public abstract class ZeroneActivity extends Activity implements Zerone {
         glView.onPause();
         super.onPause();
     }
+
+    public abstract Scene getStartScene();
 
     public Graphics getGLGraphics() {
         return graphics;

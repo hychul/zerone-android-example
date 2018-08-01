@@ -2,7 +2,7 @@ package com.hychul.example;
 
 import android.opengl.GLES10;
 
-import com.hychul.zerone.Zerone;
+import com.hychul.example.common.GameObject;
 import com.hychul.zerone.android.GLScene;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Camera2D;
@@ -10,7 +10,6 @@ import com.hychul.zerone.android.graphics.Sprite;
 import com.hychul.zerone.android.graphics.SpriteAnimation;
 import com.hychul.zerone.android.graphics.SpriteBatcher;
 import com.hychul.zerone.android.graphics.Texture;
-import com.hychul.example.common.GameObject;
 import com.hychul.zerone.core.Scene;
 import com.hychul.zerone.core.Time;
 import com.hychul.zerone.math.Mathf;
@@ -91,21 +90,21 @@ public class AnimationTest extends ZeroneActivity {
 
         @Override
         public void draw() {
-	        GLES10.glClear(GL10.GL_COLOR_BUFFER_BIT);
-	        camera.setViewport();
+            GLES10.glClear(GL10.GL_COLOR_BUFFER_BIT);
+            camera.setViewport();
 
-	        GLES10.glEnable(GL10.GL_BLEND);
-	        GLES10.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
-	        GLES10.glEnable(GL10.GL_TEXTURE_2D);
+            GLES10.glEnable(GL10.GL_BLEND);
+            GLES10.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
+            GLES10.glEnable(GL10.GL_TEXTURE_2D);
 
-	        batcher.beginBatch(texture);
-	        int len = cavemen.length;
-	        for (int i = 0; i < len; i++) {
-	            Caveman caveman = cavemen[i];
-	            Sprite keyFrame = walkAnim.getKeyFrame(caveman.walkingTime, true);
-	            batcher.drawSprite(keyFrame, caveman.velocity.x < 0 ? 64 : -64, 64, caveman.position.x, caveman.position.y, 0, 0);
-	        }
-	        batcher.endBatch();
+            batcher.beginBatch(texture);
+            int len = cavemen.length;
+            for (int i = 0; i < len; i++) {
+                Caveman caveman = cavemen[i];
+                Sprite keyFrame = walkAnim.getKeyFrame(caveman.walkingTime, true);
+                batcher.drawSprite(keyFrame, caveman.velocity.x < 0 ? 64 : -64, 64, caveman.position.x, caveman.position.y, 0, 0);
+            }
+            batcher.endBatch();
         }
 
         @Override
