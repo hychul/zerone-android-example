@@ -90,9 +90,8 @@ public class ZeroneEngine {
                 Time.setDeltaTime((nanoTime() - startTime) * NANO_TO_SEC);
                 startTime = nanoTime();
 
-                // TODO: Use input queue
-
                 synchronized (lock) {
+                    // TODO: Use input queue
                     scene.update();
 
                     lock.notifyAll();

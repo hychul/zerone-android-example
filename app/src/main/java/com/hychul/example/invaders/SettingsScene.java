@@ -95,13 +95,12 @@ public class SettingsScene extends GLScene {
 
         batcher.beginBatch(Assets.items);
         batcher.drawSprite(Assets.settingsRegion, 224, 32, 240, 280, 0, 0);
-        batcher.drawSprite(Settings.touchEnabled ? Assets.touchEnabledRegion : Assets.touchRegion, 64, 64, 120, 160, 0,
-                           0);
-        batcher.drawSprite(Settings.touchEnabled ? Assets.accelRegion
-                                                 : Assets.accelEnabledRegion, 64, 64, 240, 160, 0,
-                           0);
-        batcher.drawSprite(Settings.soundEnabled ? Assets.soundEnabledRegion : Assets.soundRegion, 64, 64, 360, 160, 0,
-                           0);
+        batcher.drawSprite(Settings.touchEnabled ? Assets.touchEnabledRegion : Assets.touchRegion,
+                           64, 64, 120, 160, 0, 0);
+        batcher.drawSprite(Settings.touchEnabled ? Assets.accelRegion : Assets.accelEnabledRegion,
+                           64, 64, 240, 160, 0, 0);
+        batcher.drawSprite(Settings.soundEnabled ? Assets.soundEnabledRegion : Assets.soundRegion,
+                           64, 64, 360, 160, 0, 0);
         batcher.drawSprite(Assets.leftRegion, 64, 64, 32, 32, 0, 0);
         batcher.endBatch();
 
