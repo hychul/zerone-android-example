@@ -10,8 +10,7 @@ public abstract class ActScene extends Scene {
     protected final Graphics graphics;
 
     public ActScene(ZeroneActivity zerone) {
-        super();
         this.zerone = zerone;
-        graphics = zerone.getGLGraphics();
+        this.graphics = zerone.getGLGraphics();
     }
 }

@@ -2,11 +2,7 @@ package com.hychul.zerone.core;
 
 public abstract class Scene {
 
-    protected final World world;
-
-    public Scene() {
-        this.world = new World();
-    }
+    protected final World world = new World();
 
     public abstract void onCreate();
 
