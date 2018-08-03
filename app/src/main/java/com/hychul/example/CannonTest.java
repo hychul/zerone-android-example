@@ -3,7 +3,7 @@ package com.hychul.example;
 import android.opengl.GLES10;
 
 import com.hychul.zerone.Input.TouchEvent;
-import com.hychul.zerone.android.GLScene;
+import com.hychul.example.common.ActScene;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Vertices;
 import com.hychul.zerone.core.Scene;
@@ -20,7 +20,7 @@ public class CannonTest extends ZeroneActivity {
         return new CannonScene(this);
     }
 
-    class CannonScene extends GLScene {
+    class CannonScene extends ActScene {
 
         float FRUSTUM_WIDTH = 4.8f;
         float FRUSTUM_HEIGHT = 3.2f;

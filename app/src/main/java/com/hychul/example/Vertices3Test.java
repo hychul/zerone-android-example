@@ -2,7 +2,7 @@ package com.hychul.example;
 
 import android.opengl.GLES10;
 
-import com.hychul.zerone.android.GLScene;
+import com.hychul.example.common.ActScene;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Vertices;
 import com.hychul.zerone.core.Scene;
@@ -16,7 +16,7 @@ public class Vertices3Test extends ZeroneActivity {
         return new Vertices3Scene(this);
     }
 
-    class Vertices3Scene extends GLScene {
+    class Vertices3Scene extends ActScene {
         Vertices vertices;
 
         public Vertices3Scene(ZeroneActivity zerone) {

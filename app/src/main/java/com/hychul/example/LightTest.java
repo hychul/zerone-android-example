@@ -3,7 +3,7 @@ package com.hychul.example;
 import android.opengl.GLES10;
 import android.opengl.GLU;
 
-import com.hychul.zerone.android.GLScene;
+import com.hychul.example.common.ActScene;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Material;
 import com.hychul.zerone.android.graphics.Texture;
@@ -23,7 +23,7 @@ public class LightTest extends ZeroneActivity {
         return new LightScene(this);
     }
 
-    class LightScene extends GLScene {
+    class LightScene extends ActScene {
 
         float angle;
         Vertices cube;

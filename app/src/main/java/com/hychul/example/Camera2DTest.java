@@ -6,7 +6,7 @@ import com.hychul.example.common.Cannon;
 import com.hychul.example.common.GameObject;
 import com.hychul.example.common.SpatialHashGrid;
 import com.hychul.zerone.Input.TouchEvent;
-import com.hychul.zerone.android.GLScene;
+import com.hychul.example.common.ActScene;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Camera2D;
 import com.hychul.zerone.android.graphics.Vertices;
@@ -28,7 +28,7 @@ public class Camera2DTest extends ZeroneActivity {
         return new Camera2DScene(this);
     }
 
-    class Camera2DScene extends GLScene {
+    class Camera2DScene extends ActScene {
 
         static final int NUM_TARGETS = 20;
         static final float WORLD_WIDTH = 9.6f;

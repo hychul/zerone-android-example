@@ -4,7 +4,7 @@ import android.opengl.GLES10;
 
 import com.hychul.example.invaders.World.WorldListener;
 import com.hychul.zerone.Input.TouchEvent;
-import com.hychul.zerone.android.GLScene;
+import com.hychul.example.common.ActScene;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Camera2D;
 import com.hychul.zerone.android.graphics.FPSCounter;
@@ -19,7 +19,7 @@ import java.util.List;
 
 import javax.microedition.khronos.opengles.GL10;
 
-public class GameScene extends GLScene {
+public class GameScene extends ActScene {
 
     static final int GAME_RUNNING = 0;
     static final int GAME_PAUSED = 1;

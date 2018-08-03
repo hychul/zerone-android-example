@@ -6,7 +6,7 @@ import com.hychul.example.common.Cannon;
 import com.hychul.example.common.GameObject;
 import com.hychul.example.common.SpatialHashGrid;
 import com.hychul.zerone.Input.TouchEvent;
-import com.hychul.zerone.android.GLScene;
+import com.hychul.example.common.ActScene;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Camera2D;
 import com.hychul.zerone.android.graphics.Sprite;
@@ -30,7 +30,7 @@ public class SpriteBatcherTest extends ZeroneActivity {
         return new SpriteBatcherScene(this);
     }
 
-    class SpriteBatcherScene extends GLScene {
+    class SpriteBatcherScene extends ActScene {
 
         final int NUM_TARGETS = 20;
         final float WORLD_WIDTH = 9.6f;

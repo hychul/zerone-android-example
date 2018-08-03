@@ -3,7 +3,7 @@ package com.hychul.example.jumper;
 import android.opengl.GLES10;
 
 import com.hychul.zerone.Input;
-import com.hychul.zerone.android.GLScene;
+import com.hychul.example.common.ActScene;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Camera2D;
 import com.hychul.zerone.android.graphics.Sprite;
@@ -18,7 +18,7 @@ import java.util.List;
 
 import javax.microedition.khronos.opengles.GL10;
 
-public class HelpScene5 extends GLScene {
+public class HelpScene5 extends ActScene {
 
     Camera2D guiCam;
     SpriteBatcher batcher;

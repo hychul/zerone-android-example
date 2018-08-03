@@ -3,7 +3,7 @@ package com.hychul.example;
 import android.opengl.GLES10;
 
 import com.hychul.example.common.EulerCamera;
-import com.hychul.zerone.android.GLScene;
+import com.hychul.example.common.ActScene;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Camera2D;
 import com.hychul.zerone.android.graphics.Sprite;
@@ -25,7 +25,7 @@ public class EulerCameraTest extends ZeroneActivity {
         return new EulerCameraScene(this);
     }
 
-    class EulerCameraScene extends GLScene {
+    class EulerCameraScene extends ActScene {
 
         Texture crateTexture;
         Vertices cube;

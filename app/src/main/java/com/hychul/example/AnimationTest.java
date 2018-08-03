@@ -3,7 +3,7 @@ package com.hychul.example;
 import android.opengl.GLES10;
 
 import com.hychul.example.common.GameObject;
-import com.hychul.zerone.android.GLScene;
+import com.hychul.example.common.ActScene;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Camera2D;
 import com.hychul.zerone.android.graphics.Sprite;
@@ -45,7 +45,7 @@ public class AnimationTest extends ZeroneActivity {
         }
     }
 
-    class AnimationScene extends GLScene {
+    class AnimationScene extends ActScene {
 
         static final int NUM_CAVEMEN = 10;
 

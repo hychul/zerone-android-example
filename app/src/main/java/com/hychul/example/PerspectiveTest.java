@@ -3,7 +3,7 @@ package com.hychul.example;
 import android.opengl.GLES10;
 import android.opengl.GLU;
 
-import com.hychul.zerone.android.GLScene;
+import com.hychul.example.common.ActScene;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Vertices;
 import com.hychul.zerone.core.Scene;
@@ -17,7 +17,7 @@ public class PerspectiveTest extends ZeroneActivity {
         return new PerspectiveScene(this);
     }
 
-    class PerspectiveScene extends GLScene {
+    class PerspectiveScene extends ActScene {
         Vertices vertices;
 
         public PerspectiveScene(ZeroneActivity zerone) {

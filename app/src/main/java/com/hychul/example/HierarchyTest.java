@@ -4,7 +4,7 @@ import android.opengl.GLES10;
 import android.opengl.GLU;
 
 import com.hychul.example.common.HierarchicalObject;
-import com.hychul.zerone.android.GLScene;
+import com.hychul.example.common.ActScene;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Texture;
 import com.hychul.zerone.android.graphics.Vertices;
@@ -20,7 +20,7 @@ public class HierarchyTest extends ZeroneActivity {
         return new HierarchyScene(this);
     }
 
-    class HierarchyScene extends GLScene {
+    class HierarchyScene extends ActScene {
         Vertices cube;
         Texture texture;
         HierarchicalObject sun;

@@ -1,13 +1,15 @@
-package com.hychul.zerone.android;
+package com.hychul.example.common;
 
+import com.hychul.zerone.android.Graphics;
+import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.core.Scene;
 
-public abstract class GLScene extends Scene {
+public abstract class ActScene extends Scene {
 
     protected final ZeroneActivity zerone;
     protected final Graphics graphics;
 
-    public GLScene(ZeroneActivity zerone) {
+    public ActScene(ZeroneActivity zerone) {
         super();
         this.zerone = zerone;
         graphics = zerone.getGLGraphics();

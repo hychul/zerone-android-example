@@ -3,7 +3,7 @@ package com.hychul.example;
 import android.opengl.GLES10;
 import android.opengl.GLU;
 
-import com.hychul.zerone.android.GLScene;
+import com.hychul.example.common.ActScene;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Texture;
 import com.hychul.zerone.android.graphics.Vertices;
@@ -19,7 +19,7 @@ public class CubeTest extends ZeroneActivity {
         return new CubeScene(this);
     }
 
-    class CubeScene extends GLScene {
+    class CubeScene extends ActScene {
 
         Vertices cube;
         Texture texture;
