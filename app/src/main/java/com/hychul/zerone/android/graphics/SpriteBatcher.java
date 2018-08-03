@@ -12,8 +12,8 @@ public class SpriteBatcher {
     int numSprites;
 
     public SpriteBatcher(int maxSprites) {
-        this.verticesBuffer = new float[maxSprites * (3 + 2) * 4];
-        this.vertices = new Vertices(maxSprites * 4, maxSprites * 6, false, true);
+        this.verticesBuffer = new float[maxSprites * (3 + 4 + 2) * 4];
+        this.vertices = new Vertices(maxSprites * 4, maxSprites * 6, true, true);
         this.bufferIndex = 0;
         this.numSprites = 0;
 
@@ -39,13 +39,19 @@ public class SpriteBatcher {
 
     public void drawSprite(Sprite sprite, float width, float height, float x, float y, float z, float angle) {
         if (Mathf.abs(angle) < 0.001f)
-            draw(sprite, width, height, x, y, z);
+            draw(sprite, width, height, x, y, z, 1, 1, 1, 1);
         else
-            draw(sprite, width, height, x, y, z, angle);
-
+            draw(sprite, width, height, x, y, z, angle, 1, 1, 1, 1);
     }
 
-    private void draw(Sprite sprite, float width, float height, float x, float y, float z) {
+    public void drawSprite(Sprite sprite, float width, float height, float x, float y, float z, float angle, float r, float g, float b, float a) {
+        if (Mathf.abs(angle) < 0.001f)
+            draw(sprite, width, height, x, y, z, r, g, b, a);
+        else
+            draw(sprite, width, height, x, y, z, angle, r, g, b, a);
+    }
+
+    private void draw(Sprite sprite, float width, float height, float x, float y, float z, float r, float g, float b, float a) {
         float halfWidth = width / 2;
         float halfHeight = height / 2;
 
@@ -57,31 +63,47 @@ public class SpriteBatcher {
         verticesBuffer[bufferIndex++] = x1;
         verticesBuffer[bufferIndex++] = y1;
         verticesBuffer[bufferIndex++] = z;
+        verticesBuffer[bufferIndex++] = r;
+        verticesBuffer[bufferIndex++] = g;
+        verticesBuffer[bufferIndex++] = b;
+        verticesBuffer[bufferIndex++] = a;
         verticesBuffer[bufferIndex++] = sprite.u1;
         verticesBuffer[bufferIndex++] = sprite.v2;
 
         verticesBuffer[bufferIndex++] = x2;
         verticesBuffer[bufferIndex++] = y1;
         verticesBuffer[bufferIndex++] = z;
+        verticesBuffer[bufferIndex++] = r;
+        verticesBuffer[bufferIndex++] = g;
+        verticesBuffer[bufferIndex++] = b;
+        verticesBuffer[bufferIndex++] = a;
         verticesBuffer[bufferIndex++] = sprite.u2;
         verticesBuffer[bufferIndex++] = sprite.v2;
 
         verticesBuffer[bufferIndex++] = x2;
         verticesBuffer[bufferIndex++] = y2;
         verticesBuffer[bufferIndex++] = z;
+        verticesBuffer[bufferIndex++] = r;
+        verticesBuffer[bufferIndex++] = g;
+        verticesBuffer[bufferIndex++] = b;
+        verticesBuffer[bufferIndex++] = a;
         verticesBuffer[bufferIndex++] = sprite.u2;
         verticesBuffer[bufferIndex++] = sprite.v1;
 
         verticesBuffer[bufferIndex++] = x1;
         verticesBuffer[bufferIndex++] = y2;
         verticesBuffer[bufferIndex++] = z;
+        verticesBuffer[bufferIndex++] = r;
+        verticesBuffer[bufferIndex++] = g;
+        verticesBuffer[bufferIndex++] = b;
+        verticesBuffer[bufferIndex++] = a;
         verticesBuffer[bufferIndex++] = sprite.u1;
         verticesBuffer[bufferIndex++] = sprite.v1;
 
         numSprites++;
     }
 
-    private void draw(Sprite sprite, float width, float height, float x, float y, float z, float angle) {
+    private void draw(Sprite sprite, float width, float height, float x, float y, float z, float angle, float r, float g, float b, float a) {
         float halfWidth = width / 2;
         float halfHeight = height / 2;
 
@@ -104,24 +126,40 @@ public class SpriteBatcher {
         verticesBuffer[bufferIndex++] = x1;
         verticesBuffer[bufferIndex++] = y1;
         verticesBuffer[bufferIndex++] = z;
+        verticesBuffer[bufferIndex++] = r;
+        verticesBuffer[bufferIndex++] = g;
+        verticesBuffer[bufferIndex++] = b;
+        verticesBuffer[bufferIndex++] = a;
         verticesBuffer[bufferIndex++] = sprite.u1;
         verticesBuffer[bufferIndex++] = sprite.v2;
 
         verticesBuffer[bufferIndex++] = x2;
         verticesBuffer[bufferIndex++] = y2;
         verticesBuffer[bufferIndex++] = z;
+        verticesBuffer[bufferIndex++] = r;
+        verticesBuffer[bufferIndex++] = g;
+        verticesBuffer[bufferIndex++] = b;
+        verticesBuffer[bufferIndex++] = a;
         verticesBuffer[bufferIndex++] = sprite.u2;
         verticesBuffer[bufferIndex++] = sprite.v2;
 
         verticesBuffer[bufferIndex++] = x3;
         verticesBuffer[bufferIndex++] = y3;
         verticesBuffer[bufferIndex++] = z;
+        verticesBuffer[bufferIndex++] = r;
+        verticesBuffer[bufferIndex++] = g;
+        verticesBuffer[bufferIndex++] = b;
+        verticesBuffer[bufferIndex++] = a;
         verticesBuffer[bufferIndex++] = sprite.u2;
         verticesBuffer[bufferIndex++] = sprite.v1;
 
         verticesBuffer[bufferIndex++] = x4;
         verticesBuffer[bufferIndex++] = y4;
         verticesBuffer[bufferIndex++] = z;
+        verticesBuffer[bufferIndex++] = r;
+        verticesBuffer[bufferIndex++] = g;
+        verticesBuffer[bufferIndex++] = b;
+        verticesBuffer[bufferIndex++] = a;
         verticesBuffer[bufferIndex++] = sprite.u1;
         verticesBuffer[bufferIndex++] = sprite.v1;
 
