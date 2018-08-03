@@ -6,16 +6,26 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class SpriteBatcher {
 
+    final boolean hasColor;
+
     final float[] verticesBuffer;
-    int bufferIndex;
     final Vertices vertices;
+
     int numSprites;
+    int bufferIndex;
 
     public SpriteBatcher(int maxSprites) {
-        this.verticesBuffer = new float[maxSprites * (3 + 4 + 2) * 4];
-        this.vertices = new Vertices(maxSprites * 4, maxSprites * 6, true, true);
-        this.bufferIndex = 0;
+        this (maxSprites, false);
+    }
+
+    public SpriteBatcher(int maxSprites, boolean hasColor) {
+        this.hasColor = hasColor;
+
+        this.verticesBuffer = new float[maxSprites * (3 + (hasColor ? 4 : 0) + 2) * 4];
+        this.vertices = new Vertices(maxSprites * 4, maxSprites * 6, hasColor, true);
+
         this.numSprites = 0;
+        this.bufferIndex = 0;
 
         short[] indices = new short[maxSprites * 6];
         int len = indices.length;
@@ -33,6 +43,7 @@ public class SpriteBatcher {
 
     public void beginBatch(Texture texture) {
         texture.bind();
+
         numSprites = 0;
         bufferIndex = 0;
     }
@@ -60,45 +71,10 @@ public class SpriteBatcher {
         float x2 = x + halfWidth;
         float y2 = y + halfHeight;
 
-        verticesBuffer[bufferIndex++] = x1;
-        verticesBuffer[bufferIndex++] = y1;
-        verticesBuffer[bufferIndex++] = z;
-        verticesBuffer[bufferIndex++] = r;
-        verticesBuffer[bufferIndex++] = g;
-        verticesBuffer[bufferIndex++] = b;
-        verticesBuffer[bufferIndex++] = a;
-        verticesBuffer[bufferIndex++] = sprite.u1;
-        verticesBuffer[bufferIndex++] = sprite.v2;
-
-        verticesBuffer[bufferIndex++] = x2;
-        verticesBuffer[bufferIndex++] = y1;
-        verticesBuffer[bufferIndex++] = z;
-        verticesBuffer[bufferIndex++] = r;
-        verticesBuffer[bufferIndex++] = g;
-        verticesBuffer[bufferIndex++] = b;
-        verticesBuffer[bufferIndex++] = a;
-        verticesBuffer[bufferIndex++] = sprite.u2;
-        verticesBuffer[bufferIndex++] = sprite.v2;
-
-        verticesBuffer[bufferIndex++] = x2;
-        verticesBuffer[bufferIndex++] = y2;
-        verticesBuffer[bufferIndex++] = z;
-        verticesBuffer[bufferIndex++] = r;
-        verticesBuffer[bufferIndex++] = g;
-        verticesBuffer[bufferIndex++] = b;
-        verticesBuffer[bufferIndex++] = a;
-        verticesBuffer[bufferIndex++] = sprite.u2;
-        verticesBuffer[bufferIndex++] = sprite.v1;
-
-        verticesBuffer[bufferIndex++] = x1;
-        verticesBuffer[bufferIndex++] = y2;
-        verticesBuffer[bufferIndex++] = z;
-        verticesBuffer[bufferIndex++] = r;
-        verticesBuffer[bufferIndex++] = g;
-        verticesBuffer[bufferIndex++] = b;
-        verticesBuffer[bufferIndex++] = a;
-        verticesBuffer[bufferIndex++] = sprite.u1;
-        verticesBuffer[bufferIndex++] = sprite.v1;
+        addVerticeBuffer(x1, y1, z, r, g, b, a, sprite.u1, sprite.v2);
+        addVerticeBuffer(x2, y1, z, r, g, b, a, sprite.u2, sprite.v2);
+        addVerticeBuffer(x2, y2, z, r, g, b, a, sprite.u2, sprite.v1);
+        addVerticeBuffer(x1, y2, z, r, g, b, a, sprite.u1, sprite.v1);
 
         numSprites++;
     }
@@ -123,47 +99,28 @@ public class SpriteBatcher {
         float x4 = x - halfWidth * cos - halfHeight * sin;
         float y4 = y - halfWidth * sin + halfHeight * cos;
 
-        verticesBuffer[bufferIndex++] = x1;
-        verticesBuffer[bufferIndex++] = y1;
-        verticesBuffer[bufferIndex++] = z;
-        verticesBuffer[bufferIndex++] = r;
-        verticesBuffer[bufferIndex++] = g;
-        verticesBuffer[bufferIndex++] = b;
-        verticesBuffer[bufferIndex++] = a;
-        verticesBuffer[bufferIndex++] = sprite.u1;
-        verticesBuffer[bufferIndex++] = sprite.v2;
-
-        verticesBuffer[bufferIndex++] = x2;
-        verticesBuffer[bufferIndex++] = y2;
-        verticesBuffer[bufferIndex++] = z;
-        verticesBuffer[bufferIndex++] = r;
-        verticesBuffer[bufferIndex++] = g;
-        verticesBuffer[bufferIndex++] = b;
-        verticesBuffer[bufferIndex++] = a;
-        verticesBuffer[bufferIndex++] = sprite.u2;
-        verticesBuffer[bufferIndex++] = sprite.v2;
-
-        verticesBuffer[bufferIndex++] = x3;
-        verticesBuffer[bufferIndex++] = y3;
-        verticesBuffer[bufferIndex++] = z;
-        verticesBuffer[bufferIndex++] = r;
-        verticesBuffer[bufferIndex++] = g;
-        verticesBuffer[bufferIndex++] = b;
-        verticesBuffer[bufferIndex++] = a;
-        verticesBuffer[bufferIndex++] = sprite.u2;
-        verticesBuffer[bufferIndex++] = sprite.v1;
-
-        verticesBuffer[bufferIndex++] = x4;
-        verticesBuffer[bufferIndex++] = y4;
-        verticesBuffer[bufferIndex++] = z;
-        verticesBuffer[bufferIndex++] = r;
-        verticesBuffer[bufferIndex++] = g;
-        verticesBuffer[bufferIndex++] = b;
-        verticesBuffer[bufferIndex++] = a;
-        verticesBuffer[bufferIndex++] = sprite.u1;
-        verticesBuffer[bufferIndex++] = sprite.v1;
+        addVerticeBuffer(x1, y1, z, r, g, b, a, sprite.u1, sprite.v2);
+        addVerticeBuffer(x2, y2, z, r, g, b, a, sprite.u2, sprite.v2);
+        addVerticeBuffer(x3, y3, z, r, g, b, a, sprite.u2, sprite.v1);
+        addVerticeBuffer(x4, y4, z, r, g, b, a, sprite.u1, sprite.v1);
 
         numSprites++;
+    }
+
+    private void addVerticeBuffer(float x, float y, float z, float r, float g, float b, float a, float u, float v) {
+        verticesBuffer[bufferIndex++] = x;
+        verticesBuffer[bufferIndex++] = y;
+        verticesBuffer[bufferIndex++] = z;
+
+        if (hasColor) {
+            verticesBuffer[bufferIndex++] = r;
+            verticesBuffer[bufferIndex++] = g;
+            verticesBuffer[bufferIndex++] = b;
+            verticesBuffer[bufferIndex++] = a;
+        }
+
+        verticesBuffer[bufferIndex++] = u;
+        verticesBuffer[bufferIndex++] = v;
     }
 
     public void endBatch() {
