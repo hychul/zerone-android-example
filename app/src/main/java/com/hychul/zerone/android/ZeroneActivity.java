@@ -59,7 +59,7 @@ public abstract class ZeroneActivity extends Activity {
 
         fileIO = new FileIO(this);
         audio = new Audio(this);
-        input = new Input(this, glView, 1, 1);
+        input = new Input(this, glView);
     }
 
     @Override

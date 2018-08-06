@@ -14,26 +14,22 @@ public class TouchHandler implements View.OnTouchListener {
     private static final int MAX_TOUCHPOINTS = 10;
 
     boolean[] isTouched = new boolean[MAX_TOUCHPOINTS];
-    int[] touchX = new int[MAX_TOUCHPOINTS];
-    int[] touchY = new int[MAX_TOUCHPOINTS];
+    float[] touchX = new float[MAX_TOUCHPOINTS];
+    float[] touchY = new float[MAX_TOUCHPOINTS];
     int[] id = new int[MAX_TOUCHPOINTS];
+
     Pool<TouchEvent> touchEventPool;
     List<TouchEvent> touchEvents = new ArrayList<>();
     List<TouchEvent> touchEventsBuffer = new ArrayList<>();
-    float scaleX;
-    float scaleY;
 
-    public TouchHandler(View view, float scaleX, float scaleY) {
+    public TouchHandler(View view) {
         PoolObjectFactory<TouchEvent> factory = new PoolObjectFactory<TouchEvent>() {
             public TouchEvent create() {
                 return new TouchEvent();
             }
         };
-        touchEventPool = new Pool<TouchEvent>(factory);
+        touchEventPool = new Pool<>(factory);
         view.setOnTouchListener(this);
-
-        this.scaleX = scaleX;
-        this.scaleY = scaleY;
     }
 
     @Override
@@ -60,9 +56,9 @@ public class TouchHandler implements View.OnTouchListener {
                     case MotionEvent.ACTION_POINTER_DOWN:
                         touchEvent = touchEventPool.get();
                         touchEvent.type = TouchEvent.TOUCH_DOWN;
-                        touchEvent.pointer = pointerId;
-                        touchEvent.x = touchX[i] = (int) (event.getX(i) * scaleX);
-                        touchEvent.y = touchY[i] = (int) (event.getY(i) * scaleY);
+                        touchEvent.pointerId = pointerId;
+                        touchEvent.x = touchX[i] = event.getX(i);
+                        touchEvent.y = touchY[i] = event.getY(i);
                         isTouched[i] = true;
                         id[i] = pointerId;
                         touchEventsBuffer.add(touchEvent);
@@ -72,9 +68,9 @@ public class TouchHandler implements View.OnTouchListener {
                     case MotionEvent.ACTION_CANCEL:
                         touchEvent = touchEventPool.get();
                         touchEvent.type = TouchEvent.TOUCH_UP;
-                        touchEvent.pointer = pointerId;
-                        touchEvent.x = touchX[i] = (int) (event.getX(i) * scaleX);
-                        touchEvent.y = touchY[i] = (int) (event.getY(i) * scaleY);
+                        touchEvent.pointerId = pointerId;
+                        touchEvent.x = touchX[i] = event.getX(i);
+                        touchEvent.y = touchY[i] = event.getY(i);
                         isTouched[i] = false;
                         id[i] = -1;
                         touchEventsBuffer.add(touchEvent);
@@ -82,9 +78,9 @@ public class TouchHandler implements View.OnTouchListener {
                     case MotionEvent.ACTION_MOVE:
                         touchEvent = touchEventPool.get();
                         touchEvent.type = TouchEvent.TOUCH_DRAGGED;
-                        touchEvent.pointer = pointerId;
-                        touchEvent.x = touchX[i] = (int) (event.getX(i) * scaleX);
-                        touchEvent.y = touchY[i] = (int) (event.getY(i) * scaleY);
+                        touchEvent.pointerId = pointerId;
+                        touchEvent.x = touchX[i] = event.getX(i);
+                        touchEvent.y = touchY[i] = event.getY(i);
                         isTouched[i] = true;
                         id[i] = pointerId;
                         touchEventsBuffer.add(touchEvent);
@@ -105,7 +101,7 @@ public class TouchHandler implements View.OnTouchListener {
         }
     }
 
-    public int getTouchX(int pointer) {
+    public float getTouchX(int pointer) {
         synchronized (this) {
             int index = getIndex(pointer);
             if (index < 0 || index >= MAX_TOUCHPOINTS)
@@ -115,7 +111,7 @@ public class TouchHandler implements View.OnTouchListener {
         }
     }
 
-    public int getTouchY(int pointer) {
+    public float getTouchY(int pointer) {
         synchronized (this) {
             int index = getIndex(pointer);
             if (index < 0 || index >= MAX_TOUCHPOINTS)

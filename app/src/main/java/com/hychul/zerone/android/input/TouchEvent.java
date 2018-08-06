@@ -6,9 +6,12 @@ public class TouchEvent {
     public static final int TOUCH_UP = 1;
     public static final int TOUCH_DRAGGED = 2;
 
+    public int pointerId;
+
     public int type;
-    public int x, y;
-    public int pointer;
+
+    public float x;
+    public float y;
 
     public String toString() {
         StringBuilder builder = new StringBuilder();
@@ -18,7 +21,7 @@ public class TouchEvent {
             builder.append("touch dragged, ");
         else
             builder.append("touch up, ");
-        builder.append(pointer);
+        builder.append(pointerId);
         builder.append(",");
         builder.append(x);
         builder.append(",");

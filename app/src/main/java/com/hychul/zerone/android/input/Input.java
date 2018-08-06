@@ -11,10 +11,10 @@ public class Input {
     KeyboardHandler keyHandler;
     TouchHandler touchHandler;
 
-    public Input(Context context, View view, float scaleX, float scaleY) {
+    public Input(Context context, View view) {
         accelHandler = new AccelerometerHandler(context);
         keyHandler = new KeyboardHandler(view);
-        touchHandler = new TouchHandler(view, scaleX, scaleY);
+        touchHandler = new TouchHandler(view);
     }
 
     public boolean isKeyPressed(int keyCode) {
@@ -25,11 +25,11 @@ public class Input {
         return touchHandler.isTouchDown(pointer);
     }
 
-    public int getTouchX(int pointer) {
+    public float getTouchX(int pointer) {
         return touchHandler.getTouchX(pointer);
     }
 
-    public int getTouchY(int pointer) {
+    public float getTouchY(int pointer) {
         return touchHandler.getTouchY(pointer);
     }
 
