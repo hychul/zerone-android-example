@@ -91,7 +91,7 @@ public class TouchHandler implements View.OnTouchListener {
     public boolean isTouchDown(int pointer) {
         synchronized (this) {
             int index = getIndex(pointer);
-            if (index < 0 || index >= MAX_TOUCHPOINTS)
+            if (index < 0 || MAX_TOUCHPOINTS <= index)
                 return false;
             else
                 return -1 < phases[index];
@@ -101,7 +101,7 @@ public class TouchHandler implements View.OnTouchListener {
     public float getTouchX(int pointer) {
         synchronized (this) {
             int index = getIndex(pointer);
-            if (index < 0 || index >= MAX_TOUCHPOINTS)
+            if (index < 0 || MAX_TOUCHPOINTS <= index)
                 return 0;
             else
                 return touchXs[index];
@@ -111,7 +111,7 @@ public class TouchHandler implements View.OnTouchListener {
     public float getTouchY(int pointer) {
         synchronized (this) {
             int index = getIndex(pointer);
-            if (index < 0 || index >= MAX_TOUCHPOINTS)
+            if (index < 0 || MAX_TOUCHPOINTS <= index)
                 return 0;
             else
                 return touchYs[index];
