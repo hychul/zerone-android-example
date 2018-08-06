@@ -36,6 +36,7 @@ public class TouchHandler implements View.OnTouchListener {
         this.scaleY = scaleY;
     }
 
+    @Override
     public boolean onTouch(View v, MotionEvent event) {
         synchronized (this) {
             int action = event.getAction() & MotionEvent.ACTION_MASK;

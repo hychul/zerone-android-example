@@ -20,10 +20,12 @@ public class CompassHandler implements SensorEventListener {
         }
     }
 
+    @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
         // nothing to do here
     }
 
+    @Override
     public void onSensorChanged(SensorEvent event) {
         yaw = event.values[0];
         pitch = event.values[1];

@@ -28,6 +28,7 @@ public class KeyboardHandler implements OnKeyListener {
         });
     }
 
+    @Override
     public boolean onKey(View v, int keyCode, android.view.KeyEvent event) {
         if (event.getAction() == android.view.KeyEvent.ACTION_MULTIPLE)
             return false;

@@ -20,10 +20,12 @@ public class AccelerometerHandler implements SensorEventListener {
         }
     }
 
+    @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
         // nothing to do here
     }
 
+    @Override
     public void onSensorChanged(SensorEvent event) {
         accelX = event.values[0];
         accelY = event.values[1];
