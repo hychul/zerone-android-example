@@ -13,19 +13,19 @@ public class KeyboardHandler implements OnKeyListener {
     
     boolean[] pressedKeys = new boolean[128];
     Pool<KeyEvent> keyEventPool;
-    List<KeyEvent> keyEventsBuffer = new ArrayList<KeyEvent>();
-    List<KeyEvent> keyEvents = new ArrayList<KeyEvent>();
+    List<KeyEvent> keyEventsBuffer = new ArrayList<>();
+    List<KeyEvent> keyEvents = new ArrayList<>();
 
     public KeyboardHandler(View view) {
-        PoolObjectFactory<KeyEvent> factory = new PoolObjectFactory<KeyEvent>() {
-            public KeyEvent create() {
-                return new KeyEvent();
-            }
-        };
-        keyEventPool = new Pool<KeyEvent>(factory);
         view.setOnKeyListener(this);
         view.setFocusableInTouchMode(true);
         view.requestFocus();
+
+        keyEventPool = new Pool<>(new PoolObjectFactory<KeyEvent>() {
+            public KeyEvent create() {
+                return new KeyEvent();
+            }
+        });
     }
 
     public boolean onKey(View v, int keyCode, android.view.KeyEvent event) {
@@ -36,14 +36,16 @@ public class KeyboardHandler implements OnKeyListener {
             KeyEvent keyEvent = keyEventPool.get();
             keyEvent.keyCode = keyCode;
             keyEvent.keyChar = (char) event.getUnicodeChar();
+
             if (event.getAction() == android.view.KeyEvent.ACTION_DOWN) {
                 keyEvent.type = KeyEvent.KEY_DOWN;
-                if (keyCode > 0 && keyCode < 127)
+                if (0 < keyCode && keyCode < 128)
                     pressedKeys[keyCode] = true;
             }
+
             if (event.getAction() == android.view.KeyEvent.ACTION_UP) {
                 keyEvent.type = KeyEvent.KEY_UP;
-                if (keyCode > 0 && keyCode < 127)
+                if (0 < keyCode && keyCode < 128)
                     pressedKeys[keyCode] = false;
             }
             keyEventsBuffer.add(keyEvent);
@@ -52,8 +54,9 @@ public class KeyboardHandler implements OnKeyListener {
     }
 
     public boolean isKeyPressed(int keyCode) {
-        if (keyCode < 0 || keyCode > 127)
+        if (0 < keyCode || 127 < keyCode)
             return false;
+
         return pressedKeys[keyCode];
     }
 
