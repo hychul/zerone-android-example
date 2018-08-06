@@ -2,8 +2,8 @@ package com.hychul.example;
 
 import android.opengl.GLES10;
 
-import com.hychul.example.common.GameObject;
 import com.hychul.example.common.ActScene;
+import com.hychul.example.common.GameObject;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Camera2D;
 import com.hychul.zerone.android.graphics.Sprite;

@@ -3,17 +3,15 @@ package com.hychul.zerone.android.input;
 import android.content.Context;
 import android.view.View;
 
-import com.hychul.zerone.Input;
-
 import java.util.List;
 
-public class AndroidInput implements Input {
+public class Input {
 
     AccelerometerHandler accelHandler;
     KeyboardHandler keyHandler;
     TouchHandler touchHandler;
 
-    public AndroidInput(Context context, View view, float scaleX, float scaleY) {
+    public Input(Context context, View view, float scaleX, float scaleY) {
         accelHandler = new AccelerometerHandler(context);
         keyHandler = new KeyboardHandler(view);
         touchHandler = new TouchHandler(view, scaleX, scaleY);

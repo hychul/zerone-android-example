@@ -2,13 +2,13 @@ package com.hychul.example.jumper;
 
 import android.opengl.GLES10;
 
-import com.hychul.zerone.Input;
 import com.hychul.example.common.ActScene;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Camera2D;
 import com.hychul.zerone.android.graphics.Sprite;
 import com.hychul.zerone.android.graphics.SpriteBatcher;
 import com.hychul.zerone.android.graphics.Texture;
+import com.hychul.zerone.android.input.TouchEvent;
 import com.hychul.zerone.core.SceneManager;
 import com.hychul.zerone.math.OverlapTester;
 import com.hychul.zerone.math.Rectangle;
@@ -52,15 +52,15 @@ public class HelpScene4 extends ActScene {
 
     @Override
     public void update() {
-        List<Input.TouchEvent> touchEvents = zerone.getInput().getTouchEvents();
+        List<TouchEvent> touchEvents = zerone.getInput().getTouchEvents();
         zerone.getInput().getKeyEvents();
         int len = touchEvents.size();
         for (int i = 0; i < len; i++) {
-            Input.TouchEvent event = touchEvents.get(i);
+            TouchEvent event = touchEvents.get(i);
             touchPoint.set(event.x, event.y);
             guiCam.touchToWorld(touchPoint);
 
-            if (event.type == Input.TouchEvent.TOUCH_UP) {
+            if (event.type == TouchEvent.TOUCH_UP) {
                 if (OverlapTester.pointInRectangle(nextBounds, touchPoint)) {
                     Assets.playSound(Assets.clickSound);
                     SceneManager.loadScene(new HelpScene5(zerone));

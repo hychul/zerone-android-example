@@ -3,7 +3,6 @@ package com.hychul.zerone.android.input;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.hychul.zerone.Input.TouchEvent;
 import com.hychul.zerone.data.Pool;
 import com.hychul.zerone.data.Pool.PoolObjectFactory;
 
@@ -19,8 +18,8 @@ public class TouchHandler implements View.OnTouchListener {
     int[] touchY = new int[MAX_TOUCHPOINTS];
     int[] id = new int[MAX_TOUCHPOINTS];
     Pool<TouchEvent> touchEventPool;
-    List<TouchEvent> touchEvents = new ArrayList<TouchEvent>();
-    List<TouchEvent> touchEventsBuffer = new ArrayList<TouchEvent>();
+    List<TouchEvent> touchEvents = new ArrayList<>();
+    List<TouchEvent> touchEventsBuffer = new ArrayList<>();
     float scaleX;
     float scaleY;
 

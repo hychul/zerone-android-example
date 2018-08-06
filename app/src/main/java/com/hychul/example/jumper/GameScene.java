@@ -2,11 +2,11 @@ package com.hychul.example.jumper;
 
 import android.opengl.GLES10;
 
-import com.hychul.zerone.Input;
 import com.hychul.example.common.ActScene;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Camera2D;
 import com.hychul.zerone.android.graphics.SpriteBatcher;
+import com.hychul.zerone.android.input.TouchEvent;
 import com.hychul.zerone.core.SceneManager;
 import com.hychul.zerone.core.Time;
 import com.hychul.zerone.math.OverlapTester;
@@ -106,11 +106,11 @@ public class GameScene extends ActScene {
     }
 
     private void updateRunning(float deltaTime) {
-        List<Input.TouchEvent> touchEvents = zerone.getInput().getTouchEvents();
+        List<TouchEvent> touchEvents = zerone.getInput().getTouchEvents();
         int len = touchEvents.size();
         for (int i = 0; i < len; i++) {
-            Input.TouchEvent event = touchEvents.get(i);
-            if (event.type != Input.TouchEvent.TOUCH_UP)
+            TouchEvent event = touchEvents.get(i);
+            if (event.type != TouchEvent.TOUCH_UP)
                 continue;
 
             touchPoint.set(event.x, event.y);
@@ -143,11 +143,11 @@ public class GameScene extends ActScene {
     }
 
     private void updatePaused() {
-        List<Input.TouchEvent> touchEvents = zerone.getInput().getTouchEvents();
+        List<TouchEvent> touchEvents = zerone.getInput().getTouchEvents();
         int len = touchEvents.size();
         for (int i = 0; i < len; i++) {
-            Input.TouchEvent event = touchEvents.get(i);
-            if (event.type != Input.TouchEvent.TOUCH_UP)
+            TouchEvent event = touchEvents.get(i);
+            if (event.type != TouchEvent.TOUCH_UP)
                 continue;
 
             touchPoint.set(event.x, event.y);
@@ -169,11 +169,11 @@ public class GameScene extends ActScene {
     }
 
     private void updateLevelEnd() {
-        List<Input.TouchEvent> touchEvents = zerone.getInput().getTouchEvents();
+        List<TouchEvent> touchEvents = zerone.getInput().getTouchEvents();
         int len = touchEvents.size();
         for (int i = 0; i < len; i++) {
-            Input.TouchEvent event = touchEvents.get(i);
-            if (event.type != Input.TouchEvent.TOUCH_UP)
+            TouchEvent event = touchEvents.get(i);
+            if (event.type != TouchEvent.TOUCH_UP)
                 continue;
             world = new World(worldListener);
             renderer = new WorldRenderer(graphics, batcher, world);
@@ -183,11 +183,11 @@ public class GameScene extends ActScene {
     }
 
     private void updateGameOver() {
-        List<Input.TouchEvent> touchEvents = zerone.getInput().getTouchEvents();
+        List<TouchEvent> touchEvents = zerone.getInput().getTouchEvents();
         int len = touchEvents.size();
         for (int i = 0; i < len; i++) {
-            Input.TouchEvent event = touchEvents.get(i);
-            if (event.type != Input.TouchEvent.TOUCH_UP)
+            TouchEvent event = touchEvents.get(i);
+            if (event.type != TouchEvent.TOUCH_UP)
                 continue;
             SceneManager.loadScene(new MainMenuScene(zerone));
         }
