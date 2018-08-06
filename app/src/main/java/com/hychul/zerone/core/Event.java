@@ -1,9 +1,8 @@
 package com.hychul.zerone.core;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 
-public class Event<T> {
+public class Event<T extends Object> {
 
     private final ArrayList<Subscriber<T>> subscriberList = new ArrayList<>();
 
@@ -20,10 +19,6 @@ public class Event<T> {
         for (int i = 0; i < size; i++) {
             subscriberList.get(i).onInvoked(param);
         }
-    }
-
-    private void invoke(Object target, Method method, T param) throws Throwable {
-        method.invoke(target, param);
     }
 
     public interface Subscriber<T> {
