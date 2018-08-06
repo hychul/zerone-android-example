@@ -7,7 +7,7 @@ import android.graphics.Rect;
 import android.opengl.GLES10;
 import android.opengl.GLUtils;
 
-import com.hychul.zerone.FileIO;
+import com.hychul.zerone.android.io.FileIO;
 
 import java.io.IOException;
 import java.io.InputStream;

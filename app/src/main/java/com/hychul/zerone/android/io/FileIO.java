@@ -6,8 +6,6 @@ import android.content.res.AssetManager;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 
-import com.hychul.zerone.FileIO;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -15,12 +13,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class AndroidFileIO implements FileIO {
+public class FileIO {
+
     Context context;
     AssetManager assets;
     String externalStoragePath;
 
-    public AndroidFileIO(Context context) {
+    public FileIO(Context context) {
         this.context = context;
         this.assets = context.getAssets();
         this.externalStoragePath = Environment.getExternalStorageDirectory().getAbsolutePath()
