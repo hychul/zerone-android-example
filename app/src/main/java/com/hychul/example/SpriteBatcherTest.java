@@ -90,7 +90,7 @@ public class SpriteBatcherTest extends ZeroneActivity {
 
                 cannon.angle = touchPos.sub(cannon.position).angle();
 
-                if (event.type == TouchEvent.TOUCH_UP) {
+                if (event.phase == TouchEvent.TOUCH_UP) {
                     float radians = Mathf.toRadians(cannon.angle);
                     float ballSpeed = touchPos.len() * 2;
                     ball.position.set(cannon.position);

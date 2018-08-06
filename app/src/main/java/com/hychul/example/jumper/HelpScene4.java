@@ -60,7 +60,7 @@ public class HelpScene4 extends ActScene {
             touchPoint.set(event.x, event.y);
             guiCam.touchToWorld(touchPoint);
 
-            if (event.type == TouchEvent.TOUCH_UP) {
+            if (event.phase == TouchEvent.TOUCH_UP) {
                 if (OverlapTester.pointInRectangle(nextBounds, touchPoint)) {
                     Assets.playSound(Assets.clickSound);
                     SceneManager.loadScene(new HelpScene5(zerone));

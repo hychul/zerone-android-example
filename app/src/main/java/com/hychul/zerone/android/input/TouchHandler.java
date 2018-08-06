@@ -13,10 +13,12 @@ public class TouchHandler implements View.OnTouchListener {
 
     private static final int MAX_TOUCHPOINTS = 10;
 
-    boolean[] isTouched = new boolean[MAX_TOUCHPOINTS];
-    float[] touchX = new float[MAX_TOUCHPOINTS];
-    float[] touchY = new float[MAX_TOUCHPOINTS];
-    int[] id = new int[MAX_TOUCHPOINTS];
+    int[] ids = new int[MAX_TOUCHPOINTS];
+
+    int[] phases = new int[MAX_TOUCHPOINTS];
+
+    float[] touchXs = new float[MAX_TOUCHPOINTS];
+    float[] touchYs = new float[MAX_TOUCHPOINTS];
 
     Pool<TouchEvent> touchEventPool;
     List<TouchEvent> touchEvents = new ArrayList<>();
@@ -41,8 +43,8 @@ public class TouchHandler implements View.OnTouchListener {
 
             for (int i = 0; i < MAX_TOUCHPOINTS; i++) {
                 if (pointerCount <= i) {
-                    isTouched[i] = false;
-                    id[i] = -1;
+                    phases[i] = TouchEvent.TOUCH_NONE;
+                    ids[i] = -1;
                     continue;
                 }
 
@@ -56,20 +58,17 @@ public class TouchHandler implements View.OnTouchListener {
                     case MotionEvent.ACTION_DOWN:
                     case MotionEvent.ACTION_POINTER_DOWN:
                         onTouchEvent(event, i, TouchEvent.TOUCH_DOWN);
-                        isTouched[i] = true;
-                        id[i] = pointerId;
+                        ids[i] = pointerId;
                         break;
                     case MotionEvent.ACTION_UP:
                     case MotionEvent.ACTION_POINTER_UP:
                     case MotionEvent.ACTION_CANCEL:
                         onTouchEvent(event, i, TouchEvent.TOUCH_UP);
-                        isTouched[i] = false;
-                        id[i] = -1;
+                        ids[i] = -1;
                         break;
                     case MotionEvent.ACTION_MOVE:
                         onTouchEvent(event, i, TouchEvent.TOUCH_DRAGGED);
-                        isTouched[i] = true;
-                        id[i] = pointerId;
+                        ids[i] = pointerId;
                         break;
                 }
             }
@@ -80,9 +79,11 @@ public class TouchHandler implements View.OnTouchListener {
     private void onTouchEvent(MotionEvent event, int pointerIndex, int type) {
         TouchEvent touchEvent = touchEventPool.get();
         touchEvent.pointerId = event.getPointerId(pointerIndex);
-        touchEvent.type = type;
-        touchEvent.x = touchX[pointerIndex] = event.getX(pointerIndex);
-        touchEvent.y = touchY[pointerIndex] = event.getY(pointerIndex);
+        touchEvent.phase = type;
+        touchEvent.x = touchXs[pointerIndex] = event.getX(pointerIndex);
+        touchEvent.y = touchYs[pointerIndex] = event.getY(pointerIndex);
+
+        phases[pointerIndex] = type;
 
         touchEventsBuffer.add(touchEvent);
     }
@@ -93,7 +94,7 @@ public class TouchHandler implements View.OnTouchListener {
             if (index < 0 || index >= MAX_TOUCHPOINTS)
                 return false;
             else
-                return isTouched[index];
+                return -1 < phases[index];
         }
     }
 
@@ -103,7 +104,7 @@ public class TouchHandler implements View.OnTouchListener {
             if (index < 0 || index >= MAX_TOUCHPOINTS)
                 return 0;
             else
-                return touchX[index];
+                return touchXs[index];
         }
     }
 
@@ -113,13 +114,13 @@ public class TouchHandler implements View.OnTouchListener {
             if (index < 0 || index >= MAX_TOUCHPOINTS)
                 return 0;
             else
-                return touchY[index];
+                return touchYs[index];
         }
     }
 
     private int getIndex(int pointerId) {
         for (int i = 0; i < MAX_TOUCHPOINTS; i++) {
-            if (id[i] == pointerId) {
+            if (ids[i] == pointerId) {
                 return i;
             }
         }

@@ -101,7 +101,7 @@ public class GameScene extends ActScene {
         int len = events.size();
         for (int i = 0; i < len; i++) {
             TouchEvent event = events.get(i);
-            if (event.type != TouchEvent.TOUCH_UP)
+            if (event.phase != TouchEvent.TOUCH_UP)
                 continue;
 
             guiCam.touchToWorld(touchPoint.set(event.x, event.y));
@@ -122,7 +122,7 @@ public class GameScene extends ActScene {
         int len = events.size();
         for (int i = 0; i < len; i++) {
             TouchEvent event = events.get(i);
-            if (event.type != TouchEvent.TOUCH_DOWN)
+            if (event.phase != TouchEvent.TOUCH_DOWN)
                 continue;
 
             guiCam.touchToWorld(touchPoint.set(event.x, event.y));
@@ -176,7 +176,7 @@ public class GameScene extends ActScene {
         int len = events.size();
         for (int i = 0; i < len; i++) {
             TouchEvent event = events.get(i);
-            if (event.type == TouchEvent.TOUCH_UP) {
+            if (event.phase == TouchEvent.TOUCH_UP) {
                 Assets.playSound(Assets.clickSound);
                 SceneManager.loadScene(new MainMenuScene(zerone));
             }

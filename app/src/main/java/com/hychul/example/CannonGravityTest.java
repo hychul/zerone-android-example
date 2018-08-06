@@ -70,7 +70,7 @@ public class CannonGravityTest extends ZeroneActivity {
                              * FRUSTUM_HEIGHT;
                 cannonAngle = touchPos.sub(cannonPos).angle();
 
-                if (event.type == TouchEvent.TOUCH_UP) {
+                if (event.phase == TouchEvent.TOUCH_UP) {
                     float radians = Mathf.toRadians(cannonAngle);
                     float ballSpeed = touchPos.len();
                     ballPos.set(cannonPos);

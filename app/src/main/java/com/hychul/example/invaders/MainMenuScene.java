@@ -43,7 +43,7 @@ public class MainMenuScene extends ActScene {
         int len = events.size();
         for (int i = 0; i < len; i++) {
             TouchEvent event = events.get(i);
-            if (event.type != TouchEvent.TOUCH_UP)
+            if (event.phase != TouchEvent.TOUCH_UP)
                 continue;
 
             guiCam.touchToWorld(touchPoint.set(event.x, event.y));
