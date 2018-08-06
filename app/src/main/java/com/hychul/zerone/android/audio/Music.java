@@ -4,16 +4,14 @@ import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 
-import com.hychul.zerone.Music;
-
 import java.io.IOException;
 
-public class AndroidMusic implements Music, OnCompletionListener {
+public class Music implements OnCompletionListener {
 
     MediaPlayer mediaPlayer;
     boolean isPrepared;
 
-    public AndroidMusic(AssetFileDescriptor assetDescriptor) {
+    public Music(AssetFileDescriptor assetDescriptor) {
         mediaPlayer = new MediaPlayer();
         try {
             mediaPlayer.setDataSource(assetDescriptor.getFileDescriptor(),

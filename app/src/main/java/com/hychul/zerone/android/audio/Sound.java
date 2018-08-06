@@ -2,14 +2,12 @@ package com.hychul.zerone.android.audio;
 
 import android.media.SoundPool;
 
-import com.hychul.zerone.Sound;
-
-public class AndroidSound implements Sound {
+public class Sound {
 
     int soundId;
     SoundPool soundPool;
 
-    public AndroidSound(SoundPool soundPool, int soundId) {
+    public Sound(SoundPool soundPool, int soundId) {
         this.soundId = soundId;
         this.soundPool = soundPool;
     }

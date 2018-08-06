@@ -6,18 +6,14 @@ import android.content.res.AssetManager;
 import android.media.AudioManager;
 import android.media.SoundPool;
 
-import com.hychul.zerone.Audio;
-import com.hychul.zerone.Music;
-import com.hychul.zerone.Sound;
-
 import java.io.IOException;
 
-public class AndroidAudio implements Audio {
+public class Audio {
 
     AssetManager assets;
     SoundPool soundPool;
 
-    public AndroidAudio(Activity activity) {
+    public Audio(Activity activity) {
         activity.setVolumeControlStream(AudioManager.STREAM_MUSIC);
         this.assets = activity.getAssets();
         this.soundPool = new SoundPool(20, AudioManager.STREAM_MUSIC, 0);
@@ -26,7 +22,7 @@ public class AndroidAudio implements Audio {
     public Music newMusic(String filename) {
         try {
             AssetFileDescriptor assetDescriptor = assets.openFd(filename);
-            return new AndroidMusic(assetDescriptor);
+            return new Music(assetDescriptor);
         } catch (IOException e) {
             throw new RuntimeException("Couldn't load music '" + filename + "'");
         }
@@ -36,7 +32,7 @@ public class AndroidAudio implements Audio {
         try {
             AssetFileDescriptor assetDescriptor = assets.openFd(filename);
             int soundId = soundPool.load(assetDescriptor, 0);
-            return new AndroidSound(soundPool, soundId);
+            return new Sound(soundPool, soundId);
         } catch (IOException e) {
             throw new RuntimeException("Couldn't load sound '" + filename + "'");
         }

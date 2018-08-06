@@ -1,7 +1,7 @@
 package com.hychul.example.jumper;
 
-import com.hychul.zerone.Music;
-import com.hychul.zerone.Sound;
+import com.hychul.zerone.android.audio.Music;
+import com.hychul.zerone.android.audio.Sound;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Font;
 import com.hychul.zerone.android.graphics.Sprite;

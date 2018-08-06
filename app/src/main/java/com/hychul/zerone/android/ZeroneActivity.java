@@ -7,10 +7,10 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.hychul.zerone.Audio;
 import com.hychul.zerone.FileIO;
 import com.hychul.zerone.Input;
-import com.hychul.zerone.android.audio.AndroidAudio;
+import com.hychul.zerone.android.audio.Audio;
+import com.hychul.zerone.android.io.AndroidFileIO;
 import com.hychul.zerone.android.input.AndroidInput;
 import com.hychul.zerone.core.Event;
 import com.hychul.zerone.core.Scene;
@@ -60,7 +60,7 @@ public abstract class ZeroneActivity extends Activity {
         graphics = new Graphics(glView);
 
         fileIO = new AndroidFileIO(this);
-        audio = new AndroidAudio(this);
+        audio = new Audio(this);
         input = new AndroidInput(this, glView, 1, 1);
     }
 
