@@ -8,21 +8,18 @@ import javax.microedition.khronos.opengles.GL10;
 public class Graphics {
 
     GLSurfaceView glView;
-    GL10 gl;
+    GL10 gl10;
 
     int width;
     int height;
 
-    Graphics(GLSurfaceView glView) {
+    Graphics(GLSurfaceView glView, GL10 gl10) {
         this.glView = glView;
+        this.gl10 = gl10;
     }
 
     public GL10 getGL() {
-        return gl;
-    }
-
-    void setGL(GL10 gl) {
-        this.gl = gl;
+        return gl10;
     }
 
     public int getWidth() {

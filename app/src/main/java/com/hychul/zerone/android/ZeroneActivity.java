@@ -55,8 +55,6 @@ public abstract class ZeroneActivity extends Activity {
         glView.setRenderer(new RenderTask());
         setContentView(glView);
 
-        graphics = new Graphics(glView);
-
         fileIO = new FileIO(this);
         audio = new Audio(this);
         input = new Input(this, glView);
@@ -127,7 +125,7 @@ public abstract class ZeroneActivity extends Activity {
 
         @Override
         public void onSurfaceCreated(GL10 gl10, EGLConfig eglConfig) {
-            graphics.setGL(gl10);
+            graphics = new Graphics(glView, gl10);
 
             synchronized (stateLock) {
                 if (state == ActivityState.Initialized)
