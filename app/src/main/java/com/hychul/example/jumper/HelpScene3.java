@@ -9,10 +9,10 @@ import com.hychul.zerone.android.graphics.Sprite;
 import com.hychul.zerone.android.graphics.SpriteBatcher;
 import com.hychul.zerone.android.graphics.Texture;
 import com.hychul.zerone.android.input.TouchEvent;
-import com.hychul.zerone.core.SceneManager;
-import com.hychul.zerone.math.OverlapTester;
-import com.hychul.zerone.math.Rectangle;
-import com.hychul.zerone.math.Vector2;
+import com.zerone.core.SceneManager;
+import com.zerone.math.OverlapTester;
+import com.zerone.math.Rectangle;
+import com.zerone.math.Vector2;
 
 import java.util.List;
 

@@ -5,7 +5,7 @@ import android.opengl.GLES10;
 import com.hychul.example.common.ActScene;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Vertices;
-import com.hychul.zerone.core.Scene;
+import com.zerone.core.Scene;
 
 import javax.microedition.khronos.opengles.GL10;
 

@@ -8,7 +8,7 @@ import com.hychul.zerone.android.graphics.Sprite;
 import com.hychul.zerone.android.graphics.SpriteBatcher;
 import com.hychul.zerone.android.graphics.light.AmbientLight;
 import com.hychul.zerone.android.graphics.light.DirectionalLight;
-import com.hychul.zerone.math.Vector3;
+import com.zerone.math.Vector3;
 
 import java.util.List;
 

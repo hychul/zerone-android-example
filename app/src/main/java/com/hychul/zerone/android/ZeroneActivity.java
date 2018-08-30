@@ -10,10 +10,10 @@ import android.view.WindowManager;
 import com.hychul.zerone.android.audio.Audio;
 import com.hychul.zerone.android.input.Input;
 import com.hychul.zerone.android.io.FileIO;
-import com.hychul.zerone.core.Event;
-import com.hychul.zerone.core.Scene;
-import com.hychul.zerone.core.SceneManager;
-import com.hychul.zerone.core.ZeroneEngine;
+import com.zerone.core.Event;
+import com.zerone.core.Scene;
+import com.zerone.core.SceneManager;
+import com.zerone.core.ZeroneEngine;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;

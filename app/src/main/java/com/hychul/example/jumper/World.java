@@ -1,7 +1,7 @@
 package com.hychul.example.jumper;
 
-import com.hychul.zerone.math.OverlapTester;
-import com.hychul.zerone.math.Vector2;
+import com.zerone.math.OverlapTester;
+import com.zerone.math.Vector2;
 
 import java.util.ArrayList;
 import java.util.List;

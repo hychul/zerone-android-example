@@ -4,7 +4,7 @@ import android.opengl.GLES10;
 import android.opengl.GLU;
 
 import com.hychul.zerone.android.Graphics;
-import com.hychul.zerone.math.Vector3;
+import com.zerone.math.Vector3;
 
 import javax.microedition.khronos.opengles.GL10;
 

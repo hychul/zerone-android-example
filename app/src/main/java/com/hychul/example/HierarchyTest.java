@@ -8,8 +8,8 @@ import com.hychul.example.common.HierarchicalObject;
 import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Texture;
 import com.hychul.zerone.android.graphics.Vertices;
-import com.hychul.zerone.core.Scene;
-import com.hychul.zerone.core.Time;
+import com.zerone.core.Scene;
+import com.zerone.core.Time;
 
 import javax.microedition.khronos.opengles.GL10;
 

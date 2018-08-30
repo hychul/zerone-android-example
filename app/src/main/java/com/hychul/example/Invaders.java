@@ -4,7 +4,7 @@ import com.hychul.example.invaders.Assets;
 import com.hychul.example.invaders.MainMenuScene;
 import com.hychul.example.invaders.Settings;
 import com.hychul.zerone.android.ZeroneActivity;
-import com.hychul.zerone.core.Scene;
+import com.zerone.core.Scene;
 
 public class Invaders extends ZeroneActivity {
     boolean firstTimeCreate = true;

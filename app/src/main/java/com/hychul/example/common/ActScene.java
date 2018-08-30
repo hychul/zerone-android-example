@@ -2,7 +2,7 @@ package com.hychul.example.common;
 
 import com.hychul.zerone.android.Graphics;
 import com.hychul.zerone.android.ZeroneActivity;
-import com.hychul.zerone.core.Scene;
+import com.zerone.core.Scene;
 
 public abstract class ActScene extends Scene {
 

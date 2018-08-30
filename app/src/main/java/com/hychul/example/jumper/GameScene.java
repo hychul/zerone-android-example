@@ -7,11 +7,11 @@ import com.hychul.zerone.android.ZeroneActivity;
 import com.hychul.zerone.android.graphics.Camera2D;
 import com.hychul.zerone.android.graphics.SpriteBatcher;
 import com.hychul.zerone.android.input.TouchEvent;
-import com.hychul.zerone.core.SceneManager;
-import com.hychul.zerone.core.Time;
-import com.hychul.zerone.math.OverlapTester;
-import com.hychul.zerone.math.Rectangle;
-import com.hychul.zerone.math.Vector2;
+import com.zerone.core.SceneManager;
+import com.zerone.core.Time;
+import com.zerone.math.OverlapTester;
+import com.zerone.math.Rectangle;
+import com.zerone.math.Vector2;
 
 import java.util.List;
 

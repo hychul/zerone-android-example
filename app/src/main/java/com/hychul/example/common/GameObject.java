@@ -1,7 +1,7 @@
 package com.hychul.example.common;
 
-import com.hychul.zerone.math.Rectangle;
-import com.hychul.zerone.math.Vector2;
+import com.zerone.math.Rectangle;
+import com.zerone.math.Vector2;
 
 public class GameObject {
 

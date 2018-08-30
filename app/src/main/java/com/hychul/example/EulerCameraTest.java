@@ -11,10 +11,10 @@ import com.hychul.zerone.android.graphics.SpriteBatcher;
 import com.hychul.zerone.android.graphics.Texture;
 import com.hychul.zerone.android.graphics.Vertices;
 import com.hychul.zerone.android.graphics.light.PointLight;
-import com.hychul.zerone.core.Scene;
-import com.hychul.zerone.core.Time;
-import com.hychul.zerone.math.Vector2;
-import com.hychul.zerone.math.Vector3;
+import com.zerone.core.Scene;
+import com.zerone.core.Time;
+import com.zerone.math.Vector2;
+import com.zerone.math.Vector3;
 
 import javax.microedition.khronos.opengles.GL10;
 

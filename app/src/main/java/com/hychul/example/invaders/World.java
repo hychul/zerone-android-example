@@ -1,6 +1,6 @@
 package com.hychul.example.invaders;
 
-import com.hychul.zerone.math.OverlapTester;
+import com.zerone.math.OverlapTester;
 
 import java.util.ArrayList;
 import java.util.List;

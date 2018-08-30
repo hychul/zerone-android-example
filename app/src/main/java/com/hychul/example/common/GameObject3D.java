@@ -1,7 +1,7 @@
 package com.hychul.example.common;
 
-import com.hychul.zerone.math.Sphere;
-import com.hychul.zerone.math.Vector3;
+import com.zerone.math.Sphere;
+import com.zerone.math.Vector3;
 
 public class GameObject3D {
 

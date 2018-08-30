@@ -3,7 +3,7 @@ package com.hychul.zerone.android.graphics;
 import android.opengl.GLES10;
 
 import com.hychul.zerone.android.Graphics;
-import com.hychul.zerone.math.Vector2;
+import com.zerone.math.Vector2;
 
 import javax.microedition.khronos.opengles.GL10;
 

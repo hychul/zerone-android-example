@@ -1,6 +1,6 @@
 package com.hychul.zerone.android.graphics;
 
-import com.hychul.zerone.math.Mathf;
+import com.zerone.math.Mathf;
 
 import javax.microedition.khronos.opengles.GL10;
 

@@ -3,8 +3,8 @@ package com.hychul.zerone.android.input;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.hychul.zerone.data.Pool;
-import com.hychul.zerone.data.Pool.PoolObjectFactory;
+import com.zerone.data.Pool;
+import com.zerone.data.Pool.PoolObjectFactory;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -10,9 +10,9 @@ import com.hychul.zerone.android.graphics.Sprite;
 import com.hychul.zerone.android.graphics.SpriteAnimation;
 import com.hychul.zerone.android.graphics.SpriteBatcher;
 import com.hychul.zerone.android.graphics.Texture;
-import com.hychul.zerone.core.Scene;
-import com.hychul.zerone.core.Time;
-import com.hychul.zerone.math.Mathf;
+import com.zerone.core.Scene;
+import com.zerone.core.Time;
+import com.zerone.math.Mathf;
 
 import javax.microedition.khronos.opengles.GL10;
 
