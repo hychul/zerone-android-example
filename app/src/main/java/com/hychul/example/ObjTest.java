@@ -4,14 +4,14 @@ import android.opengl.GLES10;
 import android.opengl.GLU;
 
 import com.hychul.example.common.ActScene;
-import com.hychul.zerone.android.ZeroneActivity;
-import com.hychul.zerone.android.graphics.Material;
-import com.hychul.zerone.android.graphics.ObjLoader;
-import com.hychul.zerone.android.graphics.Texture;
-import com.hychul.zerone.android.graphics.Vertices;
-import com.hychul.zerone.android.graphics.light.AmbientLight;
-import com.hychul.zerone.android.graphics.light.DirectionalLight;
-import com.hychul.zerone.android.graphics.light.PointLight;
+import com.zerone.android.ZeroneActivity;
+import com.zerone.android.graphics.Material;
+import com.zerone.android.graphics.ObjLoader;
+import com.zerone.android.graphics.Texture;
+import com.zerone.android.graphics.Vertices;
+import com.zerone.android.graphics.light.AmbientLight;
+import com.zerone.android.graphics.light.DirectionalLight;
+import com.zerone.android.graphics.light.PointLight;
 import com.zerone.core.Scene;
 import com.zerone.core.Time;
 

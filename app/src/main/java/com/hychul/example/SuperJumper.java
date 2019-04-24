@@ -3,7 +3,7 @@ package com.hychul.example;
 import com.hychul.example.jumper.Assets;
 import com.hychul.example.jumper.MainMenuScene;
 import com.hychul.example.jumper.Settings;
-import com.hychul.zerone.android.ZeroneActivity;
+import com.zerone.android.ZeroneActivity;
 import com.zerone.core.Scene;
 
 public class SuperJumper extends ZeroneActivity {

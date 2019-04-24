@@ -1,1 +1,1 @@
-include ':app', ':zerone'
+include ':app', ':zerone', ':zerone_android'

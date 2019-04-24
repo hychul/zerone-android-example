@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/Zerone.iml" filepath="$PROJECT_DIR$/Zerone.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/zerone/zerone.iml" filepath="$PROJECT_DIR$/zerone/zerone.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zerone_android/zerone_android.iml" filepath="$PROJECT_DIR$/zerone_android/zerone_android.iml" />
     </modules>
   </component>
 </project>

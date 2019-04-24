@@ -2,12 +2,12 @@ package com.hychul.example.invaders;
 
 import android.opengl.GLES10;
 
-import com.hychul.zerone.android.Graphics;
-import com.hychul.zerone.android.graphics.Camera3D;
-import com.hychul.zerone.android.graphics.Sprite;
-import com.hychul.zerone.android.graphics.SpriteBatcher;
-import com.hychul.zerone.android.graphics.light.AmbientLight;
-import com.hychul.zerone.android.graphics.light.DirectionalLight;
+import com.zerone.android.Graphics;
+import com.zerone.android.graphics.Camera3D;
+import com.zerone.android.graphics.Sprite;
+import com.zerone.android.graphics.SpriteBatcher;
+import com.zerone.android.graphics.light.AmbientLight;
+import com.zerone.android.graphics.light.DirectionalLight;
 import com.zerone.math.Vector3;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.hychul.example.invaders;
 
-import com.hychul.zerone.android.io.FileIO;
+import com.zerone.android.io.FileIO;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

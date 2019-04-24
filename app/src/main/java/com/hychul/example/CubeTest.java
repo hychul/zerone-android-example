@@ -4,9 +4,9 @@ import android.opengl.GLES10;
 import android.opengl.GLU;
 
 import com.hychul.example.common.ActScene;
-import com.hychul.zerone.android.ZeroneActivity;
-import com.hychul.zerone.android.graphics.Texture;
-import com.hychul.zerone.android.graphics.Vertices;
+import com.zerone.android.ZeroneActivity;
+import com.zerone.android.graphics.Texture;
+import com.zerone.android.graphics.Vertices;
 import com.zerone.core.Scene;
 import com.zerone.core.Time;
 
