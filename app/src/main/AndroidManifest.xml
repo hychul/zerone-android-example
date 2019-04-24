@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hychul.example">
+    package="com.zerone.example">
 
     <application
         android:allowBackup="true"
@@ -9,65 +9,65 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.zerone.example.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CannonTest"
+        <activity android:name="com.zerone.example.CannonTest"
             android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation"/>
-        <activity android:name=".CannonGravityTest"
+        <activity android:name="com.zerone.example.CannonGravityTest"
             android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation"/>
-        <activity android:name=".CollisionTest"
+        <activity android:name="com.zerone.example.CollisionTest"
             android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation"/>
-        <activity android:name=".Camera2DTest"
+        <activity android:name="com.zerone.example.Camera2DTest"
             android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation"/>
-        <activity android:name=".TextureAtlasTest"
+        <activity android:name="com.zerone.example.TextureAtlasTest"
             android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation"/>
-        <activity android:name=".SpriteBatcherTest"
+        <activity android:name="com.zerone.example.SpriteBatcherTest"
             android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation"/>
-        <activity android:name=".AnimationTest"
+        <activity android:name="com.zerone.example.AnimationTest"
             android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation"/>
-        <activity android:name=".SuperJumper"
+        <activity android:name="com.zerone.example.SuperJumper"
             android:screenOrientation="portrait"
             android:configChanges="keyboard|keyboardHidden|orientation"/>
-        <activity android:name=".Vertices3Test"
+        <activity android:name="com.zerone.example.Vertices3Test"
             android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation"/>
-        <activity android:name=".PerspectiveTest"
+        <activity android:name="com.zerone.example.PerspectiveTest"
             android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation"/>
-        <activity android:name=".ZBufferTest"
+        <activity android:name="com.zerone.example.ZBufferTest"
             android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation"/>
-        <activity android:name=".ZBlendingTest"
+        <activity android:name="com.zerone.example.ZBlendingTest"
             android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation"/>
-        <activity android:name=".CubeTest"
+        <activity android:name="com.zerone.example.CubeTest"
             android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation"/>
-        <activity android:name=".HierarchyTest"
+        <activity android:name="com.zerone.example.HierarchyTest"
             android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation"/>
-        <activity android:name=".LightTest"
+        <activity android:name="com.zerone.example.LightTest"
             android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation"/>
-        <activity android:name=".EulerCameraTest"
+        <activity android:name="com.zerone.example.EulerCameraTest"
             android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation"/>
-        <activity android:name=".ObjTest"
+        <activity android:name="com.zerone.example.ObjTest"
             android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation"/>
-        <activity android:name=".Invaders"
+        <activity android:name="com.zerone.example.Invaders"
             android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation"/>
     </application>
