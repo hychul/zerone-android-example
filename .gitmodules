@@ -1,0 +1,3 @@
+[submodule "zerone"]
+	path = zerone
+	url = https://github.com/hychul/zerone-engine.git
