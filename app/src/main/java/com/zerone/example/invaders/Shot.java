@@ -8,11 +8,11 @@ public class Shot extends GameObject3D {
 
     public Shot(float x, float y, float z, float velocityZ) {
         super(x, y, z, SHOT_RADIUS);
-        velocity.z = velocityZ;
+        velocity.setZ(velocityZ);
     }
 
     public void update(float deltaTime) {
-        position.z += velocity.z * deltaTime;
+        position.setZ(position.getZ() + velocity.getZ() * deltaTime);
         bounds.center.set(position);
     }
 }

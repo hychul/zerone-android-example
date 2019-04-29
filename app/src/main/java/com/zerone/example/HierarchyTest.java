@@ -96,7 +96,7 @@ public class HierarchyTest extends ZeroneActivity {
 
         @Override
         public void update() {
-            float deltaTime = Time.getDeltaTime();
+            float deltaTime = Time.Companion.getDeltaTime();
             sun.update(deltaTime);
         }
 

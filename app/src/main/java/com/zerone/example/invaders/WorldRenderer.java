@@ -34,8 +34,8 @@ public class WorldRenderer {
     }
 
     public void render(World world) {
-        camera.getPosition().x = world.ship.position.x;
-        camera.getLookAt().x = world.ship.position.x;
+        camera.getPosition().setX(world.ship.position.getX());
+        camera.getLookAt().setX(world.ship.position.getX());
         camera.setViewport();
 
         GLES10.glEnable(GL10.GL_DEPTH_TEST);
@@ -67,8 +67,8 @@ public class WorldRenderer {
             Assets.shipTexture.bind();
             Assets.shipModel.bind();
             GLES10.glPushMatrix();
-            GLES10.glTranslatef(ship.position.x, ship.position.y, ship.position.z);
-            GLES10.glRotatef(ship.velocity.x / Ship.SHIP_VELOCITY * 90, 0, 0, -1);
+            GLES10.glTranslatef(ship.position.getX(), ship.position.getY(), ship.position.getZ());
+            GLES10.glRotatef(ship.velocity.getX() / Ship.SHIP_VELOCITY * 90, 0, 0, -1);
             Assets.shipModel.draw(GL10.GL_TRIANGLES, 0,
                                   Assets.shipModel.getNumVertices());
             GLES10.glPopMatrix();
@@ -91,8 +91,8 @@ public class WorldRenderer {
                 GLES10.glEnable(GL10.GL_LIGHTING);
             } else {
                 GLES10.glPushMatrix();
-                GLES10.glTranslatef(invader.position.x, invader.position.y,
-                                    invader.position.z);
+                GLES10.glTranslatef(invader.position.getX(), invader.position.getY(),
+                        invader.position.getZ());
                 GLES10.glRotatef(invader.angle, 0, 1, 0);
                 Assets.invaderModel.draw(GL10.GL_TRIANGLES, 0,
                                          Assets.invaderModel.getNumVertices());
@@ -111,8 +111,8 @@ public class WorldRenderer {
         for (int i = 0; i < len; i++) {
             Shield shield = shields.get(i);
             GLES10.glPushMatrix();
-            GLES10.glTranslatef(shield.position.x, shield.position.y,
-                                shield.position.z);
+            GLES10.glTranslatef(shield.position.getX(), shield.position.getY(),
+                    shield.position.getZ());
             Assets.shieldModel.draw(GL10.GL_TRIANGLES, 0,
                                     Assets.shieldModel.getNumVertices());
             GLES10.glPopMatrix();
@@ -129,7 +129,7 @@ public class WorldRenderer {
         for (int i = 0; i < len; i++) {
             Shot shot = shots.get(i);
             GLES10.glPushMatrix();
-            GLES10.glTranslatef(shot.position.x, shot.position.y, shot.position.z);
+            GLES10.glTranslatef(shot.position.getX(), shot.position.getY(), shot.position.getZ());
             Assets.shotModel.draw(GL10.GL_TRIANGLES, 0,
                                   Assets.shotModel.getNumVertices());
             GLES10.glPopMatrix();
@@ -143,7 +143,7 @@ public class WorldRenderer {
 
         GLES10.glEnable(GL10.GL_BLEND);
         GLES10.glPushMatrix();
-        GLES10.glTranslatef(position.x, position.y, position.z);
+        GLES10.glTranslatef(position.getX(), position.getY(), position.getZ());
         batcher.beginBatch(Assets.explosionTexture);
         batcher.drawSprite(frame, 2, 2, 0, 0, 0, 0);
         batcher.endBatch();

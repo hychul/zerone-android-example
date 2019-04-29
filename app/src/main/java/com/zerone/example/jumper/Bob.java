@@ -21,28 +21,28 @@ public class Bob extends GameObject {
     }
 
     public void update(float deltaTime) {
-        velocity.add(World.gravity.x * deltaTime, World.gravity.y * deltaTime);
-        position.add(velocity.x * deltaTime, velocity.y * deltaTime);
-        bounds.lowerLeft.set(position).sub(bounds.width / 2, bounds.height / 2);
+        velocity.plus(World.gravity.getX() * deltaTime, World.gravity.getY() * deltaTime);
+        position.plus(velocity.getX() * deltaTime, velocity.getY() * deltaTime);
+        bounds.getLowerLeft().set(position).sub(bounds.getWidth() / 2, bounds.getHeight() / 2);
 
-        if (velocity.y > 0 && state != BOB_STATE_HIT) {
+        if (velocity.getY() > 0 && state != BOB_STATE_HIT) {
             if (state != BOB_STATE_JUMP) {
                 state = BOB_STATE_JUMP;
                 stateTime = 0;
             }
         }
 
-        if (velocity.y < 0 && state != BOB_STATE_HIT) {
+        if (velocity.getY() < 0 && state != BOB_STATE_HIT) {
             if (state != BOB_STATE_FALL) {
                 state = BOB_STATE_FALL;
                 stateTime = 0;
             }
         }
 
-        if (position.x < 0)
-            position.x = World.WORLD_WIDTH;
-        if (position.x > World.WORLD_WIDTH)
-            position.x = 0;
+        if (position.getX() < 0)
+            position.setX(World.WORLD_WIDTH);
+        if (position.getX() > World.WORLD_WIDTH)
+            position.setX(0);
 
         stateTime += deltaTime;
     }
@@ -54,13 +54,13 @@ public class Bob extends GameObject {
     }
 
     public void hitPlatform() {
-        velocity.y = BOB_JUMP_VELOCITY;
+        velocity.setY(BOB_JUMP_VELOCITY);
         state = BOB_STATE_JUMP;
         stateTime = 0;
     }
 
     public void hitSpring() {
-        velocity.y = BOB_JUMP_VELOCITY * 1.5f;
+        velocity.setY(BOB_JUMP_VELOCITY * 1.5f);
         state = BOB_STATE_JUMP;
         stateTime = 0;
     }

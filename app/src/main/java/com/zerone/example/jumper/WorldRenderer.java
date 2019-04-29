@@ -26,8 +26,8 @@ public class WorldRenderer {
     }
 
     public void render() {
-        if (world.bob.position.y > cam.position.y)
-            cam.position.y = world.bob.position.y;
+        if (world.bob.position.getY() > cam.position.getY())
+            cam.position.setY(world.bob.position.getY());
         cam.setViewport();
         renderBackground();
         renderObjects();
@@ -35,7 +35,7 @@ public class WorldRenderer {
 
     public void renderBackground() {
         batcher.beginBatch(Assets.background);
-        batcher.drawSprite(Assets.backgroundRegion, FRUSTUM_WIDTH, FRUSTUM_HEIGHT, cam.position.x, cam.position.y, 0, 0);
+        batcher.drawSprite(Assets.backgroundRegion, FRUSTUM_WIDTH, FRUSTUM_HEIGHT, cam.position.getX(), cam.position.getY(), 0, 0);
         batcher.endBatch();
     }
 
@@ -67,8 +67,8 @@ public class WorldRenderer {
                 keyFrame = Assets.bobHit;
         }
 
-        float side = world.bob.velocity.x < 0 ? -1 : 1;
-        batcher.drawSprite(keyFrame, side * 1, 1, world.bob.position.x, world.bob.position.y, 0, 0);
+        float side = world.bob.velocity.getX() < 0 ? -1 : 1;
+        batcher.drawSprite(keyFrame, side * 1, 1, world.bob.position.getX(), world.bob.position.getY(), 0, 0);
     }
 
     private void renderPlatforms() {
@@ -80,7 +80,7 @@ public class WorldRenderer {
                 keyFrame = Assets.brakingPlatform.getKeyFrame(platform.stateTime, false);
             }
 
-            batcher.drawSprite(keyFrame, 2, 0.5f, platform.position.x, platform.position.y, 0, 0);
+            batcher.drawSprite(keyFrame, 2, 0.5f, platform.position.getX(), platform.position.getY(), 0, 0);
         }
     }
 
@@ -88,14 +88,14 @@ public class WorldRenderer {
         int len = world.springs.size();
         for (int i = 0; i < len; i++) {
             Spring spring = world.springs.get(i);
-            batcher.drawSprite(Assets.spring, 1, 1, spring.position.x, spring.position.y, 0, 0);
+            batcher.drawSprite(Assets.spring, 1, 1, spring.position.getX(), spring.position.getY(), 0, 0);
         }
 
         len = world.coins.size();
         for (int i = 0; i < len; i++) {
             Coin coin = world.coins.get(i);
             Sprite keyFrame = Assets.coinAnim.getKeyFrame(coin.stateTime, true);
-            batcher.drawSprite(keyFrame, 1, 1, coin.position.x, coin.position.y, 0, 0);
+            batcher.drawSprite(keyFrame, 1, 1, coin.position.getX(), coin.position.getY(), 0, 0);
         }
     }
 
@@ -104,13 +104,13 @@ public class WorldRenderer {
         for (int i = 0; i < len; i++) {
             Squirrel squirrel = world.squirrels.get(i);
             Sprite keyFrame = Assets.squirrelFly.getKeyFrame(squirrel.stateTime, true);
-            float side = squirrel.velocity.x < 0 ? -1 : 1;
-            batcher.drawSprite(keyFrame, side * 1, 1, squirrel.position.x, squirrel.position.y, 0, 0);
+            float side = squirrel.velocity.getX() < 0 ? -1 : 1;
+            batcher.drawSprite(keyFrame, side * 1, 1, squirrel.position.getX(), squirrel.position.getY(), 0, 0);
         }
     }
 
     private void renderCastle() {
         Castle castle = world.castle;
-        batcher.drawSprite(Assets.castle, 2, 2, castle.position.x, castle.position.y, 0, 0);
+        batcher.drawSprite(Assets.castle, 2, 2, castle.position.getX(), castle.position.getY(), 0, 0);
     }
 }

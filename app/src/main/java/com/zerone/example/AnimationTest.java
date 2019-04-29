@@ -38,9 +38,9 @@ public class AnimationTest extends ZeroneActivity {
         }
 
         public void update(float deltaTime) {
-            position.add(velocity.x * deltaTime, velocity.y * deltaTime);
-            if (position.x < 0) position.x = WORLD_WIDTH;
-            if (position.x > WORLD_WIDTH) position.x = 0;
+            position.plus(velocity.getX() * deltaTime, velocity.getY() * deltaTime);
+            if (position.getX() < 0) position.setX(WORLD_WIDTH);
+            if (position.getX() > WORLD_WIDTH) position.setX(0);
             walkingTime += deltaTime;
         }
     }
@@ -81,7 +81,7 @@ public class AnimationTest extends ZeroneActivity {
 
         @Override
         public void update() {
-            float deltaTime = Time.getDeltaTime();
+            float deltaTime = Time.Companion.getDeltaTime();
             int len = cavemen.length;
             for (int i = 0; i < len; i++) {
                 cavemen[i].update(deltaTime);
@@ -102,7 +102,7 @@ public class AnimationTest extends ZeroneActivity {
             for (int i = 0; i < len; i++) {
                 Caveman caveman = cavemen[i];
                 Sprite keyFrame = walkAnim.getKeyFrame(caveman.walkingTime, true);
-                batcher.drawSprite(keyFrame, caveman.velocity.x < 0 ? 64 : -64, 64, caveman.position.x, caveman.position.y, 0, 0);
+                batcher.drawSprite(keyFrame, caveman.velocity.getX() < 0 ? 64 : -64, 64, caveman.position.getX(), caveman.position.getY(), 0, 0);
             }
             batcher.endBatch();
         }

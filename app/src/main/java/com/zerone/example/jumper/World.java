@@ -43,7 +43,7 @@ public class World {
 
     private void generateLevel() {
         float y = Platform.PLATFORM_HEIGHT / 2;
-        float maxJumpHeight = Bob.BOB_JUMP_VELOCITY * Bob.BOB_JUMP_VELOCITY / (2 * -gravity.y);
+        float maxJumpHeight = Bob.BOB_JUMP_VELOCITY * Bob.BOB_JUMP_VELOCITY / (2 * -gravity.getY());
         while (y < WORLD_HEIGHT - WORLD_WIDTH / 2) {
             int type = rand.nextFloat() > 0.8f ? Platform.PLATFORM_TYPE_MOVING : Platform.PLATFORM_TYPE_STATIC;
             float x = rand.nextFloat() * (WORLD_WIDTH - Platform.PLATFORM_WIDTH)
@@ -54,22 +54,22 @@ public class World {
 
             if (rand.nextFloat() > 0.9f
                 && type != Platform.PLATFORM_TYPE_MOVING) {
-                Spring spring = new Spring(platform.position.x,
-                                           platform.position.y
+                Spring spring = new Spring(platform.position.getX(),
+                                           platform.position.getY()
                                            + Platform.PLATFORM_HEIGHT / 2
                                            + Spring.SPRING_HEIGHT / 2);
                 springs.add(spring);
             }
 
             if (y > WORLD_HEIGHT / 3 && rand.nextFloat() > 0.8f) {
-                Squirrel squirrel = new Squirrel(platform.position.x + rand.nextFloat(),
-                                                 platform.position.y + Squirrel.SQUIRREL_HEIGHT + rand.nextFloat() * 2);
+                Squirrel squirrel = new Squirrel(platform.position.getX() + rand.nextFloat(),
+                                                 platform.position.getY() + Squirrel.SQUIRREL_HEIGHT + rand.nextFloat() * 2);
                 squirrels.add(squirrel);
             }
 
             if (rand.nextFloat() > 0.6f) {
-                Coin coin = new Coin(platform.position.x + rand.nextFloat(),
-                                     platform.position.y + Coin.COIN_HEIGHT + rand.nextFloat() * 3);
+                Coin coin = new Coin(platform.position.getX() + rand.nextFloat(),
+                                     platform.position.getY() + Coin.COIN_HEIGHT + rand.nextFloat() * 3);
                 coins.add(coin);
             }
 
@@ -91,12 +91,12 @@ public class World {
     }
 
     private void updateBob(float deltaTime, float accelX) {
-        if (bob.state != Bob.BOB_STATE_HIT && bob.position.y <= 0.5f)
+        if (bob.state != Bob.BOB_STATE_HIT && bob.position.getY() <= 0.5f)
             bob.hitPlatform();
         if (bob.state != Bob.BOB_STATE_HIT)
-            bob.velocity.x = -accelX / 10 * Bob.BOB_MOVE_VELOCITY;
+            bob.velocity.setX(-accelX / 10 * Bob.BOB_MOVE_VELOCITY);
         bob.update(deltaTime);
-        heightSoFar = Math.max(bob.position.y, heightSoFar);
+        heightSoFar = Math.max(bob.position.getY(), heightSoFar);
     }
 
     private void updatePlatforms(float deltaTime) {
@@ -136,13 +136,13 @@ public class World {
     }
 
     private void checkPlatformCollisions() {
-        if (bob.velocity.y > 0)
+        if (bob.velocity.getY() > 0)
             return;
 
         int len = platforms.size();
         for (int i = 0; i < len; i++) {
             Platform platform = platforms.get(i);
-            if (bob.position.y > platform.position.y) {
+            if (bob.position.getY() > platform.position.getY()) {
                 if (OverlapTester.overlapRectangles(bob.bounds, platform.bounds)) {
                     bob.hitPlatform();
                     listener.jump();
@@ -179,13 +179,13 @@ public class World {
 
         }
 
-        if (bob.velocity.y > 0)
+        if (bob.velocity.getY() > 0)
             return;
 
         len = springs.size();
         for (int i = 0; i < len; i++) {
             Spring spring = springs.get(i);
-            if (bob.position.y > spring.position.y) {
+            if (bob.position.getY() > spring.position.getY()) {
                 if (OverlapTester.overlapRectangles(bob.bounds, spring.bounds)) {
                     bob.hitSpring();
                     listener.highJump();
@@ -201,7 +201,7 @@ public class World {
     }
 
     private void checkGameOver() {
-        if (heightSoFar - 7.5f > bob.position.y) {
+        if (heightSoFar - 7.5f > bob.position.getY()) {
             state = WORLD_STATE_GAME_OVER;
         }
     }

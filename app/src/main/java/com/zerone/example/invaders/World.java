@@ -75,9 +75,9 @@ public class World {
 
             if (invader.state == Invader.INVADER_ALIVE) {
                 if (random.nextFloat() < 0.001f) {
-                    Shot shot = new Shot(invader.position.x,
-                                         invader.position.y,
-                                         invader.position.z,
+                    Shot shot = new Shot(invader.position.getX(),
+                            invader.position.getY(),
+                            invader.position.getZ(),
                                          Shot.SHOT_VELOCITY);
                     shots.add(shot);
                     listener.shot();
@@ -98,8 +98,8 @@ public class World {
         for (int i = 0; i < len; i++) {
             Shot shot = shots.get(i);
             shot.update(deltaTime);
-            if (shot.position.z < WORLD_MIN_Z ||
-                shot.position.z > 0) {
+            if (shot.position.getZ() < WORLD_MIN_Z ||
+                shot.position.getZ() > 0) {
                 shots.remove(i);
                 i--;
                 len--;
@@ -143,7 +143,7 @@ public class World {
             if (shotRemoved)
                 continue;
 
-            if (shot.velocity.z < 0) {
+            if (shot.velocity.getZ() < 0) {
                 len2 = invaders.size();
                 for (int j = 0; j < len2; j++) {
                     Invader invader = invaders.get(j);
@@ -183,13 +183,13 @@ public class World {
         int friendlyShots = 0;
         int len = shots.size();
         for (int i = 0; i < len; i++) {
-            if (shots.get(i).velocity.z < 0)
+            if (shots.get(i).velocity.getZ() < 0)
                 friendlyShots++;
         }
 
         if (System.nanoTime() - lastShotTime > 1000000000 || friendlyShots == 0) {
-            shots.add(new Shot(ship.position.x, ship.position.y,
-                               ship.position.z, -Shot.SHOT_VELOCITY));
+            shots.add(new Shot(ship.position.getX(), ship.position.getY(),
+                    ship.position.getZ(), -Shot.SHOT_VELOCITY));
             lastShotTime = System.nanoTime();
             listener.shot();
         }

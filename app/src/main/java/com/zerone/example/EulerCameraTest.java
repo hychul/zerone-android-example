@@ -109,7 +109,7 @@ public class EulerCameraTest extends ZeroneActivity {
 
         @Override
         public void update() {
-            float deltaTime = Time.getDeltaTime();
+            float deltaTime = Time.Companion.getDeltaTime();
             zerone.getInput().getTouchEvents();
             float x = zerone.getInput().getTouchX(0);
             float y = zerone.getInput().getTouchY(0);
@@ -117,9 +117,9 @@ public class EulerCameraTest extends ZeroneActivity {
 
 
             if (zerone.getInput().isTouchDown(0)) {
-                if (touchPos.x < 64 && touchPos.y < 64) {
+                if (touchPos.getX() < 64 && touchPos.getY() < 64) {
                     Vector3 direction = camera.getDirection();
-                    camera.getPosition().add(direction.mul(deltaTime));
+                    camera.getPosition().plus(direction.times(deltaTime));
                 } else {
                     if (lastX == -1) {
                         lastX = x;

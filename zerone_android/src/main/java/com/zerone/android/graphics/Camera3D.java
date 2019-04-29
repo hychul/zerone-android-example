@@ -57,6 +57,6 @@ public class Camera3D {
         GLU.gluPerspective(gl, fieldOfView, aspectRatio, near, far);
         GLES10.glMatrixMode(GL10.GL_MODELVIEW);
         GLES10.glLoadIdentity();
-        GLU.gluLookAt(gl, position.x, position.y, position.z, lookAt.x, lookAt.y, lookAt.z, up.x, up.y, up.z);
+        GLU.gluLookAt(gl, position.getX(), position.getY(), position.getZ(), lookAt.getX(), lookAt.getY(), lookAt.getZ(), up.getX(), up.getY(), up.getZ());
     }
 }

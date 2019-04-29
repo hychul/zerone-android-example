@@ -82,7 +82,7 @@ public class GameScene extends ActScene {
 
     @Override
     public void update() {
-        float deltaTime = Time.getDeltaTime();
+        float deltaTime = Time.Companion.getDeltaTime();
         switch (state) {
             case GAME_PAUSED:
                 updatePaused();
@@ -112,7 +112,7 @@ public class GameScene extends ActScene {
 
             if (OverlapTester.pointInRectangle(quitBounds, touchPoint)) {
                 Assets.playSound(Assets.clickSound);
-                SceneManager.loadScene(new MainMenuScene(zerone));
+                SceneManager.INSTANCE.loadScene(new MainMenuScene(zerone));
             }
         }
     }
@@ -178,7 +178,7 @@ public class GameScene extends ActScene {
             TouchEvent event = events.get(i);
             if (event.phase == TouchEvent.TOUCH_UP) {
                 Assets.playSound(Assets.clickSound);
-                SceneManager.loadScene(new MainMenuScene(zerone));
+                SceneManager.INSTANCE.loadScene(new MainMenuScene(zerone));
             }
         }
     }

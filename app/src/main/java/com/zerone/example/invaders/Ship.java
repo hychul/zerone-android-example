@@ -23,13 +23,13 @@ public class Ship extends GameObject3D {
     public void update(float deltaTime, float accelY) {
         if (state == SHIP_ALIVE) {
             velocity.set(accelY / 10 * SHIP_VELOCITY, 0, 0);
-            position.add(velocity.x * deltaTime, 0, 0);
+            position.plus(velocity.getX() * deltaTime, 0, 0);
 
-            if (position.x < World.WORLD_MIN_X)
-                position.x = World.WORLD_MIN_X;
+            if (position.getX() < World.WORLD_MIN_X)
+                position.setX(World.WORLD_MIN_X);
 
-            if (position.x > World.WORLD_MAX_X)
-                position.x = World.WORLD_MAX_X;
+            if (position.getX() > World.WORLD_MAX_X)
+                position.setX(World.WORLD_MAX_X);
 
             bounds.center.set(position);
         } else {
@@ -45,6 +45,6 @@ public class Ship extends GameObject3D {
     public void kill() {
         state = SHIP_EXPLODING;
         stateTime = 0;
-        velocity.x = 0;
+        velocity.setX(0);
     }
 }

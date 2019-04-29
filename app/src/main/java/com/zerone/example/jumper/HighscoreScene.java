@@ -55,7 +55,7 @@ public class HighscoreScene extends ActScene {
 
             if (event.phase == TouchEvent.TOUCH_UP) {
                 if (OverlapTester.pointInRectangle(backBounds, touchPoint)) {
-                    SceneManager.loadScene(new MainMenuScene(zerone));
+                    SceneManager.INSTANCE.loadScene(new MainMenuScene(zerone));
                     return;
                 }
             }

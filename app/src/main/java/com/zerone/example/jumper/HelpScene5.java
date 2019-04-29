@@ -63,7 +63,7 @@ public class HelpScene5 extends ActScene {
             if (event.phase == TouchEvent.TOUCH_UP) {
                 if (OverlapTester.pointInRectangle(nextBounds, touchPoint)) {
                     Assets.playSound(Assets.clickSound);
-                    SceneManager.loadScene(new MainMenuScene(zerone));
+                    SceneManager.INSTANCE.loadScene(new MainMenuScene(zerone));
                     return;
                 }
             }

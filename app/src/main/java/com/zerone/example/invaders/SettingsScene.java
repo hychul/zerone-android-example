@@ -74,7 +74,7 @@ public class SettingsScene extends ActScene {
             }
             if (OverlapTester.pointInRectangle(backBounds, touchPoint)) {
                 Assets.playSound(Assets.clickSound);
-                SceneManager.loadScene(new MainMenuScene(zerone));
+                SceneManager.INSTANCE.loadScene(new MainMenuScene(zerone));
             }
         }
     }

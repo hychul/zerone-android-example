@@ -78,7 +78,7 @@ public class SpriteBatcherTest extends ZeroneActivity {
 
         @Override
         public void update() {
-            float deltaTime = Time.getDeltaTime();
+            float deltaTime = Time.Companion.getDeltaTime();
             List<TouchEvent> touchEvents = zerone.getInput().getTouchEvents();
             zerone.getInput().getKeyEvents();
 
@@ -94,15 +94,15 @@ public class SpriteBatcherTest extends ZeroneActivity {
                     float radians = Mathf.toRadians(cannon.angle);
                     float ballSpeed = touchPos.len() * 2;
                     ball.position.set(cannon.position);
-                    ball.velocity.x = Mathf.cos(radians) * ballSpeed;
-                    ball.velocity.y = Mathf.sin(radians) * ballSpeed;
-                    ball.bounds.lowerLeft.set(ball.position.x - 0.1f, ball.position.y - 0.1f);
+                    ball.velocity.setX(Mathf.cos(radians) * ballSpeed);
+                    ball.velocity.setY(Mathf.sin(radians) * ballSpeed);
+                    ball.bounds.getLowerLeft().set(ball.position.getX() - 0.1f, ball.position.getY() - 0.1f);
                 }
             }
 
-            ball.velocity.add(gravity.x * deltaTime, gravity.y * deltaTime);
-            ball.position.add(ball.velocity.x * deltaTime, ball.velocity.y * deltaTime);
-            ball.bounds.lowerLeft.add(ball.velocity.x * deltaTime, ball.velocity.y * deltaTime);
+            ball.velocity.plus(gravity.getX() * deltaTime, gravity.getY() * deltaTime);
+            ball.position.plus(ball.velocity.getX() * deltaTime, ball.velocity.getY() * deltaTime);
+            ball.bounds.getLowerLeft().plus(ball.velocity.getX() * deltaTime, ball.velocity.getY() * deltaTime);
 
             List<GameObject> colliders = grid.getPotentialColliders(ball);
             len = colliders.size();
@@ -114,9 +114,9 @@ public class SpriteBatcherTest extends ZeroneActivity {
                 }
             }
 
-            if (ball.position.y > 0) {
+            if (ball.position.getY() > 0) {
                 camera.position.set(ball.position);
-                camera.zoom = 1 + ball.position.y / WORLD_HEIGHT;
+                camera.zoom = 1 + ball.position.getY() / WORLD_HEIGHT;
             } else {
                 camera.position.set(WORLD_WIDTH / 2, WORLD_HEIGHT / 2);
                 camera.zoom = 1;
@@ -137,11 +137,11 @@ public class SpriteBatcherTest extends ZeroneActivity {
             int len = targets.size();
             for (int i = 0; i < len; i++) {
                 GameObject target = targets.get(i);
-                batcher.drawSprite(bobRegion, 0.5f, 0.5f, target.position.x, target.position.y, 0, 0);
+                batcher.drawSprite(bobRegion, 0.5f, 0.5f, target.position.getX(), target.position.getY(), 0, 0);
             }
 
-            batcher.drawSprite(ballRegion, 0.2f, 0.2f, ball.position.x, ball.position.y, 0, 0);
-            batcher.drawSprite(cannonRegion, 1, 0.5f, cannon.position.x, cannon.position.y, 0, cannon.angle);
+            batcher.drawSprite(ballRegion, 0.2f, 0.2f, ball.position.getX(), ball.position.getY(), 0, 0);
+            batcher.drawSprite(cannonRegion, 1, 0.5f, cannon.position.getX(), cannon.position.getY(), 0, cannon.angle);
             batcher.endBatch();
         }
 

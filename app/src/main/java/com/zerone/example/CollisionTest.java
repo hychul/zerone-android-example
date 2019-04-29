@@ -84,7 +84,7 @@ public class CollisionTest extends ZeroneActivity {
         }
 
         public void update() {
-            float deltaTime = Time.getDeltaTime();
+            float deltaTime = Time.Companion.getDeltaTime();
             List<TouchEvent> touchEvents = zerone.getInput().getTouchEvents();
             zerone.getInput().getKeyEvents();
 
@@ -92,8 +92,8 @@ public class CollisionTest extends ZeroneActivity {
             for (int i = 0; i < len; i++) {
                 TouchEvent event = touchEvents.get(i);
 
-                touchPos.x = (event.x / (float) graphics.getWidth()) * WORLD_WIDTH;
-                touchPos.y = (1 - event.y / (float) graphics.getHeight()) * WORLD_HEIGHT;
+                touchPos.setX((event.x / (float) graphics.getWidth()) * WORLD_WIDTH);
+                touchPos.setY((1 - event.y / (float) graphics.getHeight()) * WORLD_HEIGHT);
 
                 cannon.angle = touchPos.sub(cannon.position).angle();
 
@@ -101,15 +101,15 @@ public class CollisionTest extends ZeroneActivity {
                     float radians = Mathf.toRadians(cannon.angle);
                     float ballSpeed = touchPos.len() * 2;
                     ball.position.set(cannon.position);
-                    ball.velocity.x = Mathf.cos(radians) * ballSpeed;
-                    ball.velocity.y = Mathf.sin(radians) * ballSpeed;
-                    ball.bounds.lowerLeft.set(ball.position.x - 0.1f, ball.position.y - 0.1f);
+                    ball.velocity.setX(Mathf.cos(radians) * ballSpeed);
+                    ball.velocity.setY(Mathf.sin(radians) * ballSpeed);
+                    ball.bounds.getLowerLeft().set(ball.position.getX() - 0.1f, ball.position.getY() - 0.1f);
                 }
             }
 
-            ball.velocity.add(gravity.x * deltaTime, gravity.y * deltaTime);
-            ball.position.add(ball.velocity.x * deltaTime, ball.velocity.y * deltaTime);
-            ball.bounds.lowerLeft.add(ball.velocity.x * deltaTime, ball.velocity.y * deltaTime);
+            ball.velocity.plus(gravity.getX() * deltaTime, gravity.getY() * deltaTime);
+            ball.position.plus(ball.velocity.getX() * deltaTime, ball.velocity.getY() * deltaTime);
+            ball.bounds.getLowerLeft().plus(ball.velocity.getX() * deltaTime, ball.velocity.getY() * deltaTime);
 
             List<GameObject> colliders = grid.getPotentialColliders(ball);
             len = colliders.size();
@@ -136,20 +136,20 @@ public class CollisionTest extends ZeroneActivity {
             for (int i = 0; i < len; i++) {
                 GameObject target = targets.get(i);
                 GLES10.glLoadIdentity();
-                GLES10.glTranslatef(target.position.x, target.position.y, 0);
+                GLES10.glTranslatef(target.position.getX(), target.position.getY(), 0);
                 targetVertices.draw(GL10.GL_TRIANGLES, 0, 6);
             }
             targetVertices.unbind();
 
             GLES10.glLoadIdentity();
-            GLES10.glTranslatef(ball.position.x, ball.position.y, 0);
+            GLES10.glTranslatef(ball.position.getX(), ball.position.getY(), 0);
             GLES10.glColor4f(1, 0, 0, 1);
             ballVertices.bind();
             ballVertices.draw(GL10.GL_TRIANGLES, 0, 6);
             ballVertices.unbind();
 
             GLES10.glLoadIdentity();
-            GLES10.glTranslatef(cannon.position.x, cannon.position.y, 0);
+            GLES10.glTranslatef(cannon.position.getX(), cannon.position.getY(), 0);
             GLES10.glRotatef(cannon.angle, 0, 0, 1);
             GLES10.glColor4f(1, 1, 1, 1);
             cannonVertices.bind();

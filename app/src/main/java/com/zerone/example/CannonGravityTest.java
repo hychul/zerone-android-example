@@ -56,7 +56,7 @@ public class CannonGravityTest extends ZeroneActivity {
 
         @Override
         public void update() {
-            float deltaTime = Time.getDeltaTime();
+            float deltaTime = Time.Companion.getDeltaTime();
             List<TouchEvent> touchEvents = zerone.getInput().getTouchEvents();
             zerone.getInput().getKeyEvents();
 
@@ -64,23 +64,23 @@ public class CannonGravityTest extends ZeroneActivity {
             for (int i = 0; i < len; i++) {
                 TouchEvent event = touchEvents.get(i);
 
-                touchPos.x = (event.x / (float) graphics.getWidth())
-                             * FRUSTUM_WIDTH;
-                touchPos.y = (1 - event.y / (float) graphics.getHeight())
-                             * FRUSTUM_HEIGHT;
+                touchPos.setX((event.x / (float) graphics.getWidth())
+                        * FRUSTUM_WIDTH);
+                touchPos.setY((1 - event.y / (float) graphics.getHeight())
+                        * FRUSTUM_HEIGHT);
                 cannonAngle = touchPos.sub(cannonPos).angle();
 
                 if (event.phase == TouchEvent.TOUCH_UP) {
                     float radians = Mathf.toRadians(cannonAngle);
                     float ballSpeed = touchPos.len();
                     ballPos.set(cannonPos);
-                    ballVelocity.x = Mathf.cos(radians) * ballSpeed;
-                    ballVelocity.y = Mathf.sin(radians) * ballSpeed;
+                    ballVelocity.setX(Mathf.cos(radians) * ballSpeed);
+                    ballVelocity.setY(Mathf.sin(radians) * ballSpeed);
                 }
             }
 
-            ballVelocity.add(gravity.x * deltaTime, gravity.y * deltaTime);
-            ballPos.add(ballVelocity.x * deltaTime, ballVelocity.y * deltaTime);
+            ballVelocity.plus(gravity.getX() * deltaTime, gravity.getY() * deltaTime);
+            ballPos.plus(ballVelocity.getX() * deltaTime, ballVelocity.getY() * deltaTime);
         }
 
         @Override
@@ -94,7 +94,7 @@ public class CannonGravityTest extends ZeroneActivity {
             GLES10.glMatrixMode(GL10.GL_MODELVIEW);
 
             GLES10.glLoadIdentity();
-            GLES10.glTranslatef(cannonPos.x, cannonPos.y, 0);
+            GLES10.glTranslatef(cannonPos.getX(), cannonPos.getY(), 0);
             GLES10.glRotatef(cannonAngle, 0, 0, 1);
             GLES10.glColor4f(1, 1, 1, 1);
             cannonVertices.bind();
@@ -102,7 +102,7 @@ public class CannonGravityTest extends ZeroneActivity {
             cannonVertices.unbind();
 
             GLES10.glLoadIdentity();
-            GLES10.glTranslatef(ballPos.x, ballPos.y, 0);
+            GLES10.glTranslatef(ballPos.getX(), ballPos.getY(), 0);
             GLES10.glColor4f(1, 0, 0, 1);
             ballVertices.bind();
             ballVertices.draw(GL10.GL_TRIANGLES, 0, 6);

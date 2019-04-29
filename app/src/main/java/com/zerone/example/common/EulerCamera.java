@@ -70,7 +70,7 @@ public class EulerCamera {
         GLES10.glLoadIdentity();
         GLES10.glRotatef(-pitch, 1, 0, 0);
         GLES10.glRotatef(-yaw, 0, 1, 0);
-        GLES10.glTranslatef(-position.x, -position.y, -position.z);
+        GLES10.glTranslatef(-position.getX(), -position.getY(), -position.getZ());
     }
 
     public Vector3 getDirection() {

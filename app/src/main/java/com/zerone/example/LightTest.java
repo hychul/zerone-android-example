@@ -102,7 +102,7 @@ public class LightTest extends ZeroneActivity {
 
         @Override
         public void update() {
-            float deltaTime = Time.getDeltaTime();
+            float deltaTime = Time.Companion.getDeltaTime();
             angle += deltaTime * 20;
         }
 

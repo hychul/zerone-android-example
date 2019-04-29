@@ -115,9 +115,9 @@ public abstract class ZeroneActivity extends Activity {
         Scene scene;
 
         public RenderTask() {
-            SceneManager.onSceneLoaded.addSubscriber(new Event.Subscriber<Scene>() {
+            SceneManager.INSTANCE.getOnSceneLoad().addSubscriber(new Event.Subscriber<Scene>() {
                 @Override
-                public void onInvoked(Scene param) {
+                public void onEvent(Scene param) {
                     scene = param;
                 }
             });
@@ -129,7 +129,7 @@ public abstract class ZeroneActivity extends Activity {
 
             synchronized (stateLock) {
                 if (state == ActivityState.Initialized)
-                    SceneManager.loadScene(getStartScene());
+                    SceneManager.INSTANCE.loadScene(getStartScene());
                 else
                     scene.onResume();
 
@@ -156,11 +156,11 @@ public abstract class ZeroneActivity extends Activity {
 
             switch (stateSync) {
                 case Running:
-                    synchronized (engine.lock) {
+                    synchronized (engine.getLock()) {
                         scene.draw();
 
                         try {
-                            engine.lock.wait();
+                            engine.getLock().wait();
                         } catch (InterruptedException ignored) {
 
                         }

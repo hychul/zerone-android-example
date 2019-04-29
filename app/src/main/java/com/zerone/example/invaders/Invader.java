@@ -29,7 +29,7 @@ public class Invader extends GameObject3D {
         if (state == INVADER_ALIVE) {
             movedDistance += deltaTime * INVADER_VELOCITY * speedMultiplier;
             if (move == MOVE_LEFT) {
-                position.x -= deltaTime * INVADER_VELOCITY * speedMultiplier;
+                position.setX(position.getX() - deltaTime * INVADER_VELOCITY * speedMultiplier);
                 if (movedDistance > World.WORLD_MAX_X) {
                     move = MOVE_DOWN;
                     movedDistance = 0;
@@ -37,7 +37,7 @@ public class Invader extends GameObject3D {
                 }
             }
             if (move == MOVE_RIGHT) {
-                position.x += deltaTime * INVADER_VELOCITY * speedMultiplier;
+                position.setX(position.getX() + deltaTime * INVADER_VELOCITY * speedMultiplier);
                 if (movedDistance > World.WORLD_MAX_X) {
                     move = MOVE_DOWN;
                     movedDistance = 0;
@@ -45,7 +45,7 @@ public class Invader extends GameObject3D {
                 }
             }
             if (move == MOVE_DOWN) {
-                position.z += deltaTime * INVADER_VELOCITY * speedMultiplier;
+                position.setZ(position.getZ() + deltaTime * INVADER_VELOCITY * speedMultiplier);
                 if (movedDistance > 1) {
                     if (wasLastStateLeft)
                         move = MOVE_RIGHT;

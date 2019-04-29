@@ -22,22 +22,22 @@ public class Platform extends GameObject {
         this.state = PLATFORM_STATE_NORMAL;
         this.stateTime = 0;
         if (type == PLATFORM_TYPE_MOVING) {
-            velocity.x = PLATFORM_VELOCITY;
+            velocity.setX(PLATFORM_VELOCITY);
         }
     }
 
     public void update(float deltaTime) {
         if (type == PLATFORM_TYPE_MOVING) {
-            position.add(velocity.x * deltaTime, 0);
-            bounds.lowerLeft.set(position).sub(PLATFORM_WIDTH / 2, PLATFORM_HEIGHT / 2);
+            position.plus(velocity.getX() * deltaTime, 0);
+            bounds.getLowerLeft().set(position).sub(PLATFORM_WIDTH / 2, PLATFORM_HEIGHT / 2);
 
-            if (position.x < PLATFORM_WIDTH / 2) {
-                velocity.x = -velocity.x;
-                position.x = PLATFORM_WIDTH / 2;
+            if (position.getX() < PLATFORM_WIDTH / 2) {
+                velocity.setX(-velocity.getX());
+                position.setX(PLATFORM_WIDTH / 2);
             }
-            if (position.x > World.WORLD_WIDTH - PLATFORM_WIDTH / 2) {
-                velocity.x = -velocity.x;
-                position.x = World.WORLD_WIDTH - PLATFORM_WIDTH / 2;
+            if (position.getX() > World.WORLD_WIDTH - PLATFORM_WIDTH / 2) {
+                velocity.setX(-velocity.getX());
+                position.setX(World.WORLD_WIDTH - PLATFORM_WIDTH / 2);
             }
         }
 
@@ -47,6 +47,6 @@ public class Platform extends GameObject {
     public void pulverize() {
         state = PLATFORM_STATE_PULVERIZING;
         stateTime = 0;
-        velocity.x = 0;
+        velocity.setX(0);
     }
 }

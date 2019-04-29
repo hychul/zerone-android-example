@@ -15,16 +15,16 @@ public class Squirrel extends GameObject {
     }
 
     public void update(float deltaTime) {
-        position.add(velocity.x * deltaTime, velocity.y * deltaTime);
-        bounds.lowerLeft.set(position).sub(SQUIRREL_WIDTH / 2, SQUIRREL_HEIGHT / 2);
+        position.plus(velocity.getX() * deltaTime, velocity.getY() * deltaTime);
+        bounds.getLowerLeft().set(position).sub(SQUIRREL_WIDTH / 2, SQUIRREL_HEIGHT / 2);
 
-        if (position.x < SQUIRREL_WIDTH / 2) {
-            position.x = SQUIRREL_WIDTH / 2;
-            velocity.x = SQUIRREL_VELOCITY;
+        if (position.getX() < SQUIRREL_WIDTH / 2) {
+            position.setX(SQUIRREL_WIDTH / 2);
+            velocity.setX(SQUIRREL_VELOCITY);
         }
-        if (position.x > World.WORLD_WIDTH - SQUIRREL_WIDTH / 2) {
-            position.x = World.WORLD_WIDTH - SQUIRREL_WIDTH / 2;
-            velocity.x = -SQUIRREL_VELOCITY;
+        if (position.getX() > World.WORLD_WIDTH - SQUIRREL_WIDTH / 2) {
+            position.setX(World.WORLD_WIDTH - SQUIRREL_WIDTH / 2);
+            velocity.setX(-SQUIRREL_VELOCITY);
         }
         stateTime += deltaTime;
     }

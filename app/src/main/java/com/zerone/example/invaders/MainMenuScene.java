@@ -49,11 +49,11 @@ public class MainMenuScene extends ActScene {
             guiCam.touchToWorld(touchPoint.set(event.x, event.y));
             if (OverlapTester.pointInRectangle(playBounds, touchPoint)) {
                 Assets.playSound(Assets.clickSound);
-                SceneManager.loadScene(new GameScene(zerone));
+                SceneManager.INSTANCE.loadScene(new GameScene(zerone));
             }
             if (OverlapTester.pointInRectangle(settingsBounds, touchPoint)) {
                 Assets.playSound(Assets.clickSound);
-                SceneManager.loadScene(new SettingsScene(zerone));
+                SceneManager.INSTANCE.loadScene(new SettingsScene(zerone));
             }
         }
     }

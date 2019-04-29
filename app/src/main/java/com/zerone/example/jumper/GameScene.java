@@ -76,7 +76,7 @@ public class GameScene extends ActScene {
 
     @Override
     public void update() {
-        float deltaTime = Time.getDeltaTime();
+        float deltaTime = Time.Companion.getDeltaTime();
         if (deltaTime > 0.1f)
             deltaTime = 0.1f;
 
@@ -161,7 +161,7 @@ public class GameScene extends ActScene {
 
             if (OverlapTester.pointInRectangle(quitBounds, touchPoint)) {
                 Assets.playSound(Assets.clickSound);
-                SceneManager.loadScene(new MainMenuScene(zerone));
+                SceneManager.INSTANCE.loadScene(new MainMenuScene(zerone));
                 return;
 
             }
@@ -189,7 +189,7 @@ public class GameScene extends ActScene {
             TouchEvent event = touchEvents.get(i);
             if (event.phase != TouchEvent.TOUCH_UP)
                 continue;
-            SceneManager.loadScene(new MainMenuScene(zerone));
+            SceneManager.INSTANCE.loadScene(new MainMenuScene(zerone));
         }
     }
 

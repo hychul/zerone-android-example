@@ -88,7 +88,7 @@ public class CubeTest extends ZeroneActivity {
 
         @Override
         public void update() {
-            float deltaTime = Time.getDeltaTime();
+            float deltaTime = Time.Companion.getDeltaTime();
             angle += 45 * deltaTime;
         }
 

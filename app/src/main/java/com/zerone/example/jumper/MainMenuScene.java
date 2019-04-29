@@ -55,17 +55,17 @@ public class MainMenuScene extends ActScene {
 
                 if (OverlapTester.pointInRectangle(playBounds, touchPoint)) {
                     Assets.playSound(Assets.clickSound);
-                    SceneManager.loadScene(new GameScene(zerone));
+                    SceneManager.INSTANCE.loadScene(new GameScene(zerone));
                     return;
                 }
                 if (OverlapTester.pointInRectangle(highscoresBounds, touchPoint)) {
                     Assets.playSound(Assets.clickSound);
-                    SceneManager.loadScene(new HighscoreScene(zerone));
+                    SceneManager.INSTANCE.loadScene(new HighscoreScene(zerone));
                     return;
                 }
                 if (OverlapTester.pointInRectangle(helpBounds, touchPoint)) {
                     Assets.playSound(Assets.clickSound);
-                    SceneManager.loadScene(new HelpScene(zerone));
+                    SceneManager.INSTANCE.loadScene(new HelpScene(zerone));
                     return;
                 }
                 if (OverlapTester.pointInRectangle(soundBounds, touchPoint)) {
