@@ -1,6 +1,6 @@
 package com.zerone.example.common;
 
-import com.zerone.math.Rectangle;
+import com.zerone.physics.Rectangle;
 import com.zerone.math.Vector2;
 
 public class GameObject {

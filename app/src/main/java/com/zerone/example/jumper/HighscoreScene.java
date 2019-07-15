@@ -8,8 +8,8 @@ import com.zerone.android.graphics.Camera2D;
 import com.zerone.android.graphics.SpriteBatcher;
 import com.zerone.android.input.TouchEvent;
 import com.zerone.core.SceneManager;
-import com.zerone.math.OverlapTester;
-import com.zerone.math.Rectangle;
+import com.zerone.physics.OverlapTester;
+import com.zerone.physics.Rectangle;
 import com.zerone.math.Vector2;
 
 import java.util.List;

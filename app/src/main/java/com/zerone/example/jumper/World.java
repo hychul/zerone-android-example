@@ -1,6 +1,6 @@
 package com.zerone.example.jumper;
 
-import com.zerone.math.OverlapTester;
+import com.zerone.physics.OverlapTester;
 import com.zerone.math.Vector2;
 
 import java.util.ArrayList;

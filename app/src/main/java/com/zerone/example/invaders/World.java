@@ -1,6 +1,6 @@
 package com.zerone.example.invaders;
 
-import com.zerone.math.OverlapTester;
+import com.zerone.physics.OverlapTester;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -12,7 +12,7 @@ import com.zerone.android.input.TouchEvent;
 import com.zerone.core.Scene;
 import com.zerone.core.Time;
 import com.zerone.math.Mathf;
-import com.zerone.math.OverlapTester;
+import com.zerone.physics.OverlapTester;
 import com.zerone.math.Vector2;
 
 import java.util.ArrayList;
